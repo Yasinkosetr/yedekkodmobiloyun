@@ -881,7 +881,7 @@
         </div>
       </div>
       <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,255,135,0.05); border: 1px solid rgba(0,255,135,0.3); border-radius: 20px; padding: 4px 10px 4px 4px;">
-        <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(0,255,135,0.2); display: flex; justify-content: center; align-items: center; font-size: 14px;">👔</div>
+        <div id="mgr-avatar" style="width: 32px; height: 32px; border-radius: 50%; background: #00ff87; display: flex; justify-content: center; align-items: center; color: #050d0f;"></div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #fff; font-family: 'Rajdhani'; font-size: 12px; font-weight: 700; line-height: 1;">MENAJER</span>
           <span id="manager-level-league" style="color: #00ff87; font-family: 'Rajdhani'; font-size: 10px; font-weight: 700;">SV. 1</span>
@@ -1033,8 +1033,12 @@
 
         <!-- SAĞ: Menajer -->
         <div id="btn-manager-profile" style="display: flex; align-items: center; gap: 8px; background: rgba(0,255,135,0.1); border: 1px solid #00ff87; border-radius: 30px; padding: 4px 10px 4px 4px; cursor: pointer;" onclick="if(typeof menajerProfiliniAc === 'function') menajerProfiliniAc()">
-          <div style="width: 32px; height: 32px; border-radius: 50%; background: #00ff87; display: flex; justify-content: center; align-items: center; font-size: 16px;">👔</div>
-          <div style="display: flex; flex-direction: column;">
+<div style="width: 32px; height: 32px; border-radius: 50%; background: #00ff87; display: flex; justify-content: center; align-items: center;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#050d0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+    <circle cx="12" cy="7" r="4"></circle>
+  </svg>
+</div>          <div style="display: flex; flex-direction: column;">
             <span id="global-mgr-name-text" style="color: #fff; font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700; line-height: 1; text-transform: uppercase;">MENAJER</span>
             <span id="manager-level-text" style="color: #00ff87; font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: bold;">SV. 1</span>
           </div>
@@ -1551,6 +1555,21 @@
   <span>Ayarlar</span>
 </div>
     </div>
+    <!-- MAÇ DETAY (RAPOR) EKRANI -->
+  <div id="match-report-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 40px; background: rgba(5, 13, 15, 0.98); z-index: 350; backdrop-filter: blur(10px);">
+    <div style="text-align: center; margin-bottom: 20px; width: 100%;">
+      <h1 style="color: #fff; font-family: 'Bebas Neue'; font-size: 38px; letter-spacing: 2px; margin: 0;">MAÇ RAPORU</h1>
+      <p style="color: #888; font-family: 'Rajdhani'; font-size: 13px; font-weight: 600; margin: 0;">İstatistikler ve Önemli Anlar</p>
+    </div>
+    
+    <div id="match-report-content" style="width: 85%; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 60vh; padding-bottom: 20px; scrollbar-width: none;">
+      <!-- JS ile Dinamik Doldurulacak -->
+    </div>
+
+    <button style="margin-top: auto; margin-bottom: 30px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; cursor: pointer; padding: 10px 30px; border-radius: 12px;" onclick="document.getElementById('match-report-overlay').style.display='none'">
+      ✖ KAPAT
+    </button>
+  </div>
 <!-- ==========================================
      WIDGET DETAY EKRANI (OVERLAY)
      ========================================== -->
@@ -1733,29 +1752,28 @@
 <div id="manager-profile-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 40px; background: var(--dark-bg); z-index: 300;">
 
   <!-- Şık Üst Bilgi (Header) - LİSANS KARTI EKLENDİ -->
-  <div class="modern-card" style="width: 90%; margin-bottom: 20px; background: linear-gradient(135deg, rgba(0,255,135,0.05), rgba(0,0,0,0.8)); padding: 20px; position: relative; overflow: hidden; border-color: rgba(0,255,135,0.3);">
+  <div class="modern-card" style="width: 90%; margin-bottom: 20px; background: linear-gradient(135deg, rgba(0,255,135,0.05), rgba(0,0,0,0.8)); padding: 20px; position: relative; overflow: hidden; border-color: rgba(0,255,135,0.3); flex-shrink: 0;">
     <div style="position: absolute; right: -20px; top: -10px; font-size: 120px; opacity: 0.03; filter: grayscale(100%);">🌍</div>
     
     <div style="display: flex; gap: 15px; align-items: flex-start; z-index: 2; position: relative;">
       <!-- Profil Foto & Seviye -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-          <div style="width: 70px; height: 70px; border-radius: 16px; background: rgba(0,0,0,0.5); border: 1px solid #00ff87; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 0 15px rgba(0,255,135,0.2);">👤</div>
-          <span id="mgr-level-display" style="background: #00ff87; color: #000; font-family: 'Rajdhani'; font-size: 11px; font-weight: 800; padding: 2px 10px; border-radius: 10px;">SV. 1</span>
+<div id="mgr-big-avatar" style="width: 70px; height: 70px; border-radius: 16px; background: rgba(0,0,0,0.5); border: 1px solid #00ff87; display: flex; align-items: center; justify-content: center; color: #00ff87; box-shadow: 0 0 15px rgba(0,255,135,0.2);"></div>          <span id="mgr-level-display" style="background: #00ff87; color: #000; font-family: 'Rajdhani'; font-size: 11px; font-weight: 800; padding: 2px 10px; border-radius: 10px;">SV. 1</span>
       </div>
 
-      <!-- Kimlik Formu -->
+     <!-- Kimlik Formu -->
       <div style="display: flex; flex-direction: column; flex: 1; gap: 10px;">
          <!-- İsim Soyisim -->
          <div style="display: flex; flex-direction: column;">
            <span style="color: #00ff87; font-family: 'Rajdhani'; font-size: 10px; font-weight: 800; letter-spacing: 1px;">MENAJER ADI SOYADI</span>
-           <input type="text" id="mgr-input-name" placeholder="İSİM GİRİNİZ..." onblur="kaydetMenajerKimlik()" style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Bebas Neue'; font-size: 26px; padding: 2px 0; outline: none; width: 100%; text-transform: uppercase; letter-spacing: 1px;">
+           <input type="text" id="mgr-input-name" placeholder="İSİM GİRİNİZ..." onblur="kaydetMenajerKimlik()" style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Bebas Neue'; font-size: 26px; padding: 4px 0 6px 0; outline: none; width: 100%; text-transform: uppercase; letter-spacing: 1px; height: 36px;">
          </div>
 
          <!-- Uyruk ve Yaş -->
          <div style="display: flex; gap: 15px;">
            <div style="display: flex; flex-direction: column; flex: 1;">
              <span style="color: #888; font-family: 'Rajdhani'; font-size: 10px; font-weight: 800; letter-spacing: 1px;">UYRUK</span>
-             <select id="mgr-input-country" onchange="kaydetMenajerKimlik()" style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 600; padding: 4px 0; outline: none; width: 100%; cursor: pointer;">
+             <select id="mgr-input-country" onchange="kaydetMenajerKimlik()" style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 600; padding: 6px 0 8px 0; outline: none; width: 100%; cursor: pointer; height: 32px;">
                 <option value="🇹🇷 Türkiye" style="color:#000;">🇹🇷 Türkiye</option>
                 <option value="🇩🇪 Almanya" style="color:#000;">🇩🇪 Almanya</option>
                 <option value="🇬🇧 İngiltere" style="color:#000;">🇬🇧 İngiltere</option>
@@ -1767,7 +1785,7 @@
            </div>
            <div style="display: flex; flex-direction: column; width: 50px;">
              <span style="color: #888; font-family: 'Rajdhani'; font-size: 10px; font-weight: 800; letter-spacing: 1px;">YAŞ</span>
-             <input type="number" id="mgr-input-age" placeholder="-" onblur="kaydetMenajerKimlik()" style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; padding: 4px 0; outline: none; width: 100%; text-align: center;">
+             <input type="number" id="mgr-input-age" placeholder="-" onblur="kaydetMenajerKimlik()" style="background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; padding: 6px 0 8px 0; outline: none; width: 100%; text-align: center; height: 32px;">
            </div>
          </div>
       </div>
@@ -1781,7 +1799,7 @@
   </div>
 
   <!-- Menajer Sekmeleri (Ayarlar Çıkarıldı) -->
-  <div style="display: flex; width: 90%; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 5px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05);">
+  <div style="display: flex; width: 90%; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 5px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;">
     <button id="btn-tab-yetenek" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #00ff87, #00b35e); color: #000; border: none; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer; transition: 0.2s;" onclick="switchManagerTab('yetenek')">🧠 YETENEKLER</button>
     <button id="btn-tab-gardarop" style="flex: 1; padding: 10px; background: transparent; color: #aaa; border: none; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px; cursor: pointer; transition: 0.2s;" onclick="switchManagerTab('gardarop')">👔 GARDIROP</button>
   </div>
@@ -1807,92 +1825,148 @@
     </div>
   </div>
 
-  <!-- 2. GARDIROP SEKMESİ -->
+<!-- 2. GARDIROP SEKMESİ -->
   <div id="mgr-tab-gardarop" style="width: 90%; display: none; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 55vh; padding-bottom: 20px; scrollbar-width: none;">
     <p style="text-align: center; color: #666; font-family: 'Rajdhani'; font-size: 11px; font-weight: 600; margin-bottom: 5px;">Menajerinin maçlardaki görünümünü özelleştir.</p>
     
-    <!-- 1. Standart -->
+    <!-- 1. Klasik Takım (Varsayılan) -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px;">👨‍💼</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(0,255,135,0.1); color: #00ff87; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,255,135,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Klasik Takım</span>
           <span style="color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 600;">Varsayılan</span>
         </div>
       </div>
-      <button id="btn-avatar-standart" onclick="avatarSatinAl('👨‍💼', 0, 'altin', 'standart')" style="background: rgba(0,255,135,0.1); border: 1px solid #00ff87; color: #00ff87; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KUŞANILDI</button>
+      <button id="btn-avatar-standart" onclick="avatarSatinAl('standart', 0, 'altin')" style="background: rgba(0,255,135,0.1); border: 1px solid #00ff87; color: #00ff87; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KUŞANILDI</button>
     </div>
 
-    <!-- 2. Eşofman -->
+    <!-- 2. Taktiksel Eşofman -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px;">🧢</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,215,0,0.1); color: #ffd700; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255,215,0,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Taktiksel Eşofman</span>
           <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">500 🟡</span>
         </div>
       </div>
-      <button id="btn-avatar-esofman" onclick="avatarSatinAl('🧢', 500, 'altin', 'esofman')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+      <button id="btn-avatar-esofman" onclick="avatarSatinAl('esofman', 500, 'altin')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
     </div>
 
-    <!-- 3. Kaban -->
+    <!-- 3. Kışlık Kaban -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px;">🧥</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,107,0,0.1); color: #ff6b00; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255,107,0,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Kışlık Kaban</span>
           <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">1.000 🟡</span>
         </div>
       </div>
-      <button id="btn-avatar-kaban" onclick="avatarSatinAl('🧥', 1000, 'altin', 'kaban')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+      <button id="btn-avatar-kaban" onclick="avatarSatinAl('kaban', 1000, 'altin')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
     </div>
 
     <!-- 4. Sokak Tarzı -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px;">😎</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,68,68,0.1); color: #ff4444; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255,68,68,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="4"></circle><circle cx="18" cy="15" r="4"></circle><path d="M14 15h-4"></path><path d="M2 15l2-4 2-1h12l2 1 2 4"></path></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Sokak Tarzı</span>
           <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">1.500 🟡</span>
         </div>
       </div>
-      <button id="btn-avatar-sokak" onclick="avatarSatinAl('😎', 1500, 'altin', 'sokak')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+      <button id="btn-avatar-sokak" onclick="avatarSatinAl('sokak', 1500, 'altin')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
     </div>
 
-    <!-- 5. Efsanevi Smokin (Elmas) -->
+    <!-- 5. Kasketli Retro -->
+    <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(200,100,0,0.1); color: #ff8c00; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(200,100,0,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-5 8-5 8 5 8 5H4z"/><path d="M2 15h20v2H2z"/></svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Retro Menajer</span>
+          <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">2.500 🟡</span>
+        </div>
+      </div>
+      <button id="btn-avatar-retro" onclick="avatarSatinAl('retro', 2500, 'altin')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+    </div>
+
+    <!-- 6. Taktik Dehası -->
+    <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(0,255,135,0.1); color: #00ff87; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,255,135,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="1"/><path d="M9 4v-1h6v1"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Taktik Dehası</span>
+          <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">4.000 🟡</span>
+        </div>
+      </div>
+      <button id="btn-avatar-analist" onclick="avatarSatinAl('analist', 4000, 'altin')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+    </div>
+
+    <!-- 7. Efsanevi Smokin (Elmas) -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; border-color: rgba(0,212,255,0.3);">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px; filter: drop-shadow(0 0 5px #00d4ff);">🕴️</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(0,212,255,0.1); color: #00d4ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,212,255,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 22 22 7 12 2"></polygon><polyline points="2 7 12 7 22 7"></polyline><polyline points="12 22 12 7"></polyline></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #00d4ff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Efsanevi Smokin</span>
           <span style="color: #00d4ff; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">50 💎</span>
         </div>
       </div>
-      <button id="btn-avatar-efsane" onclick="avatarSatinAl('🕴️', 50, 'elmas', 'efsane')" style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.5); color: #00d4ff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+      <button id="btn-avatar-efsane" onclick="avatarSatinAl('efsane', 50, 'elmas')" style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.5); color: #00d4ff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
     </div>
 
-    <!-- 6. Gizemli Kapüşonlu (Elmas) -->
+    <!-- 8. Gizemli Kapüşonlu (Elmas) -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; border-color: rgba(255,0,255,0.3);">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px; filter: drop-shadow(0 0 5px #ff00ff);">🥷</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,0,255,0.1); color: #ff00ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255,0,255,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #ff00ff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Gizemli Kapüşonlu</span>
           <span style="color: #ff00ff; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">100 💎</span>
         </div>
       </div>
-      <button id="btn-avatar-gizemli" onclick="avatarSatinAl('🥷', 100, 'elmas', 'gizemli')" style="background: rgba(255,0,255,0.1); border: 1px solid rgba(255,0,255,0.5); color: #ff00ff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+      <button id="btn-avatar-gizemli" onclick="avatarSatinAl('gizemli', 100, 'elmas')" style="background: rgba(255,0,255,0.1); border: 1px solid rgba(255,0,255,0.5); color: #ff00ff; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
     </div>
 
-    <!-- 7. Şampiyon Pelerini (Elmas) -->
+    <!-- 9. Asi Korsan (Elmas) -->
+    <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; border-color: rgba(255,68,68,0.3);">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,68,68,0.1); color: #ff4444; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255,68,68,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l-9-5"/><path d="M12 12l9-5"/><circle cx="15" cy="11" r="2" fill="currentColor"/></svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <span style="color: #ff4444; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Asi Menajer</span>
+          <span style="color: #ff4444; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">150 💎</span>
+        </div>
+      </div>
+      <button id="btn-avatar-korsan" onclick="avatarSatinAl('korsan', 150, 'elmas')" style="background: rgba(255,68,68,0.1); border: 1px solid rgba(255,68,68,0.5); color: #ff4444; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;">KİLİDİ AÇ</button>
+    </div>
+
+    <!-- 10. Şampiyon Pelerini (Elmas) -->
     <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; border-color: #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.05), rgba(0,0,0,0.8));">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="font-size: 24px; filter: drop-shadow(0 0 10px #ffd700);">👑</div>
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(255,215,0,0.1); color: #ffd700; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255,215,0,0.4);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="2 20 22 20 19 9 15 14 12 6 9 14 5 9 2 20"></polygon></svg>
+        </div>
         <div style="display: flex; flex-direction: column;">
           <span style="color: #ffd700; font-family: 'Rajdhani'; font-weight: 800; font-size: 15px; text-shadow: 0 0 5px rgba(255,215,0,0.5);">Şampiyon Pelerini</span>
           <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">200 💎</span>
         </div>
       </div>
-      <button id="btn-avatar-kral" onclick="avatarSatinAl('👑', 200, 'elmas', 'kral')" style="background: linear-gradient(135deg, #ffd700, #ffaa00); border: none; color: #000; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 0 10px rgba(255,215,0,0.4); transition: 0.2s;">KİLİDİ AÇ</button>
+      <button id="btn-avatar-kral" onclick="avatarSatinAl('kral', 200, 'elmas')" style="background: linear-gradient(135deg, #ffd700, #ffaa00); border: none; color: #000; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 0 10px rgba(255,215,0,0.4); transition: 0.2s;">KİLİDİ AÇ</button>
     </div>
   </div>
 
@@ -1903,6 +1977,38 @@
     </button>
   </div>
 </div>
+
+<!-- ==========================================
+       🎤 MAÇ SONU RÖPORTAJ EKRANI (FUTBOL TAYFA SPOR SERVİSİ)
+       ========================================== -->
+  <div id="interview-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 350; background: rgba(5, 13, 15, 0.98); backdrop-filter: blur(15px);">
+    
+    <!-- Üst Banner -->
+    <div style="width: 100%; text-align: center; margin-bottom: 20px; position: relative;">
+      <div style="font-size: 60px; filter: drop-shadow(0 0 20px rgba(0,212,255,0.6)); margin-bottom: -15px; animation: pulse-dot 2s infinite;">📸</div>
+      <h2 style="color: #fff; font-family: 'Bebas Neue'; font-size: 42px; text-shadow: 0 0 20px rgba(0,212,255,0.5); letter-spacing: 2px; margin: 0;">BASIN TOPLANTISI</h2>
+      <span style="background: #1DA1F2; color: #fff; font-family: 'Rajdhani'; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; letter-spacing: 1px;">FUTBOL TAYFA SPOR SERVİSİ</span>
+    </div>
+
+    <!-- Soru Kutusu -->
+    <div class="modern-card" style="width: 85%; padding: 20px; background: linear-gradient(145deg, rgba(0,212,255,0.1), rgba(0,0,0,0.9)); border: 1px solid #00d4ff; text-align: center; margin-bottom: 15px;">
+      <div style="font-size: 30px; margin-bottom: 10px;">🎤</div>
+      <p id="interview-question" style="color: #fff; font-family: 'Rajdhani'; font-size: 18px; font-weight: 700; line-height: 1.4; margin: 0;">
+        "Hocam, harika bir galibiyet aldınız. Bu başarının sırrı nedir?"
+      </p>
+    </div>
+
+    <!-- Cevap Şıkları (JS ile Doldurulacak) -->
+    <div id="interview-answers" style="width: 85%; display: flex; flex-direction: column; gap: 10px;">
+      <!-- Cevaplar buraya gelecek -->
+    </div>
+
+  </div>
+
+
+
+
+
 
 
 <!-- ==========================================
@@ -2397,7 +2503,179 @@ const LIGLER = {
 };
 
 
+// 🎤 RÖPORTAJ HAFIZASI VE VERİTABANI
+let roportajEtkisi = JSON.parse(localStorage.getItem('futbolTayfaRoportaj')) || { yonetim: 0, taraftar: 0, moral: 0 };
+let sonRoportajDetayi = JSON.parse(localStorage.getItem('futbolTayfaSonRoportaj')) || { cevap: "", y: 0, t: 0, m: 0 };
 
+// 📰 MUHABİR VE MEDYA KURULUŞU HAVUZU (Telif haksız, kurgusal isimler)
+const MUHABIR_ISIMLERI = ["Ali", "Can", "Burak", "Cenk", "Murat", "Hakan", "Emre", "Volkan", "Ozan", "Serdar", "Ertem", "Güntekin"];
+const MUHABIR_SOYISIMLERI = ["Yılmaz", "Çelik", "Demir", "Şahin", "Özdemir", "Koç", "Aslan", "Yıldız", "Kaplan", "Kaya", "Şen", "Batur"];
+const MEDYA_KURULUSLARI = ["Tribün Sesi", "90+ Spor", "Yeşil Saha Medya", "File Bekçisi", "Kontra Atak TV", "Taraftarın Sesi", "Zirve Spor", "Net Skor", "Sporun Nabzı", "Taktik Tahtası"];
+
+// 🏆 DEV RÖPORTAJ HAVUZU
+const ROPORTAJ_HAVUZU = {
+  galibiyet: [
+    { soru: "Sahada basmadık yer bırakmayan bir takım vardı. Sırrınız ne?", cevaplar: [{ metin: "Yönetimin kurduğu bu geniş kadro en büyük gücümüz.", etki: {y: 15, t: -5, m: 0} }, { metin: "Taraftarımızın bitmek bilmeyen desteği bizi itti!", etki: {y: 0, t: 15, m: 5} }, { metin: "Sahadaki 11 aslanımın alnından öpüyorum, hepsi savaştı.", etki: {y: 0, t: 5, m: 15} }] },
+    { soru: "Farklı bir galibiyet aldınız ama savunma zaman zaman aksadı.", cevaplar: [{ metin: "Biz hücum futbolu oynuyoruz, atan kazanır!", etki: {y: -5, t: 15, m: 5} }, { metin: "Savunma oyuncularım bugün biraz gününde değildi, çözeceğiz.", etki: {y: 5, t: 0, m: -10} }, { metin: "Skorun rehavetiyle ufak hatalar yaptık, sorun yok.", etki: {y: 0, t: -5, m: 10} }] },
+    { soru: "Taraftar maç sonu sizi bağrına bastı. Neler hissediyorsunuz?", cevaplar: [{ metin: "Biz bu armanın neferleriyiz, bu can onlara feda!", etki: {y: -5, t: 20, m: 5} }, { metin: "Abartmaya gerek yok, sadece bir maç kazandık.", etki: {y: 10, t: -10, m: -5} }, { metin: "Bu sevgi oyuncularımın eseridir, asıl alkış onlara.", etki: {y: 5, t: 5, m: 15} }] },
+    { soru: "Yedek kulübesinden gelen hamleleriniz maçı çözdü, taktiğiniz kusursuzdu.", cevaplar: [{ metin: "Satranç oynadık ve mat ettik.", etki: {y: 5, t: 10, m: 0} }, { metin: "Yönetimimizin sağladığı derin kadro sayesinde bu hamleleri yapabiliyoruz.", etki: {y: 20, t: 0, m: -5} }, { metin: "Sonradan giren çocuklar formanın hakkını verdi.", etki: {y: 0, t: 5, m: 15} }] },
+    { soru: "Maçın başından sonuna kadar üstün olan taraf sizdiniz. Şampiyonluk geliyor mu?", cevaplar: [{ metin: "Kimse heveslenmesin, o kupa bu stada gelecek!", etki: {y: -5, t: 20, m: 10} }, { metin: "Ayaklarımız yere basmalı, önümüzde çok maç var.", etki: {y: 15, t: -5, m: 5} }, { metin: "Biz maç maç bakıyoruz, hedefimiz her zaman galibiyet.", etki: {y: 10, t: 0, m: 5} }] },
+    { soru: "Maçın temposu inanılmazdı. Oyuncularınız bu tempoyu nasıl kaldırdı?", cevaplar: [{ metin: "Kondisyoner ekibimiz harika iş çıkarıyor.", etki: {y: 5, t: 0, m: 10} }, { metin: "Arma aşkı onlara ekstra enerji veriyor.", etki: {y: 0, t: 15, m: 5} }] },
+    { soru: "Hakem yönetimi hakkında ufak tefek şikayetleriniz oldu saha kenarında...", cevaplar: [{ metin: "Kazandık diye susacak değiliz, kartlarda standart yoktu.", etki: {y: -5, t: 15, m: 0} }, { metin: "Bugün sadece güzel futbolumuzu konuşalım.", etki: {y: 10, t: -5, m: 5} }] }
+  ],
+  beraberlik: [
+    { soru: "Kıran kırana geçti ama kazanan çıkmadı, 1 puana razı mısınız?", cevaplar: [{ metin: "1 puan iyidir, maraton uzun.", etki: {y: 10, t: -10, m: 0} }, { metin: "Çocuklar yoruldu ama savaştılar, onlarla gurur duyuyorum.", etki: {y: 0, t: 5, m: 15} }, { metin: "Sahada futbol oynamamaya yemin etmiş bir rakip vardı!", etki: {y: -5, t: 15, m: 5} }] },
+    { soru: "Gol yollarında ciddi bir tutukluk vardı bugün, forvetler formsuz mu?", cevaplar: [{ metin: "Yönetimden acil transfer istedim.", etki: {y: -15, t: 10, m: -5} }, { metin: "Forvetlerime güvenim tam, sadece şanssızdık.", etki: {y: 5, t: 0, m: 15} }, { metin: "Sorumluluk benim, daha iyi hücum setleri çizeceğiz.", etki: {y: 10, t: 5, m: 5} }] },
+    { soru: "Rakipten daha çok topla oynadınız ama kilidi açamadınız.", cevaplar: [{ metin: "Futbol gol oyunudur, atamazsanız istatistiğin önemi yok.", etki: {y: 10, t: 0, m: -5} }, { metin: "Çok katı bir savunmayla karşılaştık, aşamadık.", etki: {y: 5, t: 5, m: 5} }, { metin: "Taraftarımız bizi daha çok ateşlemeliydi.", etki: {y: 0, t: -15, m: 10} }] },
+    { soru: "Hakemin bazı kritik kararları stadyumu ayağa kaldırdı, yorumunuz nedir?", cevaplar: [{ metin: "Bizi doğradılar! Bu ligde adalet yok!", etki: {y: -10, t: 20, m: 5} }, { metin: "Hakem de insan, hata yapabilir. Biz işimize bakıyoruz.", etki: {y: 15, t: -10, m: 0} }, { metin: "Yönetimimiz gerekli açıklamayı maçtan sonra yapacaktır.", etki: {y: 10, t: 5, m: 0} }] },
+    { soru: "Son dakikalarda yediğiniz baskı taraftarı endişelendirdi, fiziksel bir düşüş mü var?", cevaplar: [{ metin: "Taktik gereği skoru korumaya çekildik.", etki: {y: 5, t: -10, m: -5} }, { metin: "Fiziksel olarak yıprandık, rotasyon yapmalıyız.", etki: {y: 10, t: -5, m: -10} }, { metin: "Oyunun son bölümünde takım büyük bir karakter koydu.", etki: {y: 0, t: 5, m: 10} }] },
+    { soru: "Orta sahada ciddi top kayıpları yaptınız, bunun sebebi neydi?", cevaplar: [{ metin: "Zemin şartları pas kalitemizi inanılmaz düşürdü.", etki: {y: 0, t: 0, m: 5} }, { metin: "Bazı oyuncularımın konsantrasyon eksiği vardı, uyaracağım.", etki: {y: 5, t: 0, m: -15} }] }
+  ],
+  maglubiyet: [
+    { soru: "Ağır bir yenilgi... Taraftar çok öfkeli. Sorumlusu kim?", cevaplar: [{ metin: "Tüm sorumluluk benim, taktiğim tutmadı.", etki: {y: 15, t: 5, m: 10} }, { metin: "Sahada yürüyen oyuncularım aynaya bakmalı!", etki: {y: 10, t: 10, m: -20} }, { metin: "Bu maçı kimin katlettiğini herkes gördü, düdüğü asmalı!", etki: {y: -10, t: 20, m: 5} }] },
+    { soru: "Yönetimin size olan desteği bu maçtan sonra tartışılmaya başlandı.", cevaplar: [{ metin: "Başkanımızla aramız harika, bu dedikodular asılsız.", etki: {y: 20, t: -5, m: 0} }, { metin: "Taraftar arkamda olduğu sürece kimse beni gönderemez!", etki: {y: -20, t: 20, m: 5} }, { metin: "Ben sadece takımıma ve oyuncularıma odaklanıyorum.", etki: {y: 5, t: 5, m: 15} }] },
+    { soru: "Taktiksel olarak rakibe tamamen teslim oldunuz, sahada ruh yoktu.", cevaplar: [{ metin: "Rakip bizden çok daha hazır ve istekliydi.", etki: {y: -5, t: -10, m: 5} }, { metin: "Çok şanssız bir gündük, bu futbolu bir daha görmeyeceksiniz.", etki: {y: 5, t: 10, m: 5} }, { metin: "Kadro kalitemiz bu kadar, elimizden geleni yaptık.", etki: {y: -15, t: -10, m: -15} }] },
+    { soru: "Transfer döneminde eksik bölgeler çok net belli oldu diyebilir miyiz?", cevaplar: [{ metin: "Söz verilmişti ama alınmadı, faturayı bana kesmeyin.", etki: {y: -20, t: 15, m: 5} }, { metin: "Benim oyuncularım her eksiği kapatacak güçte.", etki: {y: 15, t: 0, m: 15} }, { metin: "Bütçemiz el vermedi, elimizdekiyle savaşacağız.", etki: {y: 10, t: 5, m: -5} }] },
+    { soru: "Bu mağlubiyet takımda bir özgüven kırılması yaratır mı?", cevaplar: [{ metin: "Biz büyük bir camiayız, hemen ayağa kalkarız.", etki: {y: 10, t: 15, m: 10} }, { metin: "Psikolojik olarak yıkıldık, toparlanmamız zor olacak.", etki: {y: -10, t: -10, m: -15} }, { metin: "Taraftarımız bizi desteklerse her şeyi aşarız.", etki: {y: 5, t: 20, m: 5} }] },
+    { soru: "Maçın kırılma anı neydi sizce?", cevaplar: [{ metin: "Yediğimiz o şanssız ilk gol bütün planları bozdu.", etki: {y: 5, t: 0, m: 5} }, { metin: "Hakemin vermediği o faul sonrası oyundan düştük.", etki: {y: 0, t: 15, m: 0} }] }
+  ],
+  derbi_galibiyet: [
+    { soru: "Ezeli rakibinizi sahadan sildiniz! Şehir ayakta, mesajınız var mı?", cevaplar: [{ metin: "Bu şehrin tek bir sahibi var, o da biziz!", etki: {y: 0, t: 25, m: 10} }, { metin: "Sadece 3 puan aldık, abartmayalım.", etki: {y: 15, t: -10, m: -5} }, { metin: "Bugün sahadaki oyuncularım kulüp tarihine geçti.", etki: {y: 5, t: 15, m: 20} }] },
+    { soru: "Yönetim bu dev galibiyet sonrası ekstra prim verecek mi?", cevaplar: [{ metin: "Başkanımız cömerttir, oyuncularım bunu sonuna kadar hak etti.", etki: {y: 15, t: 5, m: 15} }, { metin: "Biz paraya değil armaya oynuyoruz!", etki: {y: -5, t: 25, m: 5} }] },
+    { soru: "Rakip takım hocası maç sonu hakemden şikayetçiydi, katılıyor musunuz?", cevaplar: [{ metin: "Yenilgilerine kılıf arıyorlar, sahada ezdik!", etki: {y: 0, t: 20, m: 10} }, { metin: "Biz işimize bakarız, polemiğe girmem.", etki: {y: 15, t: -5, m: 5} }] },
+    { soru: "Böyle bir derbi galibiyeti takımı şampiyonluk havasına sokar mı?", cevaplar: [{ metin: "Bu takım şampiyon olmak için kuruldu zaten!", etki: {y: 5, t: 20, m: 15} }, { metin: "Rehavete kapılmak yok, yarın antrenmandayız.", etki: {y: 15, t: 0, m: -5} }] }
+  ],
+  derbi_beraberlik: [
+    { soru: "Derbide çok gergin anlar yaşandı. Hakem kontrolü kaybetti mi?", cevaplar: [{ metin: "Gördüğüm en eyyamcı yönetim, hakkımız yendi!", etki: {y: -10, t: 25, m: 5} }, { metin: "Hakem de insan, hata yapabilir. Biz işimize bakıyoruz.", etki: {y: 15, t: -10, m: 0} }, { metin: "Kendi oyunumuza odaklanmalıyız, bahanelere sığınmayalım.", etki: {y: 10, t: -5, m: 10} }] },
+    { soru: "Kazanılması gereken bir derbiydi, kaçan pozisyonlar can yaktı.", cevaplar: [{ metin: "Forvetlerimizin şanssız günüydü, telafi edeceğiz.", etki: {y: 5, t: 0, m: 15} }, { metin: "Daha iyi bitiricilere ihtiyacımız var.", etki: {y: -10, t: 5, m: -15} }, { metin: "Taktiksel olarak üstündük ama skoru bulamadık.", etki: {y: 10, t: 5, m: 5} }] },
+    { soru: "Rakip sahada 1 puan aldınız ama taraftar galibiyet bekliyordu.", cevaplar: [{ metin: "Derbilerde yenilmemek de önemlidir.", etki: {y: 10, t: -10, m: 5} }, { metin: "Taraftarımız haklı, onlardan özür diliyoruz.", etki: {y: 5, t: 15, m: -5} }] }
+  ],
+  derbi_maglubiyet: [
+    { soru: "Ezeli rakibinize kaybettiniz. Tesislerde toplanan öfkeli taraftara ne diyeceksiniz?", cevaplar: [{ metin: "Bu utanç bana ait, taraftarımızdan af diliyorum.", etki: {y: 15, t: 10, m: 5} }, { metin: "Sahadaki ruhsuzluk cezasız kalmayacak!", etki: {y: 10, t: 15, m: -25} }, { metin: "Bizi doğramaya ant içmişlere karşı ancak bu kadar direnebildik.", etki: {y: -15, t: 20, m: 5} }] },
+    { soru: "Bu tarihi hezimetin ardından istifa etmeyi düşünüyor musunuz?", cevaplar: [{ metin: "Asla! Taraftarım ve ben bu gemiyi limana yanaştıracağız.", etki: {y: -10, t: 25, m: 10} }, { metin: "Kararı yönetim kurulumuza bırakıyorum.", etki: {y: 20, t: -10, m: 0} }, { metin: "Daha savaşacak çok maçımız var, hiçbir yere gitmiyorum.", etki: {y: 5, t: 10, m: 15} }] },
+    { soru: "Sahada derbi ruhuna yakışmayan, mücadele etmeyen bir takım vardı.", cevaplar: [{ metin: "Bu formanın ağırlığını kaldıramayanlar bedelini öder.", etki: {y: 10, t: 20, m: -20} }, { metin: "Oyuncularımı medyanın önüne atmam, suçlu benim.", etki: {y: 5, t: -5, m: 25} }] }
+  ]
+};
+
+// 🎙️ YENİ AKILLI RÖPORTAJ MOTORU (CANLI YAYIN DESTEKLİ)
+function roportajTetikle(skorEv, skorDep, evSahibiyim, deplasmanim) {
+  if (!window.sonrakiAdimRoportajMi) {
+      macSonuYonlendirmesiniYap();
+      return;
+  }
+
+  // Derbi Radarı
+  const buyukler = ['fb', 'gs', 'bjk', 'ts'];
+  let isDerbi = currentMatchData && buyukler.includes(currentMatchData.ev) && buyukler.includes(currentMatchData.dep);
+
+  let benimGol = evSahibiyim ? skorEv : skorDep;
+  let rakipGol = evSahibiyim ? skorDep : skorEv;
+  
+  let durum = benimGol > rakipGol ? 'galibiyet' : (benimGol < rakipGol ? 'maglubiyet' : 'beraberlik');
+  if (isDerbi) durum = 'derbi_' + durum;
+
+  // Yeni röportaja başlarken anlık detayları sıfırla
+  sonRoportajDetayi = { cevap: "", y: 0, t: 0, m: 0 };
+  
+  let maxSoru = isDerbi ? 2 : 1; 
+  let sorulanSoruSayisi = 0;
+  let gecerliHavuz = [...(ROPORTAJ_HAVUZU[durum] || ROPORTAJ_HAVUZU['beraberlik'])];
+
+  let overlay = document.getElementById('interview-overlay');
+  overlay.style.display = 'flex';
+
+  // 🔴 CANLI YAYIN İBARESİ (Eğer yoksa oluştur, varsa göster)
+  let canliBadge = document.getElementById('canli-yayin-badge');
+  if (!canliBadge) {
+      canliBadge = document.createElement('div');
+      canliBadge.id = 'canli-yayin-badge';
+      canliBadge.innerHTML = '<div style="width:10px; height:10px; background:#ff4444; border-radius:50%; box-shadow: 0 0 10px #ff4444; animation: pulse-dot 1s infinite;"></div> CANLI YAYIN';
+      canliBadge.style.cssText = 'position: absolute; top: 30px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,68,68,0.5); color: #fff; font-family: "Rajdhani", sans-serif; font-size: 13px; font-weight: 800; padding: 6px 12px; border-radius: 8px; display: flex; align-items: center; gap: 8px; z-index: 400; letter-spacing: 1px;';
+      overlay.appendChild(canliBadge);
+  }
+
+  function siradakiSoruyuSor() {
+      if (sorulanSoruSayisi >= maxSoru || gecerliHavuz.length === 0) {
+          // Sorular bitti, hafızaya kaydet ve çık
+          localStorage.setItem('futbolTayfaRoportaj', JSON.stringify(roportajEtkisi));
+          localStorage.setItem('futbolTayfaSonRoportaj', JSON.stringify(sonRoportajDetayi));
+          document.getElementById('interview-overlay').style.display = 'none';
+          macSonuYonlendirmesiniYap();
+          return;
+      }
+
+      // Rastgele Soru Çek
+      let rIdx = Math.floor(Math.random() * gecerliHavuz.length);
+      let secilenSoru = gecerliHavuz.splice(rIdx, 1)[0];
+      sorulanSoruSayisi++;
+
+      // Rastgele Muhabir Çek
+      let mAd = MUHABIR_ISIMLERI[Math.floor(Math.random() * MUHABIR_ISIMLERI.length)];
+      let mSoyad = MUHABIR_SOYISIMLERI[Math.floor(Math.random() * MUHABIR_SOYISIMLERI.length)];
+      let mKurum = MEDYA_KURULUSLARI[Math.floor(Math.random() * MEDYA_KURULUSLARI.length)];
+
+      let soruBasi = isDerbi ? `(Soru ${sorulanSoruSayisi}/2) ` : "";
+      
+      // Soruyu Ekrana Bas (Muhabir Künyesi ile Birlikte)
+      let questionHTML = `
+        <div style="font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700; color: #00d4ff; margin-bottom: 10px; border-bottom: 1px solid rgba(0,212,255,0.2); padding-bottom: 5px;">
+           👤 ${mAd} ${mSoyad} <span style="color:#aaa; font-weight: 600;">(${mKurum})</span>
+        </div>
+        "${soruBasi}${secilenSoru.soru}"
+      `;
+      document.getElementById('interview-question').innerHTML = questionHTML;
+      
+      const answersDiv = document.getElementById('interview-answers');
+      answersDiv.innerHTML = '';
+
+      secilenSoru.cevaplar.forEach(cevap => {
+          let btn = document.createElement('button');
+          btn.className = 'action-btn';
+          btn.style.width = '100%';
+          btn.style.padding = '12px';
+          btn.style.borderRadius = '10px';
+          btn.style.background = 'rgba(255,255,255,0.05)';
+          btn.style.border = '1px solid rgba(255,255,255,0.1)';
+          btn.style.color = '#fff';
+          btn.style.fontFamily = "'Rajdhani', sans-serif";
+          btn.style.fontWeight = '600';
+          btn.style.fontSize = '16px';
+          btn.style.letterSpacing = 'normal'; /* Harf aralığı hatasını çözen kod */
+          btn.style.lineHeight = '1.4';
+          btn.style.textTransform = 'none';
+          btn.style.boxShadow = 'none';
+          btn.innerHTML = cevap.metin;
+          
+          btn.onclick = () => {
+             // Kalıcı Etkilere Ekle
+             roportajEtkisi.yonetim = Math.max(-50, Math.min(50, roportajEtkisi.yonetim + cevap.etki.y));
+             roportajEtkisi.taraftar = Math.max(-50, Math.min(50, roportajEtkisi.taraftar + cevap.etki.t));
+             roportajEtkisi.moral = Math.max(-50, Math.min(50, roportajEtkisi.moral + cevap.etki.m));
+
+             // Widget'a yazılacak anlık bilgileri kaydet
+             sonRoportajDetayi.cevap = cevap.metin; 
+             sonRoportajDetayi.y += cevap.etki.y;
+             sonRoportajDetayi.t += cevap.etki.t;
+             sonRoportajDetayi.m += cevap.etki.m;
+
+             siradakiSoruyuSor(); 
+          };
+          answersDiv.appendChild(btn);
+      });
+  }
+  
+  siradakiSoruyuSor();
+}
+
+function macSonuYonlendirmesiniYap() {
+  document.getElementById('sim-dashboard').style.display = 'flex';
+  const gtb = document.getElementById('global-top-bar');
+  if(gtb) gtb.style.display = 'flex';
+  
+  if (typeof anaSayfayiGuncelle === 'function') anaSayfayiGuncelle();
+  renderFixtures(); 
+  renderTable();
+}
 
 let AYARLAR = { takim1: null, takim2: null };
 // TAKTİK SİSTEMİ
@@ -2444,23 +2722,7 @@ function ayarlariYukle() {
   }
 }
 
-// Butona tıklandığında hem tasarımı değiştirir hem ayarı kaydeder
-function ayariDegistir(btn, tip) {
-  OYUN_AYARLARI[tip] = !OYUN_AYARLARI[tip];
-  localStorage.setItem('futbolTayfaAyarlar', JSON.stringify(OYUN_AYARLARI));
 
-  if(OYUN_AYARLARI[tip]) {
-    btn.textContent = 'AÇIK';
-    btn.style.color = '#00ff87';
-    btn.style.borderColor = '#00ff87';
-    btn.style.background = 'rgba(0,255,135,0.1)';
-  } else {
-    btn.textContent = 'KAPALI';
-    btn.style.color = '#777';
-    btn.style.borderColor = '#555';
-    btn.style.background = 'rgba(255,255,255,0.05)';
-  }
-}
 
 // Haptik Titreşim Fonksiyonu
 function titret(ms) {
@@ -3266,13 +3528,7 @@ function saveSimResult() {
 
       localStorage.setItem('futbolTayfaKariyer', JSON.stringify(simData));
       
-      if(document.getElementById('sim-dashboard')) document.getElementById('sim-dashboard').style.display = 'flex';
-      if(document.getElementById('global-top-bar')) document.getElementById('global-top-bar').style.display = 'flex';
-      
-      // 🚨 DÜZELTME 2: Ana Sayfa'daki rakibi ve puanları yenile!
-      if (typeof anaSayfayiGuncelle === 'function') anaSayfayiGuncelle();
-      renderFixtures(); 
-      renderTable();
+      roportajTetikle(sEv, sDep, (currentMatchData.ev === benimKariyerTakimim), (currentMatchData.dep === benimKariyerTakimim));
     } 
   } catch(err) {
     console.error("KAYDETME HATASI:", err);
@@ -4159,8 +4415,6 @@ function endGame() {
   clearInterval(timerInterval);
   
   document.getElementById('action-panel').style.display = 'none';
-  
-  // 🎯 ÇÖZÜM: Maç bitiş ekranında da Global Barı gizli tut
   const gtb = document.getElementById('global-top-bar');
   if(gtb) gtb.style.display = 'none';
   
@@ -4174,36 +4428,140 @@ function endGame() {
   const overlay = document.getElementById('match-end') || document.getElementById('overlay');
   if(overlay) overlay.style.display = 'flex';
 
-  let winText = "🤝 BERABERE!";
+  // KİM KAZANDI VE RENK BELİRLEME
+  let winText = "MAÇ BERABERE";
+  let winColor = "#888888";
+  
   if (scores.team1 > scores.team2) {
-    winText = AYARLAR.takim1.kazandiYazisi ? AYARLAR.takim1.kazandiYazisi : (AYARLAR.takim1.isim + " KAZANDI!");
+    winText = AYARLAR.takim1.isim + " KAZANDI";
+    winColor = AYARLAR.takim1.renkAna;
   } else if (scores.team2 > scores.team1) {
-    winText = AYARLAR.takim2.kazandiYazisi ? AYARLAR.takim2.kazandiYazisi : (AYARLAR.takim2.isim + " KAZANDI!");
+    winText = AYARLAR.takim2.isim + " KAZANDI";
+    winColor = AYARLAR.takim2.renkAna;
   }
-  let winnerHTML = `<div style="font-family:'Bebas Neue'; font-size:36px; color:#ffffff; text-shadow: 0 0 15px rgba(255,255,255,0.6); text-align:center; letter-spacing: 2px;">${winText}</div>`;
 
+  // 🎙️ AKILLI BUTON: RÖPORTAJ ŞANSI ÖNCEDEN HESAPLANIR
+window.sonrakiAdimRoportajMi = true;
+  // BUTON METNİ VE TASARIMI
   let actionButtons = '';
   if (currentGameMode === 'sim') {
-    actionButtons = `<button class="action-btn" onclick="saveSimResult()">KAYDET VE LİGE DÖN</button>`;
+    let btnText = window.sonrakiAdimRoportajMi ? "KAYDET VE RÖPORTAJA GEÇ 🎙️" : "KAYDET VE LİGE DÖN 🏆";
+    actionButtons = `<button class="action-btn" style="width: 100%; font-size: 17px; padding: 14px; border-radius: 12px; background: linear-gradient(135deg, #00ff87, #00b35e); color: #000; box-shadow: 0 4px 15px rgba(0,255,135,0.3); border: none;" onclick="saveSimResult()">${btnText}</button>`;
   } else if (currentGameMode === 'wc') {
-    actionButtons = `<button class="action-btn" style="background:#ffd700; color:#000; box-shadow: 0 0 15px rgba(255,215,0,0.4);" onclick="saveSimResult()">SONUCU KAYDET VE GRUBA DÖN</button>`;
+    actionButtons = `<button class="action-btn" style="width: 100%; font-size: 17px; padding: 14px; border-radius: 12px; background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; box-shadow: 0 4px 15px rgba(255,215,0,0.3); border: none;" onclick="saveSimResult()">SONUCU KAYDET VE GRUBA DÖN ▶</button>`;
   } else {
     actionButtons = `
-      <button class="action-btn" onclick="startCountdown()">TEKRAR OYNA</button>
-      <div class="home-icon-btn" onclick="showMainMenu()">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00ff87" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-      </div>`;
+      <button class="action-btn" style="width: 100%; margin-bottom: 10px; font-size: 17px; padding: 14px; border-radius: 12px; background: linear-gradient(135deg, #00ff87, #00b35e); color: #000; box-shadow: 0 4px 15px rgba(0,255,135,0.3); border: none;" onclick="startCountdown()">🔄 TEKRAR OYNA</button>
+      <button class="action-btn" style="width: 100%; font-size: 15px; padding: 12px; border-radius: 12px; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); box-shadow: none;" onclick="showMainMenu()">🏠 ANA MENÜYE DÖN</button>`;
   }
 
+  // ⚽ GOL ATANLARI ÇEKME FONKSİYONU
+  function getGolculerHTML(teamId) {
+     let events = document.getElementById(teamId).querySelectorAll('.event-item');
+     let html = '';
+     events.forEach(el => {
+         if(el.textContent.includes('⚽')) {
+             html += `<div style="font-family:'Rajdhani'; font-size:13px; font-weight:600; color:rgba(255,255,255,0.8); margin-bottom: 4px;">${el.innerText}</div>`;
+         }
+     });
+     return html || `<div style="font-family:'Rajdhani'; font-size:13px; color:rgba(255,255,255,0.3);">-</div>`;
+  }
+
+  let golculer1 = getGolculerHTML('events-team1');
+  let golculer2 = getGolculerHTML('events-team2');
+
+  // 📊 YENİ EKLENTİ: MAÇ İSTATİSTİKLERİ SİMÜLASYONU
+  let t1Shots = scores.team1 + Math.floor(Math.random() * 6) + 2;
+  let t2Shots = scores.team2 + Math.floor(Math.random() * 6) + 2;
+  
+  let t1Possession = 50;
+  if (scores.team1 > scores.team2) t1Possession = 52 + Math.floor(Math.random() * 12);
+  else if (scores.team2 > scores.team1) t1Possession = 36 + Math.floor(Math.random() * 12);
+  else t1Possession = 45 + Math.floor(Math.random() * 10);
+  let t2Possession = 100 - t1Possession;
+  
+  let t1ShotPct = (t1Shots / (t1Shots + t2Shots)) * 100;
+  let t2ShotPct = (t2Shots / (t1Shots + t2Shots)) * 100;
+
+  let statsHtml = `
+    <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; margin-top: 5px;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="width: 30%; text-align: left; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">%${t1Possession}</span>
+            <span style="width: 40%; text-align: center; color: #888; font-family: 'Rajdhani'; font-size: 10px; font-weight: 700; letter-spacing: 1px;">TOPLA OYNAMA</span>
+            <span style="width: 30%; text-align: right; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">%${t2Possession}</span>
+        </div>
+        <div style="display: flex; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+            <div style="width: ${t1Possession}%; background: ${AYARLAR.takim1.renkAna};"></div>
+            <div style="width: ${t2Possession}%; background: ${AYARLAR.takim2.renkAna};"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+            <span style="width: 30%; text-align: left; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">${t1Shots}</span>
+            <span style="width: 40%; text-align: center; color: #888; font-family: 'Rajdhani'; font-size: 10px; font-weight: 700; letter-spacing: 1px;">TOPLAM ŞUT</span>
+            <span style="width: 30%; text-align: right; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">${t2Shots}</span>
+        </div>
+        <div style="display: flex; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+            <div style="width: ${t1ShotPct}%; background: ${AYARLAR.takim1.renkAna};"></div>
+            <div style="width: ${t2ShotPct}%; background: ${AYARLAR.takim2.renkAna};"></div>
+        </div>
+    </div>
+  `;
+
+  // EKRANIN ÇİZİLMESİ
   if(overlay) {
+    overlay.style.background = "linear-gradient(160deg, #0a1114, #020506)";
     overlay.innerHTML = `
-      <h1 style="font-family:'Bebas Neue'; font-size:50px; color:white;">⏱ MAÇIN SONU!</h1>
-      <div class="result-divider"></div>
-      <div class="result-score" style="font-family:'Bebas Neue'; font-size:90px; color:var(--neon-green);">${scores.team1} — ${scores.team2}</div>
-      ${winnerHTML}
-      <div class="result-divider"></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:6px;">
-        ${actionButtons}
+      <div style="width: 90%; max-width: 360px; display: flex; flex-direction: column; gap: 15px; align-items: center; z-index: 2;">
+
+          <!-- Üst Başlık -->
+          <div style="text-align: center; margin-bottom: 5px;">
+               <span style="color: #00ff87; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; letter-spacing: 2px;">90' MAÇ SONUCU</span>
+          </div>
+
+          <!-- Dev Skor ve Logolar (Premium Tasarım) -->
+          <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: -10px;">
+              
+              <!-- Ev Sahibi -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 35%;">
+                  <img src="${AYARLAR.takim1.logo}" style="width: 60px; height: 60px; object-fit: contain; filter: drop-shadow(0 5px 15px ${AYARLAR.takim1.renkAna}60);">
+                  <span style="font-family: 'Bebas Neue'; font-size: 20px; color: #fff; text-align: center; line-height: 1;">${AYARLAR.takim1.isim}</span>
+              </div>
+
+              <!-- Skor (Hata Düzeltildi: white-space: nowrap eklendi) -->
+              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 30%;">
+                   <span style="font-family: 'Bebas Neue'; font-size: 65px; color: #fff; text-shadow: 0 4px 20px rgba(255,255,255,0.4); line-height: 1; letter-spacing: 2px; white-space: nowrap;">${scores.team1} - ${scores.team2}</span>
+              </div>
+
+              <!-- Deplasman -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 35%;">
+                  <img src="${AYARLAR.takim2.logo}" style="width: 60px; height: 60px; object-fit: contain; filter: drop-shadow(0 5px 15px ${AYARLAR.takim2.renkAna}60);">
+                  <span style="font-family: 'Bebas Neue'; font-size: 20px; color: #fff; text-align: center; line-height: 1;">${AYARLAR.takim2.isim}</span>
+              </div>
+          </div>
+
+          <!-- Gol Atanlar Paneli -->
+          <div style="width: 100%; display: flex; justify-content: space-between; align-items: flex-start; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; min-height: 50px;">
+              <div style="width: 48%; text-align: left; border-right: 1px solid rgba(255,255,255,0.05); padding-right: 5px;">
+                  ${golculer1}
+              </div>
+              <div style="width: 48%; text-align: right; padding-left: 5px;">
+                  ${golculer2}
+              </div>
+          </div>
+
+          <!-- Maç İstatistikleri -->
+          ${statsHtml}
+
+          <!-- Kazanan Bildirimi (Zarif) -->
+          <div style="width: 100%; padding: 12px; text-align: center; border-radius: 8px; background: linear-gradient(90deg, transparent, ${winColor}25, transparent); border-bottom: 2px solid ${winColor};">
+               <span style="font-family: 'Rajdhani'; font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 1px;">${winText}</span>
+          </div>
+
+          <!-- Aksiyon Butonları -->
+          <div style="width: 100%; margin-top: 5px;">
+               ${actionButtons}
+          </div>
       </div>
     `;
   }
@@ -4285,13 +4643,8 @@ let benimKariyerTakimim = window.benimTakimim || localStorage.getItem('futbolTay
   alert(`⏱ SİMÜLASYON SONUCU\n\nSkor: ${sEv} - ${sDep}\n${mesaj}\nÖdül: +${kazanilanAltin} 🟡 ve +${sezonPuani} SP (Sezon Puanı)`);
   
   document.getElementById('tactic-overlay').style.display = 'none';
-  document.getElementById('sim-dashboard').style.display = 'flex';
-  if(document.getElementById('global-top-bar')) document.getElementById('global-top-bar').style.display = 'flex';
-  
-  // 🚨 DÜZELTME 2: Ana Sayfa'yı Yenile
-  if (typeof anaSayfayiGuncelle === 'function') anaSayfayiGuncelle();
-  renderFixtures(); 
-  renderTable();
+      window.sonrakiAdimRoportajMi = (Math.random() <= 0.40);
+roportajTetikle(sEv, sDep, (currentMatchData.ev === benimKariyerTakimim), (currentMatchData.dep === benimKariyerTakimim));
 }
 
 let sonCizimZamani = 0; // 🎯 EKSİK OLAN KRİTİK SATIR BURADA!
@@ -4745,38 +5098,63 @@ function xpEkle(miktar) {
   menajerArayuzunuGuncelle();
 }
 
+
+
+// 🎨 SVG İKON KÜTÜPHANESİ
+const AVATAR_SVGLER = {
+  standart: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`,
+  esofman: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+  kaban: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
+  sokak: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="4"></circle><circle cx="18" cy="15" r="4"></circle><path d="M14 15h-4"></path><path d="M2 15l2-4 2-1h12l2 1 2 4"></path></svg>`,
+  retro: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-5 8-5 8 5 8 5H4z"/><path d="M2 15h20v2H2z"/></svg>`,
+  analist: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="1"/><path d="M9 4v-1h6v1"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>`,
+  efsane: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 22 22 7 12 2"></polygon><polyline points="2 7 12 7 22 7"></polyline><polyline points="12 22 12 7"></polyline></svg>`,
+  gizemli: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+  korsan: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l-9-5"/><path d="M12 12l9-5"/><circle cx="15" cy="11" r="2" fill="currentColor"/></svg>`,
+  kral: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="2 20 22 20 19 9 15 14 12 6 9 14 5 9 2 20"></polygon></svg>`
+};
+
 function menajerArayuzunuGuncelle() {
+  // Eski kayıtlarda emoji kaldıysa standarda çevir
+  if (!AVATAR_SVGLER[menajer.avatar]) menajer.avatar = 'standart';
+
+  const guncelSVG = AVATAR_SVGLER[menajer.avatar];
+
+  // Resimleri ve Leveli Güncelle
   if (document.getElementById('mgr-lvl')) document.getElementById('mgr-lvl').textContent = menajer.seviye;
-  if (document.getElementById('mgr-avatar')) document.getElementById('mgr-avatar').textContent = menajer.avatar;
+  if (document.getElementById('mgr-avatar')) {
+      document.getElementById('mgr-avatar').innerHTML = guncelSVG;
+      // Üst bardaki ikon için ince ayar
+      const svgTag = document.getElementById('mgr-avatar').querySelector('svg');
+      if(svgTag) { svgTag.setAttribute('width', '18'); svgTag.setAttribute('height', '18'); }
+  }
+  
+  if (document.getElementById('mgr-big-lvl')) document.getElementById('mgr-big-lvl').textContent = menajer.seviye;
+  if (document.getElementById('mgr-big-avatar')) {
+      // Profildeki büyük avatar için SVG boyutunu büyütüyoruz
+      document.getElementById('mgr-big-avatar').innerHTML = guncelSVG.replace('width="20" height="20"', 'width="40" height="40"');
+  }
+
+  // XP ve Yetenek Puanları
   if (document.getElementById('mgr-xp-fill')) {
     const yuzde = Math.min((menajer.xp / menajer.xpHedef) * 100, 100);
     document.getElementById('mgr-xp-fill').style.width = yuzde + '%';
   }
-
-  if (document.getElementById('mgr-big-lvl')) document.getElementById('mgr-big-lvl').textContent = menajer.seviye;
-  if (document.getElementById('mgr-big-avatar')) document.getElementById('mgr-big-avatar').textContent = menajer.avatar;
   if (document.getElementById('mgr-skill-points')) document.getElementById('mgr-skill-points').textContent = menajer.yetenekPuani || 0;
 
-  if (menajer.yetenekler) {
-    const btnEkonomi = document.getElementById('btn-skill-ekonomi');
-    const btnEnerji = document.getElementById('btn-skill-enerji');
-    if (btnEkonomi && menajer.yetenekler.ekonomi) { btnEkonomi.textContent = "AÇIK ✓"; btnEkonomi.style.background = "var(--neon-green)"; btnEkonomi.style.color = "#000"; btnEkonomi.style.pointerEvents = "none"; }
-    if (btnEnerji && menajer.yetenekler.enerji) { btnEnerji.textContent = "AÇIK ✓"; btnEnerji.style.background = "var(--neon-green)"; btnEnerji.style.color = "#000"; btnEnerji.style.pointerEvents = "none"; }
-  }
-
-  // YENİ: Gardırop Butonlarını Dinamik Olarak Güncelle
+  // Gardırop Butonlarını Renkleriyle Güncelle
   if (menajer.sahipAvatarlar) {
-    const avatarlar = { 
+    const fiyatlar = { 
         'standart': '0 🟡', 'esofman': '500 🟡', 'kaban': '1.000 🟡', 'sokak': '1.500 🟡',
-        'efsane': '50 💎', 'gizemli': '100 💎', 'kral': '200 💎'
+        'retro': '2.500 🟡', 'analist': '4.000 🟡',
+        'efsane': '50 💎', 'gizemli': '100 💎', 'korsan': '150 💎', 'kral': '200 💎'
     };
-    const aktifSimgeler = { 'standart': '👨‍💼', 'esofman': '🧢', 'kaban': '🧥', 'sokak': '😎', 'efsane': '🕴️', 'gizemli': '🥷', 'kral': '👑' };
 
-    for (let id in avatarlar) {
+    for (let id in fiyatlar) {
       let btn = document.getElementById('btn-avatar-' + id);
       if (!btn) continue;
       
-      if (menajer.avatar === aktifSimgeler[id]) {
+      if (menajer.avatar === id) {
         btn.textContent = "KUŞANILDI ✓"; 
         btn.style.background = "rgba(0,255,135,0.1)"; 
         btn.style.color = "#00ff87";
@@ -4787,17 +5165,13 @@ function menajerArayuzunuGuncelle() {
         btn.style.color = "#fff";
         btn.style.borderColor = "rgba(255,255,255,0.3)";
       } else {
-        // Satın Alınmamış Durum Stilleri
-        btn.textContent = avatarlar[id];
-        if (id === 'efsane') {
-            btn.style.background = "rgba(0,212,255,0.1)"; btn.style.color = "#00d4ff"; btn.style.borderColor = "rgba(0,212,255,0.5)";
-        } else if (id === 'gizemli') {
-            btn.style.background = "rgba(255,0,255,0.1)"; btn.style.color = "#ff00ff"; btn.style.borderColor = "rgba(255,0,255,0.5)";
-        } else if (id === 'kral') {
-            btn.style.background = "linear-gradient(135deg, #ffd700, #ffaa00)"; btn.style.color = "#000"; btn.style.border = "none";
-        } else {
-            btn.style.background = "rgba(255,255,255,0.05)"; btn.style.color = "#fff"; btn.style.borderColor = "rgba(255,255,255,0.1)";
-        }
+        btn.textContent = fiyatlar[id];
+        // Elmaslık Premium ürünlerin özel tasarımı
+        if (id === 'efsane') { btn.style.background = "rgba(0,212,255,0.1)"; btn.style.color = "#00d4ff"; btn.style.borderColor = "rgba(0,212,255,0.5)"; } 
+        else if (id === 'gizemli') { btn.style.background = "rgba(255,0,255,0.1)"; btn.style.color = "#ff00ff"; btn.style.borderColor = "rgba(255,0,255,0.5)"; } 
+        else if (id === 'korsan') { btn.style.background = "rgba(255,68,68,0.1)"; btn.style.color = "#ff4444"; btn.style.borderColor = "rgba(255,68,68,0.5)"; } 
+        else if (id === 'kral') { btn.style.background = "linear-gradient(135deg, #ffd700, #ffaa00)"; btn.style.color = "#000"; btn.style.border = "none"; } 
+        else { btn.style.background = "rgba(255,255,255,0.05)"; btn.style.color = "#fff"; btn.style.borderColor = "rgba(255,255,255,0.1)"; }
       }
     }
   }
@@ -4849,18 +5223,20 @@ function switchManagerTab(tab) {
   }
 }
 
-// Ayarlar menüsündeki AÇIK/KAPALI butonlarının dinamiği
-function ayariDegistir(btn) {
-  if(btn.textContent.includes('AÇIK')) {
-    btn.textContent = 'KAPALI';
-    btn.style.color = '#777';
-    btn.style.borderColor = '#555';
-    btn.style.background = 'rgba(255,255,255,0.05)';
-  } else {
+function ayariDegistir(btn, tip) {
+  OYUN_AYARLARI[tip] = !OYUN_AYARLARI[tip];
+  localStorage.setItem('futbolTayfaAyarlar', JSON.stringify(OYUN_AYARLARI));
+
+  if(OYUN_AYARLARI[tip]) {
     btn.textContent = 'AÇIK';
     btn.style.color = '#00ff87';
     btn.style.borderColor = '#00ff87';
     btn.style.background = 'rgba(0,255,135,0.1)';
+  } else {
+    btn.textContent = 'KAPALI';
+    btn.style.color = '#777';
+    btn.style.borderColor = '#555';
+    btn.style.background = 'rgba(255,255,255,0.05)';
   }
 }
 
@@ -5101,13 +5477,11 @@ function yeniSezonaGec() {
   renderTable();
   alert(simData.sezon + ". Sezon Başlıyor! Başarılar Menajer.");
 }
-// YENİ: Hem Altın Hem Elmas Destekli Satın Alma Motoru
-function avatarSatinAl(simge, bedel, paraBirimi, avatarId) {
+function avatarSatinAl(avatarId, bedel, paraBirimi) {
   if (menajer.sahipAvatarlar.includes(avatarId)) {
-    menajer.avatar = simge;
+    menajer.avatar = avatarId;
     menajerKaydet();
     menajerArayuzunuGuncelle();
-    alert("Avatar başarıyla kuşandı!");
     return;
   }
 
@@ -5115,27 +5489,22 @@ function avatarSatinAl(simge, bedel, paraBirimi, avatarId) {
       if (oyuncuAltin >= bedel) {
         oyuncuAltin -= bedel;
         localStorage.setItem('futbolTayfaAltin', oyuncuAltin);
-        if(document.getElementById('player-gold-global')) document.getElementById('player-gold-global').textContent = oyuncuAltin;
         basariliSatinAlim();
-      } else {
-        alert(`Yeterli altının yok! (Gereken: ${bedel} 🟡)`);
-      }
+      } else { alert(`Yeterli altının yok! (Gereken: ${bedel} 🟡)`); }
   } else {
       if (oyuncuElmas >= bedel) {
         oyuncuElmas -= bedel;
         localStorage.setItem('futbolTayfaElmas', oyuncuElmas);
-        if(document.getElementById('player-diamond-global')) document.getElementById('player-diamond-global').textContent = oyuncuElmas;
         basariliSatinAlim();
-      } else {
-        alert(`Yeterli elmasın yok! (Gereken: ${bedel} 💎)`);
-      }
+      } else { alert(`Yeterli elmasın yok! (Gereken: ${bedel} 💎)`); }
   }
 
   function basariliSatinAlim() {
       menajer.sahipAvatarlar.push(avatarId);
-      menajer.avatar = simge;
+      menajer.avatar = avatarId;
       menajerKaydet();
       menajerArayuzunuGuncelle();
+      if(typeof arayuzuGuncelle === 'function') arayuzuGuncelle();
       alert("Yeni görünüm satın alındı ve kuşandı!");
   }
 }
@@ -5738,8 +6107,10 @@ function firsatSatinAl() {
       let rGun = gunler[(mac.ev.length + index) % 4];
       let rSaat = saatler[(mac.dep.length + index) % 4];
 
+      let tiklamaKodu = mac.oynandi ? `onclick="macDetayiGoster('${mac.ev}', '${mac.dep}', ${mac.skorEv}, ${mac.skorDep})" style="cursor: pointer;"` : '';
+      
       list.innerHTML += `
-        <div class="modern-card" style="padding: 14px 15px; margin-bottom: 0; opacity: ${mac.oynandi ? '0.5' : '1'}; transition: all 0.2s;">
+        <div class="modern-card" ${tiklamaKodu} style="padding: 14px 15px; margin-bottom: 0; opacity: ${mac.oynandi ? '0.7' : '1'}; transition: all 0.2s;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px; letter-spacing: 0.5px;">${evIsim} <span style="color: #666; font-size: 12px; margin: 0 4px;">—</span> ${depIsim}</span>
@@ -6057,139 +6428,8 @@ function seededRandom(hafta, index) {
   return x - Math.floor(x);
 }
 
-function widgetlariGuncelle() {
-  let benimTakimim = window.benimTakimim || localStorage.getItem('futbolTayfaBenimTakimim');
-  let currentLig = window.aktifLig || 'superlig';
-  let takimInfo = LIGLER[currentLig] && LIGLER[currentLig].takimlar[benimTakimim];
-  
-  if (!takimInfo) return;
 
-  let guncelHafta = simData.hafta;
 
-  // 1. Sosyal Medya Güncellemesi (Haftaya sabit)
-  const sosyalMesajlar = [
-    `Yeni sezon, yeni hedefler! #Yanındayız${formatUzunIsim(takimInfo.isim)}`,
-    "Bugün sahada 11 aslan göreceğiz! Vurduğunuz gol olsun.",
-    "Hocamıza güveniyoruz, bu kupayı biz alacağız! 🏆",
-    "Taraftar stada akın ediyor! Mükemmel bir atmosfer var.",
-    "Biletleri tükettik, tribünde yerimizi aldık! Saldırın!"
-  ];
-  
-  const elTwName = document.getElementById('widget-tw-name');
-  const elTwLogo = document.getElementById('widget-tw-logo');
-  const elTwText = document.getElementById('widget-tw-text');
-  
-  if (elTwName) elTwName.textContent = formatUzunIsim(takimInfo.isim);
-  if (elTwLogo) elTwLogo.src = takimInfo.logo;
-  if (elTwText) {
-      let rIndex = Math.floor(seededRandom(guncelHafta, 1) * sosyalMesajlar.length);
-      elTwText.textContent = `"${sosyalMesajlar[rIndex]}"`;
-  }
-
-  // 2. Sakatlık Raporu Güncellemesi (Haftaya sabit ve kalan maç sayısına eşit)
-  let oyuncular = takimInfo.oyuncular || ["Kaptan", "Yıldız", "Kaleci"];
-  let rOyuncuIndex = Math.floor(seededRandom(guncelHafta, 2) * oyuncular.length);
-  let rastgeleOyuncu = oyuncular[rOyuncuIndex];
-  
-  // Kalan maç sayısı sakatlık gününe eşit olsun
-  let kalanMacSayisi = simData.fikstur.length - guncelHafta + 1; 
-  let sakatlikGunu = kalanMacSayisi > 0 ? kalanMacSayisi : 0;
-  
-  const elInjName = document.getElementById('widget-inj-name');
-  const elInjDays = document.getElementById('widget-inj-days');
-  
-  // %40 ihtimalle sakatlık olsun (Tohuma bağlı)
-  if (seededRandom(guncelHafta, 3) > 0.6 && sakatlikGunu > 0) {
-    if (elInjName) elInjName.textContent = rastgeleOyuncu;
-    if (elInjDays) elInjDays.textContent = sakatlikGunu;
-  } else {
-    if (elInjName) elInjName.textContent = "Kadro Tam";
-    if (elInjDays) elInjDays.textContent = "0";
-  }
-
-  // 3. Takım Morali ve Fan Ölçer (Tabloya sabit)
-  let tableData = [];
-  for (let tk in simData.takimlar) tableData.push({ id: tk, p: simData.takimlar[tk].p, a: simData.takimlar[tk].a, y: simData.takimlar[tk].y });
-  tableData.sort((a, b) => b.p !== a.p ? b.p - a.p : (b.a - b.y) - (a.a - a.y));
-  
-  let benimSira = tableData.findIndex(t => t.id === benimTakimim) + 1;
-  let toplamTakim = tableData.length;
-  let iyiDurum = benimSira <= 5;
-  let ortaDurum = benimSira > 5 && benimSira <= (toplamTakim - 4);
-
-  const elMoraleIcon = document.getElementById('widget-morale-icon');
-  const elMoraleText = document.getElementById('widget-morale-text');
-  
-  if (elMoraleIcon && elMoraleText) {
-    if (iyiDurum) {
-      elMoraleIcon.textContent = "😎"; elMoraleText.textContent = "YÜKSEK!";
-      elMoraleText.style.color = "#00ff87"; 
-    } else if (ortaDurum) {
-      elMoraleIcon.textContent = "😐"; elMoraleText.textContent = "NORMAL";
-      elMoraleText.style.color = "#ffd700"; 
-    } else {
-      elMoraleIcon.textContent = "😓"; elMoraleText.textContent = "DÜŞÜK!";
-      elMoraleText.style.color = "#ff4444"; 
-    }
-  }
-
-  // Fan Ölçer (Tabloya sabit)
-  let bazYuzde = 100 - (benimSira * (100 / toplamTakim));
-  if (bazYuzde < 25) bazYuzde = 25;
-  
-  let yonetimGuveni = Math.min(100, Math.floor(bazYuzde + 10 + (seededRandom(guncelHafta, 4) * 5))); 
-  let taraftarDestegi = Math.min(100, Math.floor(bazYuzde + (seededRandom(guncelHafta, 5) * 8)));
-
-  // 🚨 AŞAĞIDAKİ İKİ SATIRI BÖYLE DEĞİŞTİR:
-  const fanScore = document.getElementById('widget-fan-score');
-  if(fanScore) fanScore.textContent = "%" + taraftarDestegi;
-
-  // Ana Sayfa Form Kısmı Çizgisiz G-B-M (Gerçek Sonuçlardan Alınır)
-  const formKutusu = document.querySelector('#tab-sim-anasayfa .modern-card[onclick="openWidgetDetail(\\\'moral\\\')"] div[style*="display: flex; gap: 4px;"]');
-  if(formKutusu) {
-      let formHTML = '';
-      let oncekiHaftalar = simData.fikstur.slice(0, guncelHafta - 1);
-      let benimMaclarim = [];
-      
-      oncekiHaftalar.forEach(h => {
-          let mac = h.find(m => m.ev === benimTakimim || m.dep === benimTakimim);
-          if (mac && mac.oynandi) benimMaclarim.push(mac);
-      });
-      
-      let son5 = benimMaclarim.slice(-5);
-      
-      // Eğer yeterli maç yoksa (örneğin 1. hafta), boş görünmesin diye 5'e tamamla (veya sadece olanları göster)
-      for(let i=0; i < 5 - son5.length; i++) {
-         formHTML += `<div style="width: 20px; height: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-family: 'Bebas Neue'; font-size: 12px;">-</div>`;
-      }
-
-      son5.forEach(m => {
-          let sEv = m.skorEv; let sDep = m.skorDep;
-          let durum, renk;
-          if (m.ev === benimTakimim) {
-              if(sEv > sDep) { durum = 'G'; renk = '#00ff87'; }
-              else if(sEv === sDep) { durum = 'B'; renk = '#777777'; }
-              else { durum = 'M'; renk = '#ff4444'; }
-          } else {
-              if(sDep > sEv) { durum = 'G'; renk = '#00ff87'; }
-              else if(sEv === sDep) { durum = 'B'; renk = '#777777'; }
-              else { durum = 'M'; renk = '#ff4444'; }
-          }
-          formHTML += `<div style="width: 20px; height: 20px; background: ${renk}20; border: 1px solid ${renk}; color: ${renk}; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-family: 'Bebas Neue'; font-size: 12px;">${durum}</div>`;
-      });
-      formKutusu.innerHTML = formHTML;
-  }
-}
-// ==========================================
-// ANA SAYFA DİNAMİK WIDGET MOTORU (SABİT DÖNGÜ)
-// ==========================================
-
-// Haftaya özel sabit rastgele sayı üretici (Seed mantığı)
-function seededRandom(hafta, index) {
-  let seed = hafta * 1337 + index * 101;
-  let x = Math.sin(seed++) * 10000;
-  return x - Math.floor(x);
-}
 
 function widgetlariGuncelle() {
   let benimTakimim = window.benimTakimim || localStorage.getItem('futbolTayfaBenimTakimim');
@@ -6267,17 +6507,33 @@ function widgetlariGuncelle() {
     }
   }
 
-  // Fan Ölçer (Tabloya sabit)
+  // Fan Ölçer (Tabloya sabit ve Dinamik)
   let bazYuzde = 100 - (benimSira * (100 / toplamTakim));
-  if (bazYuzde < 25) bazYuzde = 25;
+  if (bazYuzde < 20) bazYuzde = 20;
   
-  let yonetimGuveni = Math.min(100, Math.floor(bazYuzde + 10 + (seededRandom(guncelHafta, 4) * 5))); 
-  let taraftarDestegi = Math.min(100, Math.floor(bazYuzde + (seededRandom(guncelHafta, 5) * 8)));
+  let taraftarDestegi = Math.min(100, Math.floor(bazYuzde + 5));
 
-  // Fan Ölçer Ana Sayfa Widget Güncellemesi
+  // 🎤 RÖPORTAJ ETKİSİ (Sadece Taraftarı Ana Ekrana Yansıt)
+  if (typeof roportajEtkisi !== 'undefined') {
+      taraftarDestegi = Math.max(0, Math.min(100, taraftarDestegi + roportajEtkisi.taraftar));
+  }
+
+  // Fan Ölçer Ana Sayfa Widget Güncellemesi ve Metin Dinamizmi
   const fanScoreHome = document.getElementById('widget-fan-score-home');
   if (fanScoreHome) {
       fanScoreHome.textContent = "%" + taraftarDestegi;
+      
+      let tRenk = taraftarDestegi >= 60 ? "#00ff87" : (taraftarDestegi >= 40 ? "#ffd700" : "#ff4444");
+      fanScoreHome.style.color = tRenk;
+      fanScoreHome.style.textShadow = `0 0 10px ${tRenk}80`;
+      
+      // Hemen altındaki açıklama metnini skora göre değiştir
+      let descEl = fanScoreHome.nextElementSibling;
+      if (descEl) {
+         if (taraftarDestegi >= 80) descEl.textContent = "KOMBİNELER TÜKENDİ";
+         else if (taraftarDestegi >= 50) descEl.textContent = "TRİBÜNLER YARI YARIYA";
+         else descEl.textContent = "TARAFTAR İSTİFA BEKLİYOR";
+      }
   }
 
   // Ana Sayfa Form Kısmı Çizgisiz G-B-M (Gerçek Sonuçlardan Alınır)
@@ -6304,11 +6560,11 @@ function widgetlariGuncelle() {
           let durum, renk;
           if (m.ev === benimTakimim) {
               if(sEv > sDep) { durum = 'G'; renk = '#00ff87'; }
-              else if(sEv === sDep) { durum = 'B'; renk = '#777777'; }
+              else if(sEv === sDep) { durum = 'B'; renk = '#ffd700'; }
               else { durum = 'M'; renk = '#ff4444'; }
           } else {
               if(sDep > sEv) { durum = 'G'; renk = '#00ff87'; }
-              else if(sEv === sDep) { durum = 'B'; renk = '#777777'; }
+              else if(sEv === sDep) { durum = 'B'; renk = '#ffd700'; }
               else { durum = 'M'; renk = '#ff4444'; }
           }
           formHTML += `<div style="width: 20px; height: 20px; background: ${renk}20; border: 1px solid ${renk}; color: ${renk}; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-family: 'Bebas Neue'; font-size: 12px;">${durum}</div>`;
@@ -6384,6 +6640,10 @@ function satinAlPremiumBP() {
 // 3. ÇİFTE ÖDÜL KORUMASI EKLENEN CLAIM SİSTEMİ
 function claimBPReward(level, isPremiumReward) {
     battlePassYukle(); // Tıklamadan hemen önce hafızayı kontrol et (hack koruması)
+
+    // 🚨 YENİ GÜVENLİK KİLİTLERİ (Bug ve Hile Koruması)
+    if (level > BATTLE_PASS.level) return; // Seviyesi yetmiyorsa işlemi durdur
+    if (isPremiumReward && !BATTLE_PASS.isPremium) return; // Premium bileti yoksa işlemi durdur
 
     let claimKey = (isPremiumReward ? 'premium_' : 'free_') + level;
     
@@ -6491,52 +6751,81 @@ function renderBattlePassTiers() {
     container.innerHTML = html;
 }
 
-// YENİ: Ödülü Tıklayıp Alma Fonksiyonu
-function claimBPReward(level, isPremiumReward) {
-    if (!BATTLE_PASS.claimed) BATTLE_PASS.claimed = [];
-    
-    let claimKey = (isPremiumReward ? 'premium_' : 'free_') + level;
-    
-    let miktar = 0;
-    let tip = "";
-    let mesaj = "";
 
-    // Hangi Ödülü Kazandı Hesaplayalım
-    if (!isPremiumReward) {
-        if (level % 5 === 0) {
-            miktar = level * 2; tip = "elmas"; mesaj = miktar + " 💎 Elmas kazandın!";
-        } else {
-            miktar = level * 50; tip = "altin"; mesaj = miktar + " 🟡 Altın kazandın!";
-        }
+function profilAc(isim, handle, isVerified, isOfficial, avatarTipi, avatarIcerik, borderRenk, hashtag) {
+    let prf = document.getElementById('twitter-profile-overlay');
+    if(!prf) {
+        prf = document.createElement('div');
+        prf.id = 'twitter-profile-overlay';
+        prf.className = 'overlay-screen';
+        prf.style.cssText = 'display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 40px; background: rgba(5, 13, 15, 0.98); z-index: 260; backdrop-filter: blur(10px); overflow-y: auto;';
+        document.body.appendChild(prf);
+    }
+
+    const verifiedIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#1DA1F2" style="margin-left:4px;"><path d="M22.5 12.5l-2.4 2.8.6 3.7-3.6.8-2 3-3.1-1.7-3.1 1.7-2-3-3.6-.8.6-3.7-2.4-2.8 2.4-2.8-.6-3.7 3.6-.8 2-3 3.1 1.7 3.1-1.7 2 3 3.6.8-.6 3.7 2.4 2.8zm-13 4.4l8.5-8.5-1.4-1.4-7.1 7.1-3.1-3.1-1.4 1.4 4.5 4.5z"/></svg>`;
+    const officialIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#ffd700" style="margin-left:4px;"><path d="M22.5 12.5l-2.4 2.8.6 3.7-3.6.8-2 3-3.1-1.7-3.1 1.7-2-3-3.6-.8.6-3.7-2.4-2.8 2.4-2.8-.6-3.7 3.6-.8 2-3 3.1 1.7 3.1-1.7 2 3 3.6.8-.6 3.7 2.4 2.8zm-13 4.4l8.5-8.5-1.4-1.4-7.1 7.1-3.1-3.1-1.4 1.4 4.5 4.5z"/></svg>`;
+    
+    let onayHTML = isOfficial ? officialIcon : (isVerified ? verifiedIcon : "");
+    let avatarHTML = "";
+    
+    if (avatarTipi === 'img') {
+        avatarHTML = `<div style="width: 80px; height: 80px; border-radius: 50%; background: #fff; padding: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px ${borderRenk}80; margin-top: -40px; border: 3px solid #050d0f;"><img src="${avatarIcerik}" style="width: 100%; height: 100%; object-fit: contain;"></div>`;
+    } else if (avatarTipi === 'icon') {
+        avatarHTML = `<div style="width: 80px; height: 80px; border-radius: 50%; background: ${borderRenk}20; border: 3px solid ${borderRenk}; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-top: -40px; box-shadow: 0 0 15px ${borderRenk}80;">${avatarIcerik}</div>`;
     } else {
-        if (level % 10 === 0) {
-            // Premium Kutu (Hem Altın Hem Elmas ver)
-            altinEkle(500); miktar = 50; tip = "elmas"; mesaj = "🎁 Kutudan 500 Altın ve 50 Elmas çıktı!";
-        } else if (level % 5 === 0) {
-            // Desen ödülü (Şimdilik bol altın veriyoruz, desen altyapısı gelişene kadar)
-            miktar = 1000; tip = "altin"; mesaj = "🔥 Efsanevi seviye ulaşıldı! 1.000 Altın kazandın!";
-        } else {
-            miktar = level * 15; tip = "elmas"; mesaj = miktar + " 💎 Elmas kazandın!";
-        }
+        avatarHTML = `<div style="width: 80px; height: 80px; border-radius: 50%; background: ${borderRenk}30; border: 3px solid ${borderRenk}; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 40px; color: ${borderRenk}; margin-top: -40px; box-shadow: 0 0 15px ${borderRenk}80;">${avatarIcerik}</div>`;
     }
 
-    // Hesaba Yatırma İşlemi
-    if (tip === "altin") {
-        altinEkle(miktar);
-    } else if (tip === "elmas") {
-        oyuncuElmas += miktar; 
-        localStorage.setItem('futbolTayfaElmas', oyuncuElmas);
-        if(document.getElementById('player-diamond-global')) document.getElementById('player-diamond-global').textContent = oyuncuElmas;
-    }
+    let takipci = isOfficial ? "1.2M" : (isVerified ? "450K" : Math.floor(Math.random()*5000 + 100));
+    let takip = isOfficial ? "45" : (isVerified ? "120" : Math.floor(Math.random()*800 + 50));
+    let bio = isOfficial ? "Resmi Kulüp Hesabı" : (isVerified ? "Spor Haberleri ve Gelişmeler" : "Koyu Taraftar! Tribün Çocuğu");
 
-    // Alındı olarak kaydet ve listeyi güncelle
-    BATTLE_PASS.claimed.push(claimKey);
-    localStorage.setItem('futbolTayfaBP', JSON.stringify(BATTLE_PASS));
+    let gecmisHTML = "";
+    let sablonlar = isOfficial ? ["Antrenmandan kareler 📸", "Taraftarımızla daha güçlüyüz!", "Sıradaki maça hazırız 💪"] : 
+                    (isVerified ? ["Son dakika gelişmesi az sonra...", "Sizce ligin en iyi oyuncusu kim?", "Transfer dedikoduları alevlendi!"] : 
+                    ["Bugün günlerden maç günü!", "Bu formaya can feda!", "Deplasmanda da yanındayız!"]);
     
-    alert("🎉 TEBRİKLER!\n" + mesaj);
-    renderBattlePassTiers(); 
-}
+    for(let i=0; i<3; i++) {
+        let msg = sablonlar[Math.floor(Math.random() * sablonlar.length)];
+        let lStr = Math.floor(Math.random()*900) + 10;
+        if(isOfficial || isVerified) lStr += "K";
+        
+        gecmisHTML += `
+        <div class="modern-card" style="padding: 12px; margin-bottom: 10px; background: rgba(20,25,30,0.5); border-left: 3px solid ${borderRenk}; width: 100%;">
+          <div style="display: flex; gap: 8px;">
+            <span style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">${isim}</span>
+            <span style="color: #666; font-family: 'Rajdhani'; font-size: 11px; font-weight: 600;">@${handle} • ${i+2}g</span>
+          </div>
+          <p style="color: #ccc; font-family: 'Rajdhani'; font-size: 13px; line-height: 1.4; margin: 4px 0 8px 0;">${msg} <span style="color:#1DA1F2;">#${hashtag.replace(/\s/g, '')}</span></p>
+          <div style="color: #e0245e; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">❤️ ${lStr} Beğeni</div>
+        </div>`;
+    }
 
+    prf.innerHTML = `
+    <div style="width: 100%; height: 120px; background: linear-gradient(135deg, ${borderRenk}80, ${borderRenk}20); position: relative;">
+       <button style="position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 50%; width: 35px; height: 35px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;" onclick="document.getElementById('twitter-profile-overlay').style.display='none'">✖</button>
+    </div>
+    <div style="width: 85%; display: flex; flex-direction: column; align-items: flex-start; margin-top: 0;">
+        ${avatarHTML}
+        <div style="display: flex; align-items: center; margin-top: 10px;">
+            <span style="font-family: 'Bebas Neue'; font-size: 26px; color: #fff; letter-spacing: 1px;">${isim}</span>
+            ${onayHTML}
+        </div>
+        <span style="font-family: 'Rajdhani'; font-size: 13px; color: #888; font-weight: 600;">@${handle}</span>
+        <p style="font-family: 'Rajdhani'; font-size: 14px; color: #ddd; margin: 10px 0;">${bio}</p>
+        <div style="display: flex; gap: 15px; font-family: 'Rajdhani'; font-size: 14px; margin-bottom: 20px;">
+            <span style="color: #888;"><span style="color: #fff; font-weight: 700;">${takip}</span> Takip Edilen</span>
+            <span style="color: #888;"><span style="color: #fff; font-weight: 700;">${takipci}</span> Takipçi</span>
+        </div>
+        <div style="width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 15px;">
+           <span style="display: inline-block; color: ${borderRenk}; border-bottom: 3px solid ${borderRenk}; padding-bottom: 5px; font-family: 'Rajdhani'; font-weight: 700; font-size: 15px;">Gönderiler</span>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; padding-bottom: 40px;">
+            ${gecmisHTML}
+        </div>
+    </div>`;
+    prf.style.display = 'flex';
+}
 // Oyunu yükleyen ana fonksiyonlara (window.onload vs.) battlePassYukle() komutunu eklemeyi unutma!
 // ==========================================
 // DİNAMİK WIDGET DETAY AÇMA MOTORU
@@ -6578,92 +6867,255 @@ function openWidgetDetail(tip) {
 
   // --- 🎨 EKRANLARI ÇİZ ---
 
-  if (tip === 'sosyal') {
+ if (tip === 'sosyal') {
     icon.textContent = '🐦';
     title.textContent = 'SOSYAL AĞ';
     title.style.color = '#1DA1F2';
-    desc.textContent = 'Taraftarlar senin hakkında ne düşünüyor?';
+    desc.textContent = 'Futbol dünyasında ve tribünlerde neler konuşuluyor?';
 
-    // Genişletilmiş Yorum Havuzları
-    const iyiYorumlar = [
-      `Hoca bu takımı şampiyon yapacak, inanıyoruz! ${takimIsmi} gümbür gümbür geliyor! 🏆`,
-      `[OYUNCU] son maçta harikaydı. Bu form grafiğiyle bizi kimse tutamaz! 🙏`,
-      `Tesislerdeki hava çok iyi, sahaya yansıyor. Helal olsun size! 👏`,
-      `Bu takımın oynadığı futbolu izlemek büyük keyif. Böyle devam!`,
-      `[OYUNCU] forması aldım bugün, adam sahada basmadık yer bırakmıyor.`,
-      `Kalkan ve Nitro zamanlamaları efsaneydi hoca, maçı resmen sen aldın!`
-    ];
+    // 📱 İkonlar (Mavi Tik, Altın Tik, Yorum, RT, Beğeni)
+    const verifiedIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="#1DA1F2" style="margin-left:2px; flex-shrink:0;"><path d="M22.5 12.5l-2.4 2.8.6 3.7-3.6.8-2 3-3.1-1.7-3.1 1.7-2-3-3.6-.8.6-3.7-2.4-2.8 2.4-2.8-.6-3.7 3.6-.8 2-3 3.1 1.7 3.1-1.7 2 3 3.6.8-.6 3.7 2.4 2.8zm-13 4.4l8.5-8.5-1.4-1.4-7.1 7.1-3.1-3.1-1.4 1.4 4.5 4.5z"/></svg>`;
+    const officialIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="#ffd700" style="margin-left:2px; flex-shrink:0;"><path d="M22.5 12.5l-2.4 2.8.6 3.7-3.6.8-2 3-3.1-1.7-3.1 1.7-2-3-3.6-.8.6-3.7-2.4-2.8 2.4-2.8-.6-3.7 3.6-.8 2-3 3.1 1.7 3.1-1.7 2 3 3.6.8-.6 3.7 2.4 2.8zm-13 4.4l8.5-8.5-1.4-1.4-7.1 7.1-3.1-3.1-1.4 1.4 4.5 4.5z"/></svg>`;
+    const commentSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>`;
+    const rtSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>`;
+    const heartSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="#e0245e" stroke="#e0245e" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
 
-    const ortaYorumlar = [
-      `Takım fena değil ama daha istikrarlı olmalıyız. ${takimIsmi} armasına daha iyisi yakışır.`,
-      `Hocanın yetenek kullanım zamanlamaları fena değil ama [OYUNCU] biraz formsuz sanki.`,
-      `Son maçlardaki puan kayıpları can sıkıcı ama toparlarız. Güveniyoruz!`,
-      `Ortasaha toparlamazsa işimiz zor. [OYUNCU] daha fazla sorumluluk almalı.`,
-      `Şampiyonluk istiyorsak bu maçlarda hata yapmamamız lazım.`
-    ];
+    let timelineHTML = [];
 
-    const kotuYorumlar = [
-      `Bu gidişat hiç iyi değil! Acil toparlanmamız lazım, savunma hattı alarm veriyor. 😡`,
-      `Kalkan yeteneğini daha iyi kullanmalıyız. [OYUNCU] sahada adeta kayıp! Yönetim istifa!`,
-      `Böyle ruhsuz futbol kabul edilemez. Kendinize gelin! 🤬`,
-      `Ligin dibine demir attık, hoca ne zaman bir çözüm bulacak?`,
-      `[OYUNCU] 'yu sahada gören var mı? Yazıklar olsun...`
-    ];
-
-    const genelYorumlar = [
-      `Tribünler ful dolu, bu taraftar her şeyin en iyisini hak ediyor!`,
-      `Maç günleri uyku tutmuyor, saldır ${takimIsmi}!`,
-      `Yönetimin yeni transfer politikası hakkında ne düşünüyorsunuz? Ben pek emin değilim.`,
-      `Oyunun kaderi yine bizim elimizde, yetenek zamanlamalarına dikkat!`
-    ];
-
-    const hesaplar = ['@TribunAtesi', '@FutbolGurmesi', '@HoliganTaraftar', '@TaktikTahtasi', '@12Numara', '@SporGundemi', '@ArmaAski', '@AsiRuh', '@TaraftarSesi'];
-
-    // Hangi havuzdan çekeceğimizi takımın durumuna göre belirliyoruz
-    let anaHavuz = iyiDurum ? iyiYorumlar : (ortaDurum ? ortaYorumlar : kotuYorumlar);
-
-    // Rastgele 4 yorum üretiyoruz
-    let secilenYorumlar = [];
-
-    for (let i = 0; i < 4; i++) {
-       // %70 takımın durumuna göre, %30 genel yorumlardan çek
-       let havuzdanMi = seededRandom(guncelHafta, 10 + i) > 0.3; 
-       let kullanilacakHavuz = havuzdanMi ? anaHavuz : genelYorumlar;
-       let rMesaj = kullanilacakHavuz[Math.floor(seededRandom(guncelHafta, 20 + i) * kullanilacakHavuz.length)];
-
-       // [OYUNCU] etiketini gerçek bir oyuncu adıyla değiştir
-       let rOyuncu = oyuncular[Math.floor(seededRandom(guncelHafta, 30 + i) * oyuncular.length)];
-       rMesaj = rMesaj.replace('[OYUNCU]', rOyuncu);
-
-       // Rastgele gerçekçi etkileşim sayıları üret
-       let likes = Math.floor(seededRandom(guncelHafta, 40 + i) * 4000) + 50;
-       let rts = Math.floor(likes / (seededRandom(guncelHafta, 50 + i) * 5 + 3));
-       let comments = Math.floor(likes / (seededRandom(guncelHafta, 60 + i) * 10 + 5));
-
-       let likesStr = likes > 1000 ? (likes / 1000).toFixed(1) + 'K' : likes;
-       let rtsStr = rts > 1000 ? (rts / 1000).toFixed(1) + 'K' : rts;
-       let sure = Math.floor(seededRandom(guncelHafta, 70 + i) * 23) + 1; // 1 ile 23 saat arası
-
-       // Kartın solundaki renk çizgisi dönüşümlü olsun (Biri takım rengi, biri Twitter mavisi)
-       let borderColor = (i % 2 === 0) ? takimRengi : '#1DA1F2'; 
-
-       secilenYorumlar.push(`
-        <div class="modern-card" style="padding: 15px; border-left: 3px solid ${borderColor}; margin-bottom: 0;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">${hesaplar[i % hesaplar.length]}</span>
-              <span style="color: #666; font-size: 11px; font-family: 'Rajdhani'; font-weight: 600;">${sure} sa önce</span>
-          </div>
-          <p style="color: #ccc; font-family: 'Rajdhani'; font-size: 13px; line-height: 1.4; margin: 0;">${rMesaj}</p>
-          <div style="display: flex; justify-content: flex-start; gap: 20px; color: #666; font-size: 12px; font-family: 'Rajdhani'; font-weight: 700; margin-top: 12px;">
-              <span>💬 ${comments}</span>
-              <span>🔁 ${rtsStr}</span>
-              <span style="color: #e0245e;">❤️ ${likesStr}</span>
-          </div>
-        </div>
-       `);
+    // 🔍 YARDIMCI: Takımın Son Maç Durumunu Bulan Sistem
+    function getTakimSonDurum(tId) {
+        for (let i = simData.hafta - 1; i >= 0; i--) {
+            if (simData.fikstur[i]) {
+                let mac = simData.fikstur[i].find(m => m.ev === tId || m.dep === tId);
+                if (mac && mac.oynandi) {
+                    let sEv = mac.skorEv, sDep = mac.skorDep;
+                    if (mac.ev === tId) return (sEv > sDep) ? 'galibiyet' : (sEv < sDep ? 'maglubiyet' : 'beraberlik');
+                    else return (sDep > sEv) ? 'galibiyet' : (sDep < sEv ? 'maglubiyet' : 'beraberlik');
+                }
+            }
+        }
+        return 'beraberlik'; // Oynanmış maç yoksa varsayılan
     }
 
-    content.innerHTML = secilenYorumlar.join('');
+    // 🖊️ TWEET OLUŞTURMA MOTORU
+    function createTweet(isim, handle, isVerified, isOfficial, avatarTipi, avatarIcerik, tweetMetni, borderRenk, bgRenk, hashtag) {
+        let likes = Math.floor(Math.random() * 900) + 10;
+        if (isOfficial || isVerified) likes = Math.floor(Math.random() * 50000) + 1000;
+        let retweets = Math.floor(likes / (Math.random() * 3 + 2));
+        let comments = Math.floor(likes / (Math.random() * 6 + 4));
+
+        let lStr = likes > 1000 ? (likes/1000).toFixed(1) + 'K' : likes;
+        let rStr = retweets > 1000 ? (retweets/1000).toFixed(1) + 'K' : retweets;
+        let cStr = comments > 1000 ? (comments/1000).toFixed(1) + 'K' : comments;
+        
+        let time = isOfficial ? "Az önce" : (Math.floor(Math.random() * 23) + 1) + "s";
+        let onayHTML = isOfficial ? officialIcon : (isVerified ? verifiedIcon : "");
+        
+        let avatarHTML = "";
+        if (avatarTipi === 'img') avatarHTML = `<div style="width: 40px; height: 40px; border-radius: 50%; background: #fff; padding: 3px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 8px ${borderRenk}50;"><img src="${avatarIcerik}" style="width: 100%; height: 100%; object-fit: contain;"></div>`;
+        else if (avatarTipi === 'icon') avatarHTML = `<div style="width: 40px; height: 40px; border-radius: 50%; background: ${borderRenk}20; border: 1px solid ${borderRenk}; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">${avatarIcerik}</div>`;
+        else avatarHTML = `<div style="width: 40px; height: 40px; border-radius: 50%; background: ${borderRenk}30; border: 1px solid ${borderRenk}; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 20px; color: ${borderRenk}; flex-shrink: 0;">${avatarIcerik}</div>`;
+
+        let hashtagHtml = hashtag ? ` <span style="color: #1DA1F2; font-weight: 700;">#${hashtag.replace(/\s/g, '')}</span>` : "";
+
+        return `
+        <div class="modern-card" style="padding: 12px; margin-bottom: 10px; background: ${bgRenk}; border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid ${borderRenk}; cursor: pointer;" onclick="profilAc('${isim}', '${handle}', ${isVerified}, ${isOfficial}, '${avatarTipi}', '${avatarIcerik}', '${borderRenk}', '${hashtag}')">
+          <div style="display: flex; gap: 10px;">
+            ${avatarHTML}
+            <div style="flex: 1; display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                <span style="color: #fff; font-family: 'Rajdhani'; font-size: 15px; font-weight: 800; line-height: 1;">${isim}</span>
+                ${onayHTML}
+                <span style="color: #888; font-family: 'Rajdhani'; font-size: 12px; font-weight: 600;">@${handle} • ${time}</span>
+              </div>
+              <p style="color: #ddd; font-family: 'Rajdhani'; font-size: 13.5px; line-height: 1.4; margin: 6px 0 10px 0;">${tweetMetni}${hashtagHtml}</p>
+              <div style="display: flex; justify-content: space-between; color: #666; font-family: 'Rajdhani'; font-size: 12px; font-weight: 700; width: 90%;">
+                <span style="display: flex; align-items: center; gap: 4px;">${commentSvg} ${cStr}</span>
+                <span style="display: flex; align-items: center; gap: 4px;">${rtSvg} ${rStr}</span>
+                <span style="display: flex; align-items: center; gap: 4px; color: #e0245e;">${heartSvg} ${lStr}</span>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // 🏆 DEV YORUM HAVUZU (30 Galibiyet)
+    const winTweets = [
+        "Harika oynadık, bu takımla gurur duyuyorum! 🦅", 
+        "Şampiyonluk yürüyüşümüz gümbür gümbür devam ediyor!",
+        "[OYUNCU] bugün sahanın yıldızıydı, ayağına sağlık kral!", 
+        "Bu şehre bu galibiyet yakışır, işte bu!",
+        "Rakipler titremeye başlasın, geliyoruz!", 
+        "Taktik deha hocamız yine maçı okudu, helal olsun.",
+        "Haftanın en keyifli maçıydı, 3 puanı cebimize koyduk.", 
+        "[OYUNCU]'nun performansı bugün inanılmazdı!",
+        "Defans hattımız bugün duvar gibiydi, tebrikler aslanlar.", 
+        "Deplasmanda/Evimizde böyle oynamaya devam edelim!",
+        "Eze eze yendik, rakiplerimize ders olsun.", 
+        "Muazzam bir takım oyunu izledik, tebrikler takım!",
+        "Şampiyonluk inancımız tam, hoca takımı harika hazırlamış!",
+        "[OYUNCU] bugün orta sahayı tek başına domine etti, maestro!",
+        "Rakibe nefes aldırmadık, tam bir taktik savaşıydı ve biz kazandık.",
+        "Beklediğimizden çok daha rahat bir maç oldu. Gücümüzü gösterdik.",
+        "İşte görmek istediğimiz coşku bu! Helal olsun çocuklara.",
+        "Kalkanı tam zamanında açarak skoru tuttuk, harika iş!",
+        "Nitro ile atağa kalkışımız rakibin belini kırdı resmen 🚀",
+        "Kritik virajı kayıpsız döndük, sıradaki gelsin!",
+        "[OYUNCU] formunu her geçen hafta artırıyor, maşallah.",
+        "Hocanın oyun zekası bugün sahada kendini gösterdi.",
+        "Bu oyunla bizi yenebilecek takım yok bu ligde.",
+        "Tribündeki enerji sahaya yansıdı, eze eze yendik!",
+        "Rakipler puan kaybederken kazanmak altın değerinde.",
+        "Son dakikalardaki direnişimiz şampiyonluk habercisidir.",
+        "Yönetimin transferleri yavaş yavaş meyvesini veriyor.",
+        "Kalede devleşen bir takım izledik, geçit yok!",
+        "Topla oynama oranımız bile ne kadar üstün olduğumuzu gösteriyor.",
+        "Bugün günlerden [OYUNCU]! Şiir gibi oynadı."
+    ];
+
+    // ⚖️ DEV YORUM HAVUZU (25 Beraberlik)
+    const drawTweets = [
+        "1 puan iyidir ama daha iyisini yapabilirdik.", 
+        "Çok şanssızdık, top bizi sevmedi bugün.",
+        "Oyun güzeldi ama skoru bulamadık, sağlık olsun.", 
+        "[OYUNCU] daha fazla inisiyatif almalıydı.",
+        "Hakemin eyyamı maçın ritmini bozdu.", 
+        "İkinci yarı yorulduk, kondisyon eksiğimiz var.",
+        "Kazanmamız gereken maçtı, cidden üzgünüm.", 
+        "Olsun, yenilmemek de önemlidir.",
+        "Hoca neden değişiklik yapmakta bu kadar geç kaldı?", 
+        "Rakip çok kapandı, kilidi açamadık.",
+        "İki puan kaybettik ama oyun umut vericiydi.",
+        "[OYUNCU] bugün çok net fırsatları harcadı, yazık oldu.",
+        "Ortada geçen bir maçtı, iki takım da kazanabilirdi.",
+        "Hücumda biraz daha yaratıcı olmamız gerekiyor, kısır kaldık.",
+        "Rakip kaleciyi bir türlü geçemedik, adam bugün devleşti.",
+        "Deplasmanda alınan 1 puan iyidir ama evimizdeysek büyük kayıp.",
+        "Hakem oyunun hızını o kadar çok kesti ki maç bir türlü açılmadı.",
+        "Yetenek kullanımlarında geç kaldık, kalkanı daha iyi saklamalıydık.",
+        "Orta saha mücadelesi şeklinde geçti, seyir zevki düşüktü.",
+        "Son paslarda biraz daha dikkatli olsak maçı koparırdık.",
+        "[OYUNCU] bugün beklenen katkıyı veremedi, yedek kalmalı.",
+        "Şampiyonluk istiyorsak böyle maçlarda kilidi açabilmeliyiz.",
+        "Defansımız iyiydi ama hücum hattımız sınıfta kaldı.",
+        "Kapanan takımlara karşı her zaman zorlanıyoruz, hoca bir çözüm bulmalı.",
+        "Beraberlik serisi can sıkmaya başladı, galibiyet şart oldu!"
+    ];
+
+    // 😡 DEV YORUM HAVUZU (30 Mağlubiyet)
+    const loseTweets = [
+        "Bu futbolla işimiz zor, acil toparlanmamız lazım! 😡", 
+        "[OYUNCU] bugün sahada resmen yoktu, yazık!",
+        "Hoca artık taktiği değiştirmeli, böyle gitmez.", 
+        "Ruhsuz futbol! Biraz armanın hakkını verin!",
+        "Yönetim uyuma, takıma sahip çık!", 
+        "Bu hafta bize zehir oldu, kahrolduk...",
+        "Defans resmen yolgeçen hanıydı, çıldırdım izlerken.", 
+        "Sadece maçı değil, inancımızı da kaybettik.",
+        "Hiçbir varlık gösteremedik, rezalet bir maçtı.", 
+        "Acil transfer şart, bu kadro yetersiz kalıyor.",
+        "[OYUNCU] formayı hak etmiyor, yedek kulübesine!", 
+        "Taraftarın emeğine yazık, koca bir hüsran.",
+        "Rezalet bir oyun! Ne hücum yapabildik ne defans.",
+        "Yönetim acilen takviye yapmalı, bu kadro derinliği yetersiz.",
+        "Böyle kritik bir maça bu kadar ruhsuz çıkılmaz!",
+        "[OYUNCU] ayağında çok top tutuyor, bütün ataklarımızı hiç etti.",
+        "Hocanın ilk 11 tercihi tamamen fiyaskoydu.",
+        "Bu taraftar bu futbolu hak etmiyor, formanın hakkını verin!",
+        "Nitro ve Kalkanı bu kadar boşa harcadığımız bir maç daha hatırlamıyorum.",
+        "Rakip bizi analiz etmiş, sahada hiçbir varlık gösteremedik.",
+        "Top toparlamamız lazım, puan farkı açılıyor!",
+        "Kaleyi bulan şutumuz bile yok neredeyse, bu nasıl hücum?",
+        "Maçı izlerken saç baş yoldum, biraz hırs ya biraz!",
+        "[OYUNCU] gönderilmeli, takımın el freni resmen.",
+        "Hakem kararları kötüydü evet ama biz ondan da kötüydük.",
+        "Ligin boyu kısalıyor, bu kayıpları çok ararız sezon sonu.",
+        "Saha içi iletişim sıfır, herkes kendi başına oynuyor.",
+        "Fiziksel olarak da çökmüşüz, takım ikinci yarı yürüdü resmen.",
+        "Hoca masaya yumruğunu vurmalı, böyle gitmeyeceği belli.",
+        "Stadyumu dolduran binlerce kişiye yazık oldu bugün."
+    ];
+
+    // 📰 DEV HABER HAVUZU (15 Haber Şablonu)
+    const haberSablonlari = {
+        'galibiyet': [
+            "Fırtına gibi esen [TAKIM], rakibini devirmeyi başardı! 🔥", 
+            "[TAKIM] yükselişini sürdürüyor, harika bir galibiyet aldılar.",
+            "Maçın adamı kesinlikle [OYUNCU] oldu. [TAKIM] 3 puanı kaptı.", 
+            "Haftanın en flaş galibiyetlerinden biri [TAKIM] cephesinden geldi.",
+            "Liderlik yürüyüşü! [TAKIM] sahadan 3 puanla ayrılarak gözdağı verdi.",
+            "Muazzam performans! [TAKIM] taraftarına görsel şölen sundu.",
+            "[TAKIM] hocasının maç sonu açıklamaları gündeme damga vurdu!"
+        ],
+        'beraberlik': [
+            "[TAKIM] sahadan 1 puanla ayrıldı, sessiz bir geceydi.", 
+            "Eşitlik bozulmadı! [TAKIM] fırsat tepti.",
+            "[OYUNCU] elinden geleni yaptı ama [TAKIM] beraberliğe razı oldu.",
+            "[TAKIM] bir puana razı oldu, zirve yarışında yara aldılar.",
+            "Nefes kesen maçta kazanan çıkmadı! [TAKIM] avantaj tepti."
+        ],
+        'maglubiyet': [
+            "[TAKIM] cephesinde kriz! Ağır yara aldılar. 🚨", 
+            "Sürpriz mağlubiyet! [TAKIM] taraftarı ateş püskürüyor.",
+            "[TAKIM] yönetimi acil toplandı, hoca ile yollar ayrılabilir mi?", 
+            "[OYUNCU]'nun kötü performansı [TAKIM] için pahalıya patladı.",
+            "Taraftar tepkili! [TAKIM] evine puansız dönüyor.",
+            "Eleştiri okları [TAKIM] hocasının üzerinde. Kötü gidişat sürüyor.",
+            "[OYUNCU]'nun çabası yetmedi, [TAKIM] sahadan boynu bükük ayrıldı."
+        ]
+    };
+
+    // 1️⃣ BİZİM TAKIMIN RESMİ TWEETİ (Eğer Röportaj Verildiyse)
+    let sonRoportaj = JSON.parse(localStorage.getItem('futbolTayfaSonRoportaj'));
+    if (sonRoportaj && sonRoportaj.cevap !== "") {
+       let txt = `Teknik Direktörümüzün açıklaması: <br><br><span style="color: #00ff87; font-weight: 700;">"${sonRoportaj.cevap}"</span>`;
+       let tHandle = takimIsmi.replace(/\s/g, '').replace(/./g, '') + "Official";
+       timelineHTML.push(createTweet(takimIsmi, tHandle, false, true, 'img', takimInfo.logo, txt, '#ffd700', 'linear-gradient(145deg, rgba(20,25,30,0.9), rgba(5,10,15,0.95))', takimIsmi));
+    }
+
+    // Bizim Takımın Son Durumu
+    let benimDurum = getTakimSonDurum(benimTakimim);
+    let benimHavuz = benimDurum === 'galibiyet' ? winTweets : (benimDurum === 'maglubiyet' ? loseTweets : drawTweets);
+
+    // 2️⃣ HABER SAYFALARI (Rastgele Takımların Gerçek Sonuçlarına Göre Haber Yapar)
+    let otherTeams = Object.keys(LIGLER[currentLig].takimlar).filter(id => id !== benimTakimim);
+    let shuffledOther = otherTeams.sort(() => 0.5 - Math.random());
+    const haberHesaplari = [{isim: "Futbol Tayfa", handle: "futbol_tayfa", ikon: "📰", renk: "#1DA1F2"}, {isim: "Transfer Gündemi", handle: "transfer_gndm", ikon: "✈️", renk: "#ff00ff"}, {isim: "Spor Gecesi", handle: "sporgecesi", ikon: "📺", renk: "#00d4ff"}];
+
+    haberHesaplari.forEach((haber, idx) => {
+        let rTeamId = shuffledOther[idx % shuffledOther.length];
+        let rTeam = LIGLER[currentLig].takimlar[rTeamId];
+        if(!rTeam) return;
+        
+        let rName = formatUzunIsim(rTeam.isim);
+        let rPlayer = (rTeam.oyuncular && rTeam.oyuncular.length > 0) ? rTeam.oyuncular[0] : "yıldız oyuncu";
+        let rDurum = getTakimSonDurum(rTeamId);
+        
+        let sablonlar = haberSablonlari[rDurum];
+        let msg = sablonlar[Math.floor(Math.random() * sablonlar.length)];
+        msg = msg.replace(/\[TAKIM\]/g, rName).replace(/\[OYUNCU\]/g, rPlayer);
+
+        timelineHTML.push(createTweet(haber.isim, haber.handle, true, false, 'icon', haber.ikon, msg, haber.renk, 'rgba(20,25,30,0.5)', rName));
+    });
+
+    // 3️⃣ BİZİM TARAFTARIN YORUMLARI (Maç sonucumuza göre mantıklı atarlar)
+    const taraftarIsimleri = ["Ahmet", "Mehmet", "Burak", "Kaan", "Cem", "Emre", "Can", "Oğuz", "Ali", "Serkan"];
+    const taraftarRenkleri = ["#ff4444", "#1DA1F2", "#00ff87", "#ffd700", "#ff00ff", "#00d4ff"];
+
+    for (let i = 0; i < 4; i++) { 
+       let rMesaj = benimHavuz[Math.floor(Math.random() * benimHavuz.length)];
+       let rOyuncu = oyuncular[Math.floor(Math.random() * oyuncular.length)];
+       rMesaj = rMesaj.replace(/\[OYUNCU\]/g, rOyuncu);
+       
+       let rName = taraftarIsimleri[Math.floor(Math.random() * taraftarIsimleri.length)];
+       let handle = rName.toLowerCase() + Math.floor(Math.random() * 9999);
+       let isVer = Math.random() > 0.85; // Bazen mavi tikli meşhur bir taraftar atar
+       
+       timelineHTML.push(createTweet(rName, handle, isVer, false, 'text', rName.charAt(0), rMesaj, taraftarRenkleri[Math.floor(Math.random() * taraftarRenkleri.length)], 'rgba(20,25,30,0.5)', takimIsmi));
+    }
+
+    // Ekrana Bas
+    content.innerHTML = timelineHTML.join('');
   }
   else if (tip === 'revir') {
     icon.textContent = '🏥';
@@ -6709,83 +7161,117 @@ function openWidgetDetail(tip) {
       `;
     }
   }
-  else if (tip === 'moral') {
+ else if (tip === 'moral') {
+    icon.textContent = '🔥';
     title.textContent = 'TAKIM MORALİ';
+    title.style.color = '#00ff87';
     desc.textContent = 'Kadro psikolojisi ve saha içi yansımaları.';
-    
-    let moralMetni, moralEtkisi, renk;
-    
-    if (iyiDurum) {
-      moralMetni = "Takım son sonuçlardan dolayı oldukça motive. İdmanlarda herkesin yüzü gülüyor.";
-      moralEtkisi = "MAÇ İÇİ ENERJİ DOLUMU +%5 HIZLANDI";
-      renk = "#00ff87"; icon.textContent = '😎'; title.style.color = renk;
-    } else if (ortaDurum) {
-      moralMetni = "Moraller ortalama seviyede. Takım bir seri yakalamaya ve özgüven tazelemeye ihtiyaç duyuyor.";
-      moralEtkisi = "STANDART ENERJİ DOLUMU GEÇERLİ";
-      renk = "#ffd700"; icon.textContent = '😐'; title.style.color = renk;
-    } else {
-      moralMetni = "Soyunma odasında yüzler asık. Üst üste gelen kötü sonuçlar takımın inancını kırmış durumda.";
-      moralEtkisi = "MAÇ İÇİ ENERJİ DOLUMU -%5 YAVAŞLADI";
-      renk = "#ff4444"; icon.textContent = '😓'; title.style.color = renk;
-    }
 
-    // Takımın durumuna göre rastgele 5 maçlık form (G-B-M)
+    // 1. SON 5 MAÇ FORMUNU HESAPLAMA
     let formHTML = '';
-    let oncekiHaftalar = simData.fikstur.slice(0, guncelHafta - 1);
+    let oncekiHaftalar = simData.fikstur.slice(0, simData.hafta - 1);
     let benimMaclarim = [];
-      
     oncekiHaftalar.forEach(h => {
         let mac = h.find(m => m.ev === benimTakimim || m.dep === benimTakimim);
         if (mac && mac.oynandi) benimMaclarim.push(mac);
     });
-      
+    
     let son5 = benimMaclarim.slice(-5);
-      
+    
+    // Yeterli maç yoksa (sezon başıysa) boş çizgiler koy
     for(let i=0; i < 5 - son5.length; i++) {
-        formHTML += `<div style="width: 28px; height: 28px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-family: 'Bebas Neue'; font-size: 16px;">-</div>`;
+       formHTML += `<div style="width: 38px; height: 38px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 20px;">-</div>`;
     }
 
+    let formPuani = 0; // Formun takım uyumuna matematiksel katkısı
     son5.forEach(m => {
         let sEv = m.skorEv; let sDep = m.skorDep;
-        let durum, sRenk;
+        let durum, renk;
         if (m.ev === benimTakimim) {
-            if(sEv > sDep) { durum = 'G'; sRenk = '#00ff87'; }
-            else if(sEv === sDep) { durum = 'B'; sRenk = '#777777'; }
-            else { durum = 'M'; sRenk = '#ff4444'; }
+            if(sEv > sDep) { durum = 'G'; renk = '#00ff87'; formPuani += 5; }
+            else if(sEv === sDep) { durum = 'B'; renk = '#ffd700'; formPuani += 1; }
+            else { durum = 'M'; renk = '#ff4444'; formPuani -= 5; }
         } else {
-            if(sDep > sEv) { durum = 'G'; sRenk = '#00ff87'; }
-            else if(sEv === sDep) { durum = 'B'; sRenk = '#777777'; }
-            else { durum = 'M'; sRenk = '#ff4444'; }
+            if(sDep > sEv) { durum = 'G'; renk = '#00ff87'; formPuani += 5; }
+            else if(sEv === sDep) { durum = 'B'; renk = '#ffd700'; formPuani += 1; }
+            else { durum = 'M'; renk = '#ff4444'; formPuani -= 5; }
         }
-        formHTML += `<div style="width: 28px; height: 28px; background: ${sRenk}15; border: 1px solid ${sRenk}; color: ${sRenk}; display: flex; justify-content: center; align-items: center; border-radius: 6px; font-family: 'Bebas Neue'; font-size: 16px;">${durum}</div>`;
+        formHTML += `<div style="width: 38px; height: 38px; background: ${renk}20; border: 1px solid ${renk}; color: ${renk}; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 20px; box-shadow: 0 0 10px ${renk}40;">${durum}</div>`;
     });
 
-    let takimUyumu = iyiDurum ? (80 + Math.floor(seededRandom(guncelHafta, 81)*20)) : (ortaDurum ? (50 + Math.floor(seededRandom(guncelHafta, 82)*30)) : (20 + Math.floor(seededRandom(guncelHafta, 83)*30)));
+    // 2. TAKIM UYUMUNU GERÇEKÇİ HESAPLAMA (Baz 50 + Form + Röportaj)
+    let ropMoral = typeof roportajEtkisi !== 'undefined' ? roportajEtkisi.moral : 0;
+    let takimUyumu = Math.max(0, Math.min(100, 50 + formPuani + ropMoral));
 
+    // 3. MORAL DURUMUNA GÖRE DİNAMİK METİNLER VE RENKLER
+    let moralDurumu, moralRenk, moralIcon, oyunIciEtki;
+    if (takimUyumu >= 70) {
+        moralDurumu = "Soyunma odasında harika bir aile ortamı var. Oyuncular kenetlenmiş durumda.";
+        oyunIciEtki = "⚡ YÜKSEK ENERJİ: Saha içi yetenek barı (Nitro/Kalkan) daha hızlı dolar.";
+        moralRenk = "#00ff87";
+        moralIcon = "😎";
+    } else if (takimUyumu >= 40) {
+        moralDurumu = "Takım içinde sıradan bir hava hakim. İvme kazanmak için galibiyet serisi şart.";
+        oyunIciEtki = "⚖️ STANDART ENERJİ: Yetenek barı normal hızda dolar.";
+        moralRenk = "#ffd700";
+        moralIcon = "😐";
+    } else {
+        moralDurumu = "Soyunma odasında yüzler asık, oyuncular arasında gruplaşmalar başlamış.";
+        oyunIciEtki = "🐢 DÜŞÜK ENERJİ: Saha içi yetenek barı moral bozukluğundan daha yavaş dolar.";
+        moralRenk = "#ff4444";
+        moralIcon = "🤬";
+    }
+    
+    title.style.color = moralRenk;
+
+    // 4. RÖPORTAJ ETKİSİ BANNER'I (Daha şık ve belirgin)
+    let etkiMoralHTML = "";
+    let sRoportaj = JSON.parse(localStorage.getItem('futbolTayfaSonRoportaj'));
+    if (sRoportaj && sRoportaj.m !== 0) {
+        let eRenk = sRoportaj.m > 0 ? "#00ff87" : "#ff4444";
+        let eMetin = sRoportaj.m > 0 ? `Moral +${sRoportaj.m} Puan Arttı` : `Moral ${sRoportaj.m} Puan Düştü`;
+        etkiMoralHTML = `
+        <div style="background: ${eRenk}15; padding: 10px; border-radius: 8px; margin-top: 15px; border: 1px solid ${eRenk}50; display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 16px;">🎤</span>
+          <span style="color:${eRenk}; font-family:'Rajdhani'; font-weight:700; font-size: 13px;">Son Röportaj: ${eMetin}</span>
+        </div>`;
+    }
+
+    // 5. EKRANI ÇİZME
     content.innerHTML = `
-      <div class="modern-card" style="padding: 15px; margin-bottom: 0; border-color: ${renk};">
-        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-            <div style="font-size: 45px; filter: drop-shadow(0 0 10px ${renk}80);">${icon.textContent}</div>
-            <p style="color: #ccc; font-family: 'Rajdhani'; font-size: 13px; font-weight: 600; line-height: 1.3; margin: 0;">${moralMetni}</p>
+      <!-- Son 5 Maç Kartı -->
+      <div class="modern-card" style="padding: 15px; margin-bottom: 12px; border-color: rgba(255,255,255,0.1); flex-shrink: 0;">
+        <span style="color: #aaa; font-family: 'Rajdhani'; font-size: 12px; font-weight: 700; text-transform: uppercase;">LİGDEKİ SON 5 MAÇ FORMU</span>
+        <div style="display: flex; gap: 10px; margin-top: 10px; justify-content: space-between;">
+           ${formHTML}
+        </div>
+      </div>
+
+      <!-- Ana Moral Kartı -->
+      <div class="modern-card" style="padding: 15px; margin-bottom: 12px; border-left: 4px solid ${moralRenk}; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+           <div style="font-size: 35px; filter: drop-shadow(0 0 10px ${moralRenk}80);">${moralIcon}</div>
+           <p style="color: #ccc; font-family: 'Rajdhani'; font-size: 13.5px; line-height: 1.3; margin: 0; font-weight: 600;">
+              ${moralDurumu}
+           </p>
         </div>
         
-        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-            <span style="color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700; text-transform: uppercase;">Son 5 Maç Formu</span>
-            <div style="display: flex; gap: 8px; margin-top: 5px;">
-                ${formHTML}
-            </div>
-        </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 13px; font-weight: 700;">Takım İçi Uyum</span>
-          <span style="color: ${renk}; font-family: 'Bebas Neue'; font-size: 16px;">%${takimUyumu}</span>
+          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">Takım İçi Uyum Oranı</span>
+          <span style="color: ${moralRenk}; font-family: 'Bebas Neue'; font-size: 24px; text-shadow: 0 0 10px ${moralRenk}80;">%${takimUyumu}</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; margin-bottom: 15px;">
-          <div style="background: ${renk}; height: 100%; width: ${takimUyumu}%; border-radius: 3px;"></div>
+        <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);">
+          <div style="background: ${moralRenk}; height: 100%; width: ${takimUyumu}%; border-radius: 4px; box-shadow: 0 0 10px ${moralRenk}; transition: width 0.5s ease;"></div>
         </div>
+        
+        ${etkiMoralHTML}
+      </div>
 
-        <div style="background: ${renk}20; color: ${renk}; padding: 10px; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 16px; border: 1px solid ${renk}50; text-align: center;">
-          ⚡ ${moralEtkisi}
+      <!-- Oyun İçi Etki Bilgisi -->
+      <div class="modern-card" style="padding: 15px; margin-bottom: 40px; border: 1px solid rgba(255,215,0,0.2); background: linear-gradient(145deg, rgba(20,20,0,0.6), rgba(0,0,0,0.9)); flex-shrink: 0; height: auto;">
+        <div style="color: #ffd700; font-family: 'Rajdhani'; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 6px;">SAHA İÇİ YANSIMASI</div>
+        <div style="color: #fff; font-family: 'Rajdhani'; font-size: 13.5px; line-height: 1.5; font-weight: 600; white-space: normal;">
+           ${oyunIciEtki}
         </div>
       </div>
     `;
@@ -6795,53 +7281,78 @@ function openWidgetDetail(tip) {
     title.textContent = 'FAN ÖLÇER';
     title.style.color = '#00d4ff';
     desc.textContent = 'Taraftar ve yönetim dinamikleri.';
-    
+
+    // LİG SIRASINA GÖRE BAZ PUAN HESAPLAMA (Gerçekçi Motor)
     let bazYuzde = 100 - (sira * (100 / toplamTakim));
-    if (bazYuzde < 25) bazYuzde = 25; 
+    if (bazYuzde < 20) bazYuzde = 20; 
     
-    let yonetimGuveni = Math.min(100, Math.floor(bazYuzde + 10 + (seededRandom(guncelHafta, 4) * 5))); 
-    let taraftarDestegi = Math.min(100, Math.floor(bazYuzde + (seededRandom(guncelHafta, 5) * 8)));
+    let yonetimGuveni = Math.floor(bazYuzde + 15);
+    let taraftarDestegi = Math.floor(bazYuzde + 5);
 
-    let renkGuven = yonetimGuveni > 50 ? '#00d4ff' : '#ff4444';
-    let renkTaraftar = taraftarDestegi > 50 ? '#00ff87' : '#ff4444';
+    // RÖPORTAJ ETKİSİNİ EKLE
+    if (typeof roportajEtkisi !== 'undefined') {
+      yonetimGuveni = Math.max(0, Math.min(100, yonetimGuveni + roportajEtkisi.yonetim));
+      taraftarDestegi = Math.max(0, Math.min(100, taraftarDestegi + roportajEtkisi.taraftar));
+    }
 
-    let beklenti = iyiDurum ? "Şampiyonluk" : (ortaDurum ? "Üst Sıralar" : "Ligde Kalmak");
-    
-    let dolulukYuzdesi = taraftarDestegi > 85 ? (85 + Math.floor(seededRandom(guncelHafta, 90)*15)) : (taraftarDestegi > 50 ? (50 + Math.floor(seededRandom(guncelHafta, 91)*35)) : (20 + Math.floor(seededRandom(guncelHafta, 92)*30)));
-    let tahminiGelir = Math.floor(dolulukYuzdesi * 1.5) * 10;
+    // RENK VE DURUM BELİRLEME
+    let yRenk = yonetimGuveni >= 60 ? "#00d4ff" : (yonetimGuveni >= 40 ? "#ffd700" : "#ff4444");
+    let tRenk = taraftarDestegi >= 60 ? "#00ff87" : (taraftarDestegi >= 40 ? "#ffd700" : "#ff4444");
+
+    let beklentiDurumu = yonetimGuveni >= 70 ? "Şampiyonluk Hedefi" : (yonetimGuveni >= 40 ? "Üst Sıralar" : "Kümede Kalma Savaşı");
+    let stadyumDoluluk = Math.max(15, Math.min(100, taraftarDestegi + Math.floor(Math.random() * 10 - 5)));
+
+    // 📈 RÖPORTAJ ETKİSİ BANNER'I
+    let etkiFanHTML = "";
+    let sRoportaj = JSON.parse(localStorage.getItem('futbolTayfaSonRoportaj'));
+    if (sRoportaj && (sRoportaj.y !== 0 || sRoportaj.t !== 0)) {
+        let yMetin = sRoportaj.y !== 0 ? (sRoportaj.y > 0 ? `<span style="color:#00d4ff;">Yönetim +${sRoportaj.y}</span>` : `<span style="color:#ff4444;">Yönetim ${sRoportaj.y}</span>`) : "";
+        let tMetin = sRoportaj.t !== 0 ? (sRoportaj.t > 0 ? `<span style="color:#00ff87;">Taraftar +${sRoportaj.t}</span>` : `<span style="color:#ff4444;">Taraftar ${sRoportaj.t}</span>`) : "";
+        let ayrac = (yMetin && tMetin) ? `<span style="color:#555; margin: 0 6px;">|</span>` : "";
+
+        etkiFanHTML = `
+        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-top: 15px; border-left: 3px solid #00d4ff; display: flex; flex-direction: column; gap: 6px;">
+          <span style="color:#fff; font-family:'Rajdhani'; font-weight:700; font-size: 13px;">🎤 Son Röportaj Etkisi:</span>
+          <div style="font-family:'Rajdhani'; font-size: 14px; font-weight: 700;">${yMetin}${ayrac}${tMetin}</div>
+        </div>`;
+    }
 
     content.innerHTML = `
-      <div class="modern-card" style="padding: 15px; margin-bottom: 0;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">Yönetim Güveni</span>
-          <span style="color: ${renkGuven}; font-family: 'Bebas Neue'; font-size: 18px;">%${yonetimGuveni}</span>
+      <!-- Yönetim Kartı -->
+      <div class="modern-card" style="padding: 15px; margin-bottom: 12px; border-color: rgba(255,255,255,0.05);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; align-items: center;">
+          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 15px; font-weight: 700;">👔 Yönetim Güveni</span>
+          <span style="color: ${yRenk}; font-family: 'Bebas Neue'; font-size: 24px; text-shadow: 0 0 10px ${yRenk}80;">%${yonetimGuveni}</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; margin-bottom: 20px;">
-          <div style="background: ${renkGuven}; height: 100%; width: ${yonetimGuveni}%; border-radius: 4px;"></div>
+        <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);">
+          <div style="background: ${yRenk}; height: 100%; width: ${yonetimGuveni}%; border-radius: 4px; box-shadow: 0 0 10px ${yRenk}; transition: width 0.5s ease;"></div>
         </div>
-        
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">Taraftar Desteği</span>
-          <span style="color: ${renkTaraftar}; font-family: 'Bebas Neue'; font-size: 18px;">%${taraftarDestegi}</span>
-        </div>
-        <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; margin-bottom: 20px;">
-          <div style="background: ${renkTaraftar}; height: 100%; width: ${taraftarDestegi}%; border-radius: 4px;"></div>
-        </div>
-
-        <div style="display: flex; gap: 10px;">
-            <div style="flex: 1; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 10px; border-radius: 8px; text-align: center;">
-                <span style="color: #888; font-family: 'Rajdhani'; font-size: 10px; font-weight: 700; text-transform: uppercase;">Yönetim Beklentisi</span>
-                <div style="color: #00d4ff; font-family: 'Bebas Neue'; font-size: 18px; margin-top: 2px;">${beklenti}</div>
-            </div>
-            <div style="flex: 1; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); padding: 10px; border-radius: 8px; text-align: center;">
-                <span style="color: #888; font-family: 'Rajdhani'; font-size: 10px; font-weight: 700; text-transform: uppercase;">Stadyum Doluluk</span>
-                <div style="color: #ffd700; font-family: 'Bebas Neue'; font-size: 18px; margin-top: 2px;">%${dolulukYuzdesi}</div>
-            </div>
-        </div>
-        <p style="text-align: center; color: #aaa; font-family: 'Rajdhani'; font-size: 12px; font-weight: 600; margin-top: 15px;">
-           🎫 Sonraki iç saha maçında tahmini bilet geliri: <span style="color: #ffd700; font-weight: 700;">+${tahminiGelir} 🟡</span>
-        </p>
       </div>
+      
+      <!-- Taraftar Kartı -->
+      <div class="modern-card" style="padding: 15px; margin-bottom: 12px; border-color: rgba(255,255,255,0.05);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; align-items: center;">
+          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 15px; font-weight: 700;">📣 Taraftar Desteği</span>
+          <span style="color: ${tRenk}; font-family: 'Bebas Neue'; font-size: 24px; text-shadow: 0 0 10px ${tRenk}80;">%${taraftarDestegi}</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);">
+          <div style="background: ${tRenk}; height: 100%; width: ${taraftarDestegi}%; border-radius: 4px; box-shadow: 0 0 10px ${tRenk}; transition: width 0.5s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Stadyum & Beklenti Detayları -->
+      <div style="display: flex; gap: 10px; margin-bottom: 0;">
+        <div class="modern-card" style="flex: 1; padding: 12px; text-align: center; margin-bottom: 0; background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(0,0,0,0.8)); border-color: rgba(0,212,255,0.2);">
+          <span style="color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700; text-transform: uppercase;">Yönetim Hedefi</span>
+          <div style="color: #00d4ff; font-family: 'Rajdhani'; font-size: 13px; font-weight: 800; margin-top: 4px;">${beklentiDurumu}</div>
+        </div>
+        <div class="modern-card" style="flex: 1; padding: 12px; text-align: center; margin-bottom: 0; background: linear-gradient(145deg, rgba(0,255,135,0.05), rgba(0,0,0,0.8)); border-color: rgba(0,255,135,0.2);">
+          <span style="color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700; text-transform: uppercase;">Stadyum Doluluk</span>
+          <div style="color: #00ff87; font-family: 'Bebas Neue'; font-size: 20px; margin-top: 2px;">%${stadyumDoluluk}</div>
+        </div>
+      </div>
+
+      ${etkiFanHTML}
     `;
   }
   else if (tip === 'gorevler') {
@@ -6971,6 +7482,104 @@ function iptalEtFikstureDon() {
     if (navItems.length > 0) {
         moveSlider(navItems[0]); // İlk buton olan Ana Sayfa'ya kayar
     }
+}
+function macDetayiGoster(evId, depId, skorEv, skorDep) {
+    let currentLig = window.aktifLig || 'superlig';
+    let ev = LIGLER[currentLig].takimlar[evId];
+    let dep = LIGLER[currentLig].takimlar[depId];
+    if(!ev || !dep) return;
+
+    // Sabit Matematiksel Tohum (Aynı maça hep aynı istatistikleri üretir)
+    let mSeed = evId.charCodeAt(0) + depId.charCodeAt(0) + (skorEv * 13) + (skorDep * 37);
+    function sRand() {
+        let x = Math.sin(mSeed++) * 10000;
+        return x - Math.floor(x);
+    }
+
+    let evOyuncular = ev.oyuncular || ["Defans", "Orta Saha", "Forvet"];
+    let depOyuncular = dep.oyuncular || ["Defans", "Orta Saha", "Forvet"];
+
+    // Rastgele ama SABİT Gol Dakikaları ve Sahipleri
+    let goller = [];
+    for(let i=0; i<skorEv; i++) goller.push({ takim: 'ev', dk: Math.floor(sRand()*89)+1, isim: evOyuncular[Math.floor(sRand()*evOyuncular.length)] });
+    for(let i=0; i<skorDep; i++) goller.push({ takim: 'dep', dk: Math.floor(sRand()*89)+1, isim: depOyuncular[Math.floor(sRand()*depOyuncular.length)] });
+    
+    goller.sort((a,b) => a.dk - b.dk); 
+
+    let gollerEvHTML = ""; let gollerDepHTML = "";
+    goller.forEach(g => {
+        if(g.takim === 'ev') gollerEvHTML += `<div style="color:#00ff87; font-size:13px; font-weight:600; margin-bottom:3px;">⚽ ${g.dk}' ${g.isim}</div>`;
+        else gollerDepHTML += `<div style="color:#00ff87; font-size:13px; font-weight:600; margin-bottom:3px;">⚽ ${g.dk}' ${g.isim}</div>`;
+    });
+
+    if(gollerEvHTML === "") gollerEvHTML = `<div style="color:#555;">-</div>`;
+    if(gollerDepHTML === "") gollerDepHTML = `<div style="color:#555;">-</div>`;
+
+    // Mantıklı ve SABİT İstatistikler
+    let t1Poss = (skorEv > skorDep) ? (50 + Math.floor(sRand()*15)) : (skorEv < skorDep ? 35 + Math.floor(sRand()*15) : 45 + Math.floor(sRand()*10));
+    let t2Poss = 100 - t1Poss;
+    let t1Shots = skorEv + Math.floor(sRand()*6);
+    let t2Shots = skorDep + Math.floor(sRand()*6);
+    let sariEv = Math.floor(sRand()*4);
+    let sariDep = Math.floor(sRand()*4);
+
+    let t1ShotPct = t1Shots === 0 && t2Shots === 0 ? 50 : (t1Shots / (t1Shots + t2Shots)) * 100;
+    let t2ShotPct = t1Shots === 0 && t2Shots === 0 ? 50 : (t2Shots / (t1Shots + t2Shots)) * 100;
+
+    const content = document.getElementById('match-report-content');
+    content.innerHTML = `
+      <!-- Skor Tabelası -->
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; width: 35%;">
+              <img src="${ev.logo}" style="width: 50px; height: 50px; object-fit: contain; filter: drop-shadow(0 2px 5px ${ev.renkAna}80);">
+              <span style="font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">${ev.kisa || ev.isim}</span>
+          </div>
+          <span style="font-family: 'Bebas Neue'; font-size: 55px; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.3); line-height: 1;">${skorEv} - ${skorDep}</span>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; width: 35%;">
+              <img src="${dep.logo}" style="width: 50px; height: 50px; object-fit: contain; filter: drop-shadow(0 2px 5px ${dep.renkAna}80);">
+              <span style="font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">${dep.kisa || dep.isim}</span>
+          </div>
+      </div>
+
+      <!-- Goller Listesi -->
+      <div style="display: flex; justify-content: space-between; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 12px; flex-shrink: 0;">
+          <div style="width: 48%; text-align: left; font-family: 'Rajdhani'; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 5px;">${gollerEvHTML}</div>
+          <div style="width: 48%; text-align: right; font-family: 'Rajdhani'; padding-left: 5px;">${gollerDepHTML}</div>
+      </div>
+
+      <!-- İstatistikler -->
+      <div class="modern-card" style="padding: 15px; margin-bottom: 0; border: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;">
+          <span style="color: #aaa; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700; text-transform: uppercase;">MAÇ İSTATİSTİKLERİ</span>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+              <span style="width: 20%; text-align: left; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">%${t1Poss}</span>
+              <span style="width: 60%; text-align: center; color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">TOPLA OYNAMA</span>
+              <span style="width: 20%; text-align: right; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">%${t2Poss}</span>
+          </div>
+          <div style="display: flex; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 10px;">
+              <div style="width: ${t1Poss}%; background: ${ev.renkAna};"></div>
+              <div style="width: ${t2Poss}%; background: ${dep.renkAna};"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+              <span style="width: 20%; text-align: left; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">${t1Shots}</span>
+              <span style="width: 60%; text-align: center; color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">ŞUT</span>
+              <span style="width: 20%; text-align: right; font-family: 'Bebas Neue'; font-size: 18px; color: #fff;">${t2Shots}</span>
+          </div>
+          <div style="display: flex; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 10px;">
+              <div style="width: ${t1ShotPct}%; background: ${ev.renkAna};"></div>
+              <div style="width: ${t2ShotPct}%; background: ${dep.renkAna};"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+              <span style="width: 20%; text-align: left; font-family: 'Bebas Neue'; font-size: 18px; color: #ffcc00;">${sariEv} 🟨</span>
+              <span style="width: 60%; text-align: center; color: #888; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">SARI KART</span>
+              <span style="width: 20%; text-align: right; font-family: 'Bebas Neue'; font-size: 18px; color: #ffcc00;">🟨 ${sariDep}</span>
+          </div>
+      </div>
+    `;
+
+    document.getElementById('match-report-overlay').style.display = 'flex';
 }
 
 // Oyunu Başlatan Ana Fonksiyonlar
