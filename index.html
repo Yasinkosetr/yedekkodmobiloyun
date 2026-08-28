@@ -802,6 +802,10 @@
 
 <audio id="audio-team1"></audio>
 <audio id="audio-team2"></audio>
+<!-- ARKA PLAN MÜZİĞİ -->
+<audio id="bg-music" loop preload="auto">
+  <source src="./bg-music.mp3" type="audio/mpeg">
+</audio>
 
 <div id="game-wrapper">
   
@@ -1112,7 +1116,7 @@
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); gap: 8px; flex: 1; min-height: 0;">
         
         <!-- WIDGET 1: Twitter -->
-        <div class="modern-card" onclick="openWidgetDetail('sosyal')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #1DA1F2; background: linear-gradient(145deg, rgba(29, 161, 242, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+        <div class="modern-card" onclick="window.aktifWidgetId='sosyal'; openWidgetDetail('sosyal')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #1DA1F2; background: linear-gradient(145deg, rgba(29, 161, 242, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
           <div style="display: flex; justify-content: space-between; align-items: center; color: #1DA1F2; font-family: 'Bebas Neue'; font-size: 14px;">
             <span style="letter-spacing: 1px;">SOSYAL AĞ</span><span>🐦</span>
           </div>
@@ -1129,7 +1133,7 @@
         </div>
 
         <!-- WIDGET 2: Sakatlık -->
-        <div class="modern-card" onclick="openWidgetDetail('revir')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #ff4444; background: linear-gradient(145deg, rgba(255, 68, 68, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+        <div class="modern-card" onclick="window.aktifWidgetId='revir'; openWidgetDetail('revir')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #ff4444; background: linear-gradient(145deg, rgba(255, 68, 68, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
           <div style="display: flex; justify-content: space-between; align-items: center; color: #ff4444; font-family: 'Bebas Neue'; font-size: 14px;">
             <span style="letter-spacing: 1px;">REVİR RAPORU</span><span>🏥</span>
           </div>
@@ -1149,8 +1153,7 @@
         </div>
 
         <!-- WIDGET 3: Görevler -->
-        <div class="modern-card" onclick="openWidgetDetail('gorevler')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #00ff87; background: linear-gradient(145deg, rgba(0, 255, 135, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
-          <div style="display: flex; justify-content: space-between; align-items: center; color: #00ff87; font-family: 'Bebas Neue'; font-size: 14px;">
+<div class="modern-card" onclick="gorevMerkeziniAc()" style="cursor: pointer; padding: 9px; margin: 0; border-color: #00ff87; background: linear-gradient(145deg, rgba(0, 255, 135, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">          <div style="display: flex; justify-content: space-between; align-items: center; color: #00ff87; font-family: 'Bebas Neue'; font-size: 14px;">
             <span style="letter-spacing: 1px;">GÖREVLER</span>
             <span style="background: rgba(0,255,135,0.15); color:#00ff87; padding: 2px 4px; border-radius: 4px; font-size: 8px; font-family: 'Rajdhani'; font-weight:700;">1/2</span>
           </div>
@@ -1167,7 +1170,7 @@
         </div>
 
         <!-- WIDGET 4: Dinamik Fırsat -->
-        <div id="widget-firsat-kutu" class="modern-card" onclick="openWidgetDetail('firsat')" style="cursor: pointer; padding: 10px; margin: 0; border-color: #ff00ff; background: linear-gradient(145deg, rgba(255, 0, 255, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative;">
+        <div id="widget-firsat-kutu" class="modern-card" onclick="window.aktifWidgetId='firsat'; openWidgetDetail('firsat')" style="cursor: pointer; padding: 10px; margin: 0; border-color: #ff00ff; background: linear-gradient(145deg, rgba(255, 0, 255, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative;">
           <div style="display: flex; justify-content: space-between; align-items: center; color: #ff00ff; font-family: 'Bebas Neue'; font-size: 15px;">
             <span style="letter-spacing: 1px;" id="firsat-baslik-w">FIRSAT</span>
             <span id="firsat-zaman-w" style="color:#aaa; font-size:9px; font-family:'Rajdhani'; font-weight:700;">⏱ 00:00:00</span>
@@ -1189,12 +1192,11 @@
           </div>
         </div>
 
-        <!-- WIDGET 5: Moral -->
-        <div class="modern-card" onclick="openWidgetDetail('moral')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #ffd700; background: linear-gradient(145deg, rgba(255, 215, 0, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+       <!-- WIDGET 5: Moral -->
+        <div class="modern-card" onclick="window.aktifWidgetId='moral'; openWidgetDetail('moral')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #ffd700; background: linear-gradient(145deg, rgba(255, 215, 0, 0.05), rgba(0,0,0,0.8)); display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
           <div style="color: #ffd700; font-family: 'Bebas Neue'; font-size: 14px; margin-bottom: 4px; letter-spacing: 1px;">FORM / MORAL</div>
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <div id="widget-morale-icon" style="font-size: 20px;">😎</div>
-            <!-- G - B - M Renkli Kutucuklar -->
             <div style="display: flex; gap: 4px;">
               <div style="width: 17px; height: 17px; background: rgba(0,255,135,0.2); border: 1px solid #00ff87; color: #00ff87; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-family: 'Bebas Neue'; font-size: 10px;">G</div>
               <div style="width: 17px; height: 17px; background: rgba(119,119,119,0.2); border: 1px solid #777777; color: #777777; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-family: 'Bebas Neue'; font-size: 10px;">B</div>
@@ -1206,10 +1208,9 @@
         </div>
 
         <!-- WIDGET 6: Fan Ölçer -->
-        <div class="modern-card" onclick="openWidgetDetail('fan')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #00d4ff; background: linear-gradient(145deg, rgba(0, 212, 255, 0.05), rgba(0,0,0,0.8)); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+        <div class="modern-card" onclick="window.aktifWidgetId='fan'; openWidgetDetail('fan')" style="cursor: pointer; padding: 9px; margin: 0; border-color: #00d4ff; background: linear-gradient(145deg, rgba(0, 212, 255, 0.05), rgba(0,0,0,0.8)); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
           <div style="position: absolute; bottom: -8px; right: -5px; font-size: 36px; opacity: 0.1;">🏟️</div>
           <div style="color: #00d4ff; font-family: 'Bebas Neue'; font-size: 14px; margin-bottom: 2px; z-index: 2; letter-spacing: 1px;">FAN ÖLÇER</div>
-          <!-- 🚨 id="widget-fan-score-home" EKLENDİ 🚨 -->
           <div id="widget-fan-score-home" style="font-family: 'Bebas Neue'; font-size: 25px; color: #fff; text-shadow: 0 0 10px rgba(0,212,255,0.6); line-height: 1; z-index: 2;">%87</div>
           <div style="color: #aaa; font-family: 'Rajdhani'; font-size: 7px; font-weight: 700; z-index: 2;">EN TUTKULU TARAFTAR</div>
         </div>
@@ -1217,9 +1218,7 @@
     </div>
     <div id="tab-sim-fikstur" class="tab-content" style="width: 90%; margin-top: 10px; padding-bottom: 100px !important; display: none;">
       
-      <button style="width: 100%; background: linear-gradient(145deg, rgba(255,215,0,0.1), rgba(0,0,0,0.8)); border: 1px solid rgba(255,215,0,0.3); color: #ffd700; font-family: 'Bebas Neue'; font-size: 20px; padding: 12px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 15px rgba(255,215,0,0.15);" onclick="golKralligiGoster()">
-        ⚽ GOL KRALLIĞI TABLOSU
-      </button>
+      
 
       <!-- Başlık Alanı -->
       <div style="margin-bottom: 20px;">
@@ -1249,6 +1248,14 @@
             <span id="prog-lig-isim" style="color: #888; font-family: 'Rajdhani'; font-size: 12px; font-weight: 600;">Süper Lig</span>
           </div>
           <span style="color: #00ff87; font-size: 18px;">▶</span>
+        </div>
+        <!-- Yeni Gol Krallığı Butonu -->
+        <div class="modern-card" style="padding: 15px; margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border-left: 3px solid #ffd700;" onclick="golKralligiGoster()">
+          <div style="display: flex; flex-direction: column;">
+            <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 16px;">Gol Krallığı</span>
+            <span style="color: #888; font-family: 'Rajdhani'; font-size: 12px; font-weight: 600;">Ligin En Golcü Oyuncuları</span>
+          </div>
+          <span style="font-size: 18px; filter: drop-shadow(0 0 5px rgba(255,215,0,0.8));">⚽</span>
         </div>
         
         <div class="modern-card" style="padding: 12px 15px; margin-bottom: 0; display: flex; justify-content: space-between; align-items: center; border-left: 3px solid #00d4ff;">
@@ -1457,11 +1464,26 @@
     </div>
     
 
-   <!-- GÖREVLER SEKMESİ -->
-    <div id="tab-sim-gorevler" class="tab-content" style="width: 90%; display: none; padding-bottom: 20px;">
+   <!-- GÖREV MERKEZİ OVERLAY -->
+  <div id="gorevler-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 40px; background: rgba(5, 13, 15, 0.98); z-index: 4000; backdrop-filter: blur(10px);">
+    
+    <div style="text-align: center; margin-bottom: 15px; width: 100%; flex-shrink: 0;">
+      <div style="font-size: 40px; margin-bottom: 5px; filter: drop-shadow(0 0 10px rgba(0,255,135,0.5));">🚀</div>
+      <h1 style="color: #00ff87; font-family: 'Bebas Neue'; font-size: 38px; letter-spacing: 2px; margin: 0;">GÖREV MERKEZİ</h1>
+      <p style="color: #888; font-family: 'Rajdhani'; font-size: 13px; font-weight: 600; margin: 0;">Günlük ve Haftalık Hedefler</p>
+    </div>
+
+    <!-- SEKME BUTONLARI -->
+    <div style="display: flex; width: 90%; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 5px; margin-bottom: 15px; flex-shrink: 0;">
+      <button id="btn-gorev-gunluk" style="flex: 1; padding: 8px; background: linear-gradient(135deg, #00ff87, #00b35e); color: #000; border: none; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 18px; cursor: pointer; transition: 0.2s;" onclick="gorevSekmeDegistir('gunluk')">📅 GÜNLÜK</button>
+      <button id="btn-gorev-haftalik" style="flex: 1; padding: 8px; background: transparent; color: #aaa; border: none; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 18px; cursor: pointer; transition: 0.2s;" onclick="gorevSekmeDegistir('haftalik')">🗓️ HAFTALIK</button>
+    </div>
+
+    <!-- GÜNLÜK GÖREVLER LİSTESİ -->
+    <div id="list-gunluk-gorevler" style="width: 90%; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; scrollbar-width: none; padding-bottom: 20px;">
       
-      <!-- GÜNLÜK GİRİŞ SERİSİ (STREAK) KARTI -->
-      <div id="streak-main-card" class="premium-card" style="padding: 15px; margin-bottom: 15px; border: 1px solid #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.1), rgba(0,0,0,0.9)); transition: all 0.3s;">
+      <!-- SERİ KARTI -->
+      <div id="streak-main-card" class="premium-card" style="padding: 15px; border: 1px solid #ffd700; background: linear-gradient(145deg, rgba(255,215,0,0.1), rgba(0,0,0,0.9)); transition: all 0.3s; flex-shrink: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
           <div style="display: flex; align-items: center; gap: 10px;">
             <div id="streak-fire-icon" style="font-size: 30px; filter: drop-shadow(0 0 10px #ffd700); animation: pulse-dot 2s infinite;">🔥</div>
@@ -1472,59 +1494,108 @@
           </div>
           <span id="streak-day-text" style="color:#ffd700; font-family:'Bebas Neue'; font-size:28px; text-shadow: 0 0 15px rgba(255,215,0,0.5);">0. GÜN</span>
         </div>
-        
         <button id="btn-show-streak" class="action-btn" style="width: 100%; padding: 8px; font-size: 16px; border-radius: 8px; background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; box-shadow: 0 4px 15px rgba(255,215,0,0.3); border: none; margin-bottom: 5px;" onclick="seriEkraniniAc()">SERİ ÖDÜLLERİNİ GÖR</button>
-        
-        <!-- YENİ: GERİ SAYIM SAYACI (Ödül alınınca görünecek) -->
         <div id="streak-timer-container" style="display: none; text-align: center; margin-top: 5px;">
           <span style="font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; color: #888;">YENİ ÖDÜL İÇİN: <span id="streak-timer" style="color: #00d4ff;">00:00:00</span></span>
         </div>
       </div>
-      <!-- HAFTALIK GÖREV -->
-      <div class="premium-card" style="padding: 15px; margin-bottom: 15px; border-color: #00d4ff; background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(0,0,0,0.9));">
+
+      <div class="modern-card" style="padding: 15px; border-left: 3px solid #00ff87; flex-shrink: 0; margin-bottom: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <h3 style="color:#00d4ff; font-family:'Bebas Neue'; font-size:24px; margin:0; text-shadow: 0 0 10px rgba(0,212,255,0.4);">⭐ 10 MAÇ KAZAN (HAFTALIK)</h3>
-          <span style="color:#ffd700; font-family:'Rajdhani'; font-weight:700;">+500 🟡</span>
+          <h3 style="color:#fff; font-family:'Bebas Neue'; font-size:20px; margin:0;">⚽ 5 MAÇ YAP</h3>
+          <span style="color:#ffd700; font-family:'Rajdhani'; font-weight:700; font-size:13px;">+100 🟡</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 10px; width: 100%; margin-bottom: 12px; overflow: hidden;">
-          <div id="prog-haftalik" style="background: linear-gradient(90deg, #00d4ff, #0088cc); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 8px; width: 100%; margin-bottom: 10px; overflow: hidden;">
+          <div id="prog-gunluk-oyna" style="background: #00ff87; height: 100%; width: 0%; transition: width 0.3s;"></div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span id="text-haftalik" style="color:#aaa; font-family:'Rajdhani'; font-size:15px; font-weight:700;">0 / 10</span>
-          <button id="btn-odul-haftalik" class="action-btn" style="padding: 6px 15px; font-size: 15px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('haftalik', 500, 'altin')">ÖDÜLÜ AL</button>
+          <span id="text-gunluk-oyna" style="color:#aaa; font-family:'Rajdhani'; font-size:13px; font-weight:700;">0 / 5</span>
+          <button id="btn-gunluk-oyna" class="action-btn" style="padding: 6px 15px; font-size: 13px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('gunluk', 'oyna', 100, 'altin')">ÖDÜLÜ AL</button>
         </div>
       </div>
 
-      <!-- Görev 1: Kazanma -->
-      <div class="premium-card" style="padding: 15px; margin-bottom: 15px;">
+      <div class="modern-card" style="padding: 15px; border-left: 3px solid #00ff87; flex-shrink: 0; margin-bottom: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <h3 style="color:#fff; font-family:'Bebas Neue'; font-size:24px; margin:0;">🔥 3 MAÇ KAZAN</h3>
-          <span style="color:#ffd700; font-family:'Rajdhani'; font-weight:700;">+150 🟡</span>
+          <h3 style="color:#fff; font-family:'Bebas Neue'; font-size:20px; margin:0;">🔥 3 MAÇ KAZAN</h3>
+          <span style="color:#ffd700; font-family:'Rajdhani'; font-weight:700; font-size:13px;">+150 🟡</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 10px; width: 100%; margin-bottom: 12px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);">
-          <div id="prog-kazan" style="background: linear-gradient(90deg, #00ff87, #00b35e); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 8px; width: 100%; margin-bottom: 10px; overflow: hidden;">
+          <div id="prog-gunluk-kazan" style="background: #00ff87; height: 100%; width: 0%; transition: width 0.3s;"></div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span id="text-kazan" style="color:#aaa; font-family:'Rajdhani'; font-size:15px; font-weight:700;">0 / 3</span>
-          <button id="btn-odul-kazan" class="action-btn" style="padding: 6px 15px; font-size: 15px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('kazan', 150, 'altin')">ÖDÜLÜ AL</button>
+          <span id="text-gunluk-kazan" style="color:#aaa; font-family:'Rajdhani'; font-size:13px; font-weight:700;">0 / 3</span>
+          <button id="btn-gunluk-kazan" class="action-btn" style="padding: 6px 15px; font-size: 13px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('gunluk', 'kazan', 150, 'altin')">ÖDÜLÜ AL</button>
         </div>
       </div>
 
-      <!-- Görev 2: Nitro Kullanma -->
-      <div class="premium-card" style="padding: 15px;">
+      <div class="modern-card" style="padding: 15px; border-left: 3px solid #00ff87; flex-shrink: 0; margin-bottom: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <h3 style="color:#fff; font-family:'Bebas Neue'; font-size:24px; margin:0;">🚀 2 NİTRO KULLAN</h3>
-          <span style="color:#00d4ff; font-family:'Rajdhani'; font-weight:700;">+20 💎</span>
+          <h3 style="color:#fff; font-family:'Bebas Neue'; font-size:20px; margin:0;">🚀 2 NİTRO KULLAN</h3>
+          <span style="color:#00d4ff; font-family:'Rajdhani'; font-weight:700; font-size:13px;">+20 💎</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 10px; width: 100%; margin-bottom: 12px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);">
-          <div id="prog-nitro" style="background: linear-gradient(90deg, #00d4ff, #0088cc); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 8px; width: 100%; margin-bottom: 10px; overflow: hidden;">
+          <div id="prog-gunluk-nitro" style="background: #00d4ff; height: 100%; width: 0%; transition: width 0.3s;"></div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span id="text-nitro" style="color:#aaa; font-family:'Rajdhani'; font-size:15px; font-weight:700;">0 / 2</span>
-          <button id="btn-odul-nitro" class="action-btn" style="padding: 6px 15px; font-size: 15px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('nitro', 20, 'elmas')">ÖDÜLÜ AL</button>
+          <span id="text-gunluk-nitro" style="color:#aaa; font-family:'Rajdhani'; font-size:13px; font-weight:700;">0 / 2</span>
+          <button id="btn-gunluk-nitro" class="action-btn" style="padding: 6px 15px; font-size: 13px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('gunluk', 'nitro', 20, 'elmas')">ÖDÜLÜ AL</button>
         </div>
       </div>
-      </div> <!-- 🚨 BU KAPANIŞ DİV'İ ÇOK ÖNEMLİ: Bir önceki sekmeyi güvenle kapatır 🚨 -->
+    </div>
+
+    <!-- HAFTALIK GÖREVLER LİSTESİ -->
+    <div id="list-haftalik-gorevler" style="width: 90%; flex: 1; overflow-y: auto; display: none; flex-direction: column; gap: 10px; scrollbar-width: none; padding-bottom: 20px;">
+      
+      <div class="modern-card" style="padding: 15px; border-left: 3px solid #00d4ff; background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(0,0,0,0.8)); flex-shrink: 0; margin-bottom: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 style="color:#00d4ff; font-family:'Bebas Neue'; font-size:20px; margin:0; text-shadow: 0 0 10px rgba(0,212,255,0.3);">⚽ 30 MAÇ YAP</h3>
+          <span style="color:#ffd700; font-family:'Rajdhani'; font-weight:700; font-size:13px;">+1000 🟡</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 8px; width: 100%; margin-bottom: 10px; overflow: hidden;">
+          <div id="prog-haftalik-oyna" style="background: linear-gradient(90deg, #00d4ff, #0088cc); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span id="text-haftalik-oyna" style="color:#aaa; font-family:'Rajdhani'; font-size:13px; font-weight:700;">0 / 30</span>
+          <button id="btn-haftalik-oyna" class="action-btn" style="padding: 6px 15px; font-size: 13px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('haftalik', 'oyna', 1000, 'altin')">ÖDÜLÜ AL</button>
+        </div>
+      </div>
+
+      <div class="modern-card" style="padding: 15px; border-left: 3px solid #00d4ff; background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(0,0,0,0.8)); flex-shrink: 0; margin-bottom: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 style="color:#00d4ff; font-family:'Bebas Neue'; font-size:20px; margin:0; text-shadow: 0 0 10px rgba(0,212,255,0.3);">🔥 15 MAÇ KAZAN</h3>
+          <span style="color:#00d4ff; font-family:'Rajdhani'; font-weight:700; font-size:13px;">+100 💎</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 8px; width: 100%; margin-bottom: 10px; overflow: hidden;">
+          <div id="prog-haftalik-kazan" style="background: linear-gradient(90deg, #00d4ff, #0088cc); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span id="text-haftalik-kazan" style="color:#aaa; font-family:'Rajdhani'; font-size:13px; font-weight:700;">0 / 15</span>
+          <button id="btn-haftalik-kazan" class="action-btn" style="padding: 6px 15px; font-size: 13px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('haftalik', 'kazan', 100, 'elmas')">ÖDÜLÜ AL</button>
+        </div>
+      </div>
+
+      <div class="modern-card" style="padding: 15px; border-left: 3px solid #00d4ff; background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(0,0,0,0.8)); flex-shrink: 0; margin-bottom: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 style="color:#00d4ff; font-family:'Bebas Neue'; font-size:20px; margin:0; text-shadow: 0 0 10px rgba(0,212,255,0.3);">🥅 40 GOL AT</h3>
+          <span style="color:#ffd700; font-family:'Rajdhani'; font-weight:700; font-size:13px;">+2000 🟡</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 6px; height: 8px; width: 100%; margin-bottom: 10px; overflow: hidden;">
+          <div id="prog-haftalik-gol" style="background: linear-gradient(90deg, #00d4ff, #0088cc); height: 100%; width: 0%; transition: width 0.3s;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span id="text-haftalik-gol" style="color:#aaa; font-family:'Rajdhani'; font-size:13px; font-weight:700;">0 / 40</span>
+          <button id="btn-haftalik-gol" class="action-btn" style="padding: 6px 15px; font-size: 13px; border-radius: 8px; background: #333; color: #777; pointer-events: none; border: none; box-shadow: none;" onclick="odulAl('haftalik', 'gol', 2000, 'altin')">ÖDÜLÜ AL</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Kapat Butonu -->
+    <div style="margin-top: auto; padding-bottom: 25px; width: 100%; display: flex; justify-content: center; flex-shrink: 0;">
+      <button style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; cursor: pointer; padding: 10px 40px; border-radius: 12px;" onclick="document.getElementById('gorevler-overlay').style.display='none'; document.getElementById('global-top-bar').style.display='flex';">
+        ✖ KAPAT
+      </button>
+    </div>
+  </div>
 
    <!-- ==========================================
          YENİ NESİL AYARLAR SEKMESİ (TAB)
@@ -1540,12 +1611,31 @@
 
       <div class="section-title">SES VE TİTREŞİM</div>
 
-      <div class="modern-card" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <div style="display: flex; flex-direction: column; gap: 4px;">
-          <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 16px;">🔊 Ses Efektleri</span>
-          <span style="color: #888; font-family: 'Rajdhani'; font-size: 12px; font-weight: 600;">Oyun içi vuruş ve menü sesleri</span>
+      <!-- Gelişmiş Ses Menüsü -->
+      <div class="modern-card" style="padding: 15px; display: flex; flex-direction: column; gap: 15px; margin-bottom: 8px;">
+        
+        <!-- Müzik Ses Seviyesi (Slider) -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 20px;">🎵</span>
+              <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 16px;">Menü Müziği</span>
+            </div>
+            <span id="music-vol-text" style="color: #00d4ff; font-family: 'Bebas Neue'; font-size: 18px;">%25</span>
+          </div>
+          <input type="range" id="music-volume-slider" min="0" max="100" value="25" oninput="muzikSesiAyarla(this.value)" style="width: 100%; accent-color: #00d4ff; cursor: pointer;">
         </div>
-        <button style="background: rgba(0,255,135,0.1); color: #00ff87; border: 1px solid #00ff87; padding: 6px 16px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 14px; cursor: pointer;" onclick="ayariDegistir(this, 'ses')">AÇIK</button>
+
+        <div style="height: 1px; background: rgba(255,255,255,0.05); width: 100%;"></div>
+
+        <!-- Maç İçi Ses Efektleri (Toggle) -->
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 20px;">🔊</span>
+            <span style="color: #fff; font-family: 'Rajdhani'; font-weight: 700; font-size: 16px;">Ses Efektleri</span>
+          </div>
+          <button id="btn-sfx-toggle" style="background: rgba(0,255,135,0.1); color: #00ff87; border: 1px solid #00ff87; padding: 6px 16px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 14px; cursor: pointer;" onclick="ayariDegistir(this, 'ses')">AÇIK</button>
+        </div>
       </div>
 
       <!-- Şimdilik Gizlenen Spiker Ayarı -->
@@ -1722,7 +1812,10 @@
 <div id="widget-detail-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 40px; background: rgba(5, 13, 15, 0.98); z-index: 250; backdrop-filter: blur(10px);">
 
   <!-- Üst Başlık Kısmı -->
-  <div style="text-align: center; margin-bottom: 20px; width: 100%;">
+  <div style="text-align: center; margin-bottom: 20px; width: 100%; position: relative;">
+    
+    <!-- İKON SOLA ÇEKİLDİ (right: 15px) VE KORUMA EKLENDİ -->
+<span onclick="oyunBilgisiGoster(window.aktifWidgetId)" style="position: absolute; right: 15px; top: 0; color: #00d4ff; font-size: 26px; cursor: pointer; filter: drop-shadow(0 0 5px rgba(0,212,255,0.5)); z-index: 9999;">ⓘ</span>    
     <div id="widget-detail-icon" style="font-size: 45px; margin-bottom: 5px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));">📱</div>
     <h1 id="widget-detail-title" style="color: #fff; font-family: 'Bebas Neue'; font-size: 38px; letter-spacing: 2px; margin: 0;">DETAY BAŞLIĞI</h1>
     <p id="widget-detail-desc" style="color: #888; font-family: 'Rajdhani'; font-size: 13px; font-weight: 600; margin: 0;">Açıklama metni burada yer alacak.</p>
@@ -2192,11 +2285,18 @@
       <p style="color: #aaa; font-family: 'Rajdhani'; font-size: 13px; font-weight: 600; margin: 0;">Menajerlik Kariyeri Vitrinin</p>
     </div>
     
-    <div id="trophy-list" style="width: 90%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; overflow-y: auto; max-height: 55vh; padding-bottom: 20px; scrollbar-width: none;">
-      <!-- JS ile Dinamik Doldurulacak -->
+    <!-- Kupa ve Başarım Sekmeleri -->
+    <div style="display: flex; width: 90%; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 5px; margin-bottom: 15px;">
+      <button id="btn-vitrin-basarim" style="flex: 1; padding: 8px; background: linear-gradient(135deg, #00d4ff, #0088cc); color: #000; border: none; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 18px; cursor: pointer; transition: 0.2s;" onclick="vitrinSekmeDegistir('basarim')">⭐ BAŞARIMLAR</button>
+      <button id="btn-vitrin-kupa" style="flex: 1; padding: 8px; background: transparent; color: #aaa; border: none; border-radius: 8px; font-family: 'Bebas Neue'; font-size: 18px; cursor: pointer; transition: 0.2s;" onclick="vitrinSekmeDegistir('kupa')">🏆 KUPALAR</button>
     </div>
 
-    <button style="margin-top: auto; margin-bottom: 30px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; cursor: pointer; padding: 10px 40px; border-radius: 12px;" onclick="document.getElementById('trophy-room-overlay').style.display='none'">✖ KAPAT</button>
+    <!-- Kupa Listesi (Varsayılan Açık) -->
+    <div id="trophy-list" style="width: 90%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; overflow-y: auto; max-height: 55vh; padding-bottom: 20px; scrollbar-width: none;"></div>
+
+    <!-- Başarımlar Listesi (Başlangıçta Gizli) -->
+    <div id="achievement-list" style="width: 90%; display: none; flex-direction: column; gap: 10px; overflow-y: auto; max-height: 55vh; padding-bottom: 20px; scrollbar-width: none;"></div>
+ <button style="margin-top: auto; margin-bottom: 30px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; cursor: pointer; padding: 10px 40px; border-radius: 12px;" onclick="document.getElementById('trophy-room-overlay').style.display='none'; document.getElementById('global-top-bar').style.display='flex';">✖ KAPAT</button>
   </div>
 
   <!-- KOVULMA EKRANI -->
@@ -2254,37 +2354,41 @@
 
 
 
-<!-- ==========================================
-       🔥 GÜNLÜK GİRİŞ SERİSİ EKRANI (MOBİL DÜZEN)
-       ========================================== -->
-  <div id="streak-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 250; background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(0,0,0,0.95) 100%);">
+<!-- GÜNLÜK GİRİŞ SERİSİ (STREAK) OVERLAY -->
+<div id="streak-overlay" class="overlay-screen" style="display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 5000; background: radial-gradient(circle, rgba(20, 15, 0, 0.95) 0%, rgba(5, 13, 15, 0.98) 100%); backdrop-filter: blur(10px);">
+  
+  <div style="width: 100%; max-width: 360px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
     
-    <!-- YENİ: PC'de yayılmayı önleyen iç kapsayıcı -->
-    <div style="width: 100%; max-width: 360px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      
-      <div style="font-size: 80px; filter: drop-shadow(0 0 20px #ffd700); margin-bottom: -10px;">🔥</div>
-      <h1 style="font-family: 'Bebas Neue'; font-size: 46px; color: #fff; text-shadow: 0 0 20px rgba(255,215,0,0.5); margin: 0; letter-spacing: 2px; text-align: center; line-height: 1;">GÜNLÜK GİRİŞ SERİSİ</h1>
-      <p style="color: #aaa; font-family: 'Rajdhani'; font-size: 15px; font-weight: 700; margin-bottom: 25px; text-align: center;">Seriyi bozma, 7. gün dev ödülü kap!</p>
-
-      <!-- 7 GÜNLÜK ÖDÜL YOLU -->
-      <div id="streak-days-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 95%; margin-bottom: 15px;">
-        <!-- JavaScript ile doldurulacak -->
-      </div>
-      
-      <!-- 7. GÜN BÜYÜK ÖDÜL -->
-      <div id="streak-day-7" style="width: 95%; background: rgba(255,215,0,0.1); border: 2px solid #ffd700; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 20px rgba(255,215,0,0.3); margin-bottom: 25px;">
-        <div>
-          <div style="color: #ffd700; font-family: 'Bebas Neue'; font-size: 24px; line-height: 1;">7. GÜN: MEGA KASA</div>
-          <div style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">500 🟡 + 50 💎</div>
-        </div>
-        <div style="font-size: 35px;">🎁</div>
-      </div>
-
-      <button id="btn-claim-streak" class="action-btn" style="width: 95%; background: linear-gradient(135deg, #00ff87, #00b35e); color: #000; padding: 15px 0; font-size: 22px; border: none; box-shadow: 0 4px 20px rgba(0,255,135,0.4);" onclick="seriOdulunuAl()">BUGÜNÜN ÖDÜLÜNÜ AL</button>
-      <button style="margin-top: 15px; background: transparent; border: none; color: rgba(255,255,255,0.5); font-family: 'Rajdhani'; font-size: 16px; font-weight: 700; cursor: pointer; text-decoration: underline;" onclick="document.getElementById('streak-overlay').style.display='none';">✖ KAPAT</button>
-      
+    <!-- Başlık -->
+    <div style="position: relative; margin-bottom: 25px; text-align: center;">
+      <div style="font-size: 70px; filter: drop-shadow(0 0 25px #ffaa00); margin-bottom: -15px; animation: pulse-dot 2s infinite;">🔥</div>
+      <h1 style="font-family: 'Bebas Neue'; font-size: 42px; color: #fff; text-shadow: 0 0 20px rgba(255,170,0,0.6); margin: 0; letter-spacing: 2px; line-height: 1;">GÜNLÜK GİRİŞ SERİSİ</h1>
+      <p style="color: #ffd700; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px;">Seriyi bozma, 7. gün dev ödülü kap!</p>
     </div>
+
+    <!-- 1-6 Günler Grid -->
+    <div id="streak-days-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 90%; margin-bottom: 15px;">
+      <!-- JS Dolduracak -->
+    </div>
+    
+    <!-- 7. GÜN BÜYÜK ÖDÜL -->
+    <div id="streak-day-7" class="modern-card" style="width: 90%; padding: 15px 20px; background: linear-gradient(145deg, rgba(255,215,0,0.15), rgba(0,0,0,0.9)); border: 1px solid #ffd700; box-shadow: 0 5px 25px rgba(255,215,0,0.3); display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; transition: all 0.3s;">
+      <div style="display: flex; flex-direction: column; text-align: left;">
+        <span style="color: #ffd700; font-family: 'Bebas Neue'; font-size: 24px; line-height: 1; letter-spacing: 1px;">7. GÜN: MEGA KASA</span>
+        <div style="display: flex; gap: 10px; margin-top: 4px;">
+          <span style="color: #fff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 800;">500 🟡</span>
+          <span style="color: #00d4ff; font-family: 'Rajdhani'; font-size: 14px; font-weight: 800;">+ 50 💎</span>
+        </div>
+      </div>
+      <div style="font-size: 45px; filter: drop-shadow(0 0 15px rgba(255,215,0,0.6));">🎁</div>
+    </div>
+
+    <!-- Butonlar -->
+    <button id="btn-claim-streak" class="btn-green-glow" style="width: 90%; font-size: 22px; padding: 16px 0; margin-bottom: 15px; box-shadow: 0 4px 20px rgba(0,255,135,0.4);" onclick="seriOdulunuAl()">BUGÜNÜN ÖDÜLÜNÜ AL</button>
+    <button style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #888; font-family: 'Rajdhani'; font-size: 15px; font-weight: 700; cursor: pointer; padding: 10px 30px; border-radius: 12px; transition: all 0.2s;" onclick="document.getElementById('streak-overlay').style.display='none';">✖ KAPAT</button>
+    
   </div>
+</div>
 
 <div class="game-wrapper">
   <!-- Skorboard Alanı -->
@@ -2914,19 +3018,47 @@ let oyuncuGelisim = {
 // ==========================================
 let OYUN_AYARLARI = {
   ses: true,
+  muzikSesi: 0.25, // Varsayılan müzik sesi %25
   spiker: true,
   titresim: true,
-  gucTasarrufu: false, // Düşük efekt modu varsayılan olarak kapalı
+  gucTasarrufu: false,
   bildirim: true
 };
 
-// Oyun açıldığında eski ayarları yükler
 function ayarlariYukle() {
   const kayitli = localStorage.getItem('futbolTayfaAyarlar');
   if (kayitli) {
-    OYUN_AYARLARI = JSON.parse(kayitli);
+    OYUN_AYARLARI = { ...OYUN_AYARLARI, ...JSON.parse(kayitli) };
   }
+  
+  // Slider ve Metin Güncellemesi
+  let slider = document.getElementById('music-volume-slider');
+  let text = document.getElementById('music-vol-text');
+  let yuzde = Math.round(OYUN_AYARLARI.muzikSesi * 100);
+  
+  if (slider) slider.value = yuzde;
+  if (text) text.textContent = '%' + yuzde;
+  
+  let bgm = document.getElementById('bg-music');
+  if (bgm) bgm.volume = OYUN_AYARLARI.muzikSesi;
 }
+
+window.muzikSesiAyarla = function(val) {
+  let yuzde = parseInt(val);
+  OYUN_AYARLARI.muzikSesi = yuzde / 100;
+  localStorage.setItem('futbolTayfaAyarlar', JSON.stringify(OYUN_AYARLARI));
+  
+  let bgm = document.getElementById('bg-music');
+  if (bgm) {
+      bgm.volume = OYUN_AYARLARI.muzikSesi;
+      if (OYUN_AYARLARI.muzikSesi > 0 && bgm.paused && !gameRunning) {
+          bgm.play().catch(()=>{});
+      }
+  }
+  
+  let txt = document.getElementById('music-vol-text');
+  if (txt) txt.textContent = '%' + yuzde;
+};
 
 
 
@@ -3681,6 +3813,13 @@ function saveSimResult() {
   if (currentGameMode === 'avrupa') {
      kazanilanAltin *= 2; 
      altinEkle(kazanilanAltin);
+     // Görev Tetikleyicileri
+  gorevIlerlemesi('oyna', 1);
+  let benimGol = benEvSahibiyim ? sEv : (benDeplasmanim ? sDep : 0);
+  if (benimGol > 0) gorevIlerlemesi('gol', benimGol);
+  if ((benEvSahibiyim && sEv > sDep) || (benDeplasmanim && sDep > sEv)) {
+     gorevIlerlemesi('kazan', 1);
+  }
      simData.avrupa.aktifHafta++;
      localStorage.setItem('futbolTayfaKariyer', JSON.stringify(simData));
      if (currentGameMode === 'sim' || currentGameMode === 'avrupa') yonetimGuveniGuncelle(sEv, sDep, benEvSahibiyim);
@@ -3690,6 +3829,13 @@ function saveSimResult() {
 
   if (currentGameMode === 'sim') {
       altinEkle(kazanilanAltin);
+      // Görev Tetikleyicileri
+  gorevIlerlemesi('oyna', 1);
+  let benimGol = benEvSahibiyim ? sEv : (benDeplasmanim ? sDep : 0);
+  if (benimGol > 0) gorevIlerlemesi('gol', benimGol);
+  if ((benEvSahibiyim && sEv > sDep) || (benDeplasmanim && sDep > sEv)) {
+     gorevIlerlemesi('kazan', 1);
+  }
       let tEv = simData.takimlar[currentMatchData.ev]; let tDep = simData.takimlar[currentMatchData.dep];
       if (tEv && tDep) {
           tEv.o++; tDep.o++; tEv.a += sEv; tEv.y += sDep; tDep.a += sDep; tDep.y += sEv;
@@ -4600,6 +4746,7 @@ function simuleEtReklamla(event) {
 }
 
 function startCountdown() {
+  if (typeof menuyuMuzigeKapat === 'function') menuyuMuzigeKapat(); // MENÜ MÜZİĞİNİ DURDUR
   try {
     const a1=document.getElementById('audio-team1'), a2=document.getElementById('audio-team2');
     if(OYUN_AYARLARI.ses) {
@@ -4637,6 +4784,7 @@ function startCountdown() {
 
 function endGame() {
   gameRunning = false;
+  if (typeof menuyuMuzigeAc === 'function') menuyuMuzigeAc(); // MENÜ MÜZİĞİNİ YENİDEN BAŞLAT
   clearInterval(timerInterval);
   
   document.getElementById('action-panel').style.display = 'none';
@@ -4805,6 +4953,13 @@ function uygulaHizliSimulasyon() {
 
   if (currentGameMode === 'avrupa') {
      kazanilanAltin *= 2; altinEkle(kazanilanAltin);
+     // Görev Tetikleyicileri
+  gorevIlerlemesi('oyna', 1);
+  let benimGol = benEvSahibiyim ? sEv : (benDeplasmanim ? sDep : 0);
+  if (benimGol > 0) gorevIlerlemesi('gol', benimGol);
+  if ((benEvSahibiyim && sEv > sDep) || (benDeplasmanim && sDep > sEv)) {
+     gorevIlerlemesi('kazan', 1);
+  }
      simData.avrupa.aktifHafta++;
      localStorage.setItem('futbolTayfaKariyer', JSON.stringify(simData));
      alert(`✈️ AVRUPA SİMÜLASYONU\n\nSkor: ${sEv} - ${sDep}\nÖdül: +${kazanilanAltin} 🟡`);
@@ -4815,6 +4970,13 @@ function uygulaHizliSimulasyon() {
   }
 
   altinEkle(kazanilanAltin);
+  // Görev Tetikleyicileri
+  gorevIlerlemesi('oyna', 1);
+  let benimGol = benEvSahibiyim ? sEv : (benDeplasmanim ? sDep : 0);
+  if (benimGol > 0) gorevIlerlemesi('gol', benimGol);
+  if ((benEvSahibiyim && sEv > sDep) || (benDeplasmanim && sDep > sEv)) {
+     gorevIlerlemesi('kazan', 1);
+  }
   let tEv = simData.takimlar[currentMatchData.ev]; let tDep = simData.takimlar[currentMatchData.dep];
   if (tEv && tDep) {
     tEv.o++; tDep.o++; tEv.a += sEv; tEv.y += sDep; tDep.a += sDep; tDep.y += sEv;
@@ -5054,73 +5216,140 @@ function testElmasEkle(miktar) {
   alert(miktar + " Elmas eklendi!");
 }
 // ==========================================
-// GÜNLÜK GÖREV SİSTEMİ (GENİŞLETİLMİŞ)
+// 📅 GÜNLÜK VE HAFTALIK GÖREV MOTORU
 // ==========================================
-let gunlukGorevler = {
-  kazan:  { mevcut: 0, hedef: 3, alindi: false },
-  nitro:  { mevcut: 0, hedef: 2, alindi: false },
-  gol:    { mevcut: 0, hedef: 10, alindi: false }, // YENİ
-  kalkan: { mevcut: 0, hedef: 3, alindi: false },  // YENİ
-  oyna:   { mevcut: 0, hedef: 5, alindi: false }   // YENİ
-};
+let gunlukGorevler = {};
+let haftalikGorevler = {};
 
-// ==========================================
-// GÜVENLİ GÖREV YÜKLEME MOTORU
-// ==========================================
+// Yılın kaçıncı haftasında olduğumuzu hesaplar
+function getHaftaNumarasi() {
+    let d = new Date();
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+    let yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    let weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    return d.getUTCFullYear() + "-" + weekNo;
+}
+
 function gorevleriYukle() {
   let bugun = new Date().toLocaleDateString();
-  let kayitliTarih = localStorage.getItem('futbolTayfaGorevTarihi');
-  
-  // Eksik görevleri tanımlayan standart şablon
-  let standartGorevler = {
-    kazan:  { mevcut: 0, hedef: 3, alindi: false },
-    nitro:  { mevcut: 0, hedef: 2, alindi: false },
-    gol:    { mevcut: 0, hedef: 10, alindi: false }, 
-    kalkan: { mevcut: 0, hedef: 3, alindi: false },  
-    oyna:   { mevcut: 0, hedef: 5, alindi: false }   
+  let buHafta = getHaftaNumarasi();
+
+  let stGunluk = { 
+     oyna: { mevcut: 0, hedef: 5, alindi: false }, 
+     kazan: { mevcut: 0, hedef: 3, alindi: false }, 
+     nitro: { mevcut: 0, hedef: 2, alindi: false } 
+  };
+  let stHaftalik = { 
+     oyna: { mevcut: 0, hedef: 30, alindi: false }, 
+     kazan: { mevcut: 0, hedef: 15, alindi: false }, 
+     gol: { mevcut: 0, hedef: 40, alindi: false } 
   };
 
-  if (kayitliTarih === bugun) {
-    let kayit = localStorage.getItem('futbolTayfaGorevler');
-    if (kayit) {
-        let parsed = JSON.parse(kayit);
-        // Eski kaydı standart şablonla birleştirip eksikleri tamamlar
-        gunlukGorevler = { ...standartGorevler, ...parsed };
-    } else {
-        gunlukGorevler = standartGorevler;
-    }
+  // Günlük Kontrol
+  if (localStorage.getItem('futbolTayfaGorevTarihi') === bugun) {
+      let kg = localStorage.getItem('futbolTayfaGunlukGorevler');
+      if (kg) gunlukGorevler = { ...stGunluk, ...JSON.parse(kg) };
   } else {
-    // Yeni gün, görevleri sıfırla
-    gunlukGorevler = standartGorevler;
-    localStorage.setItem('futbolTayfaGorevTarihi', bugun);
-    localStorage.setItem('futbolTayfaGorevler', JSON.stringify(gunlukGorevler));
+      gunlukGorevler = stGunluk;
+      localStorage.setItem('futbolTayfaGorevTarihi', bugun);
   }
+
+  // Haftalık Kontrol
+  if (localStorage.getItem('futbolTayfaGorevHaftasi') === buHafta) {
+      let kh = localStorage.getItem('futbolTayfaHaftalikGorevler');
+      if (kh) haftalikGorevler = { ...stHaftalik, ...JSON.parse(kh) };
+  } else {
+      haftalikGorevler = stHaftalik;
+      localStorage.setItem('futbolTayfaGorevHaftasi', buHafta);
+  }
+
   gorevArayuzunuGuncelle();
 }
 
 function gorevIlerlemesi(tur, miktar = 1) {
-  if (gunlukGorevler[tur].alindi) return;
-  if (gunlukGorevler[tur].mevcut < gunlukGorevler[tur].hedef) {
-    gunlukGorevler[tur].mevcut += miktar;
-    if (gunlukGorevler[tur].mevcut > gunlukGorevler[tur].hedef) gunlukGorevler[tur].mevcut = gunlukGorevler[tur].hedef;
-    
-    localStorage.setItem('futbolTayfaGorevler', JSON.stringify(gunlukGorevler));
-    gorevArayuzunuGuncelle();
+  let guncellendi = false;
+
+  if (gunlukGorevler[tur] && !gunlukGorevler[tur].alindi && gunlukGorevler[tur].mevcut < gunlukGorevler[tur].hedef) {
+      gunlukGorevler[tur].mevcut += miktar;
+      if (gunlukGorevler[tur].mevcut > gunlukGorevler[tur].hedef) gunlukGorevler[tur].mevcut = gunlukGorevler[tur].hedef;
+      localStorage.setItem('futbolTayfaGunlukGorevler', JSON.stringify(gunlukGorevler));
+      guncellendi = true;
   }
+
+  if (haftalikGorevler[tur] && !haftalikGorevler[tur].alindi && haftalikGorevler[tur].mevcut < haftalikGorevler[tur].hedef) {
+      haftalikGorevler[tur].mevcut += miktar;
+      if (haftalikGorevler[tur].mevcut > haftalikGorevler[tur].hedef) haftalikGorevler[tur].mevcut = haftalikGorevler[tur].hedef;
+      localStorage.setItem('futbolTayfaHaftalikGorevler', JSON.stringify(haftalikGorevler));
+      guncellendi = true;
+  }
+
+  if (guncellendi) gorevArayuzunuGuncelle();
 }
 
-// ==========================================
-// GÖREV ARAYÜZÜ VE BUTON PARLATMA MOTORU
-// ==========================================
+function arayuzGorevGuncelle(sure, tur, data) {
+   let prog = document.getElementById(`prog-${sure}-${tur}`);
+   let txt = document.getElementById(`text-${sure}-${tur}`);
+   let btn = document.getElementById(`btn-${sure}-${tur}`);
+
+   if(prog && txt && btn) {
+      prog.style.width = (data.mevcut / data.hedef * 100) + '%';
+      txt.textContent = `${data.mevcut} / ${data.hedef}`;
+      
+      if(data.alindi) {
+         btn.textContent = "ALINDI ✓";
+         btn.style.background = "#222"; btn.style.color = "#777";
+         btn.style.pointerEvents = "none";
+      } else if(data.mevcut >= data.hedef) {
+         btn.textContent = "ÖDÜLÜ AL";
+         btn.style.background = (sure === 'haftalik') ? "linear-gradient(135deg, #00d4ff, #0088cc)" : "linear-gradient(135deg, #00ff87, #00b35e)";
+         btn.style.color = "#000";
+         btn.style.pointerEvents = "auto";
+      }
+   }
+}
+
 function gorevArayuzunuGuncelle() {
-  // Sadece Ana Sayfadaki küçük Widget'in barını günceller (Sadece Nitro görevinin ilerlemesini yansıtıyoruz)
-  let n = gunlukGorevler.nitro;
-  let elProgNitro = document.getElementById('prog-nitro');
-  let txtNitro = document.getElementById('text-nitro');
+   // Kartları Güncelle
+   if (gunlukGorevler.oyna) arayuzGorevGuncelle('gunluk', 'oyna', gunlukGorevler.oyna);
+   if (gunlukGorevler.kazan) arayuzGorevGuncelle('gunluk', 'kazan', gunlukGorevler.kazan);
+   if (gunlukGorevler.nitro) arayuzGorevGuncelle('gunluk', 'nitro', gunlukGorevler.nitro);
+
+   if (haftalikGorevler.oyna) arayuzGorevGuncelle('haftalik', 'oyna', haftalikGorevler.oyna);
+   if (haftalikGorevler.kazan) arayuzGorevGuncelle('haftalik', 'kazan', haftalikGorevler.kazan);
+   if (haftalikGorevler.gol) arayuzGorevGuncelle('haftalik', 'gol', haftalikGorevler.gol);
+
+   // Ana Ekran Widget'ı (Sadece Günlük Oyna yansıtılır)
+   let n = gunlukGorevler.oyna;
+   let elProgNitro = document.getElementById('prog-nitro');
+   let txtNitro = document.getElementById('text-nitro');
+   if (elProgNitro && txtNitro && n) {
+     elProgNitro.style.width = (n.mevcut / n.hedef * 100) + '%';
+     txtNitro.textContent = `${n.mevcut} / ${n.hedef}`;
+   }
+}
+
+function odulAl(sure, tur, miktar, tip) {
+  let gorev = (sure === 'haftalik') ? haftalikGorevler[tur] : gunlukGorevler[tur];
   
-  if (elProgNitro && txtNitro) {
-    elProgNitro.style.width = (n.mevcut / n.hedef * 100) + '%';
-    txtNitro.textContent = `${n.mevcut} / ${n.hedef}`;
+  if (gorev && gorev.mevcut >= gorev.hedef && !gorev.alindi) {
+    gorev.alindi = true;
+    
+    if (sure === 'haftalik') localStorage.setItem('futbolTayfaHaftalikGorevler', JSON.stringify(haftalikGorevler));
+    else localStorage.setItem('futbolTayfaGunlukGorevler', JSON.stringify(gunlukGorevler));
+    
+    if (tip === 'altin') {
+      altinEkle(miktar);
+      alert(`🎉 TEBRİKLER!\nGörevi tamamladın ve +${miktar} 🟡 kazandın.`);
+    } else if (tip === 'elmas') {
+      oyuncuElmas += miktar;
+      localStorage.setItem('futbolTayfaElmas', oyuncuElmas);
+      if(document.getElementById('player-diamond-global')) document.getElementById('player-diamond-global').textContent = oyuncuElmas;
+      alert(`🎉 TEBRİKLER!\nGörevi tamamladın ve +${miktar} 💎 kazandın.`);
+    }
+    
+    gorevArayuzunuGuncelle();
+    if(typeof menajerArayuzunuGuncelle === 'function') menajerArayuzunuGuncelle();
   }
 }
 
@@ -5426,6 +5655,12 @@ function ayariDegistir(btn, tip) {
   OYUN_AYARLARI[tip] = !OYUN_AYARLARI[tip];
   localStorage.setItem('futbolTayfaAyarlar', JSON.stringify(OYUN_AYARLARI));
 
+  // Sese tıklandıysa arka plan müziğini anında yönet
+  if (tip === 'ses') {
+      if (OYUN_AYARLARI.ses && !gameRunning) menuyuMuzigeAc();
+      else menuyuMuzigeKapat();
+  }
+
   if(OYUN_AYARLARI[tip]) {
     btn.textContent = 'AÇIK';
     btn.style.color = '#00ff87';
@@ -5601,13 +5836,28 @@ function sezonuBitir() {
      }
   }
 
-  if (sampiyonId === benimKariyerTakimim) {
+ if (sampiyonId === benimKariyerTakimim) {
      document.getElementById('season-reward').style.display = 'block';
      oyuncuAltin += 1000; localStorage.setItem('futbolTayfaAltin', oyuncuAltin);
      if(document.getElementById('player-gold-global')) document.getElementById('player-gold-global').textContent = oyuncuAltin;
      oyuncuElmas += 100; localStorage.setItem('futbolTayfaElmas', oyuncuElmas);
      if(document.getElementById('player-diamond-global')) document.getElementById('player-diamond-global').textContent = oyuncuElmas;
      xpEkle(50); 
+     
+     // 🏆 KUPAYI VİTRİNE (BAŞARI ODASINA) KAYDET
+     let yeniKupa = {
+         isim: LIGLER[currentLig].isim.replace('🇹🇷 ', '').replace('🏆 ', ''), // Ligin başındaki emojileri temizler
+         takim: tkInfo.isim,
+         sezon: simData.sezon || 1,
+         tur: 'lig'
+     };
+     
+     // Aynı sezonda aynı kupayı iki kez eklememek için güvenlik kontrolü
+     let kupaZatenVarMi = kazanilanKupalar.some(k => k.isim === yeniKupa.isim && k.sezon === yeniKupa.sezon);
+     if (!kupaZatenVarMi) {
+         kazanilanKupalar.push(yeniKupa);
+         localStorage.setItem('futbolTayfaKupalar', JSON.stringify(kazanilanKupalar));
+     }
   } else {
      document.getElementById('season-reward').style.display = 'none';
   }
@@ -5957,35 +6207,62 @@ function seriEkraniniCiz() {
   const container = document.getElementById('streak-days-container');
   container.innerHTML = '';
   
-  // İlk 6 günü çiz (7. gün zaten altta sabit)
   for (let i = 0; i < 6; i++) {
     let gunNo = i + 1;
     let odul = STREAK_ODULLERI[i];
-    let durumStili = "background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #aaa;"; // Bekleyen
-    let ikon = "🔒";
+    
+    // Varsayılan (Kilitli / Bekleyen)
+    let boxBg = "background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.6)); border: 1px solid rgba(255,255,255,0.05);";
+    let baslikRenk = "#888";
+    let ikon = `<div style="font-size: 24px; filter: grayscale(100%) opacity(0.5);">🔒</div>`;
+    let odulMetni = `<span style="color: #666; font-family: 'Rajdhani'; font-size: 13px; font-weight: 700;">${odul.altin} 🟡 ${odul.elmas > 0 ? '<br>+ '+odul.elmas+' 💎' : ''}</span>`;
 
     if (i < oyuncuSeriGunu) {
-      durumStili = "background: rgba(0,255,135,0.1); border: 1px solid #00ff87; color: #00ff87;"; // Alınmış
-      ikon = "✓";
+      // Alınmış (Geçmiş günler - Yeşil Neon)
+      boxBg = "background: linear-gradient(145deg, rgba(0,255,135,0.05), rgba(0,0,0,0.8)); border: 1px solid rgba(0,255,135,0.3);";
+      baslikRenk = "#00ff87";
+      ikon = `<div style="font-size: 24px; filter: drop-shadow(0 0 5px rgba(0,255,135,0.5));">✓</div>`;
+      odulMetni = `<span style="color: #00ff87; font-family: 'Rajdhani'; font-size: 13px; font-weight: 700; text-decoration: line-through;">${odul.altin} 🟡</span>`;
     } else if (i === oyuncuSeriGunu && !bugunSeriAlindiMi) {
-      durumStili = "background: rgba(255,215,0,0.15); border: 1px solid #ffd700; color: #ffd700; box-shadow: 0 0 15px rgba(255,215,0,0.3);"; // Bugünün
-      ikon = "🎁";
+      // Bugünün Ödülü (Canlı Altın - Büyümüş Kart)
+      boxBg = "background: linear-gradient(145deg, rgba(255,215,0,0.15), rgba(0,0,0,0.9)); border: 1px solid #ffd700; box-shadow: 0 0 20px rgba(255,215,0,0.4); transform: scale(1.05); z-index: 10;";
+      baslikRenk = "#ffd700";
+      ikon = `<div style="font-size: 28px; filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));">🎁</div>`;
+      odulMetni = `<span style="color: #fff; font-family: 'Rajdhani'; font-size: 13px; font-weight: 800;">${odul.altin} 🟡 ${odul.elmas > 0 ? '<br>+ '+odul.elmas+' 💎' : ''}</span>`;
     }
 
     container.innerHTML += `
-      <div style="${durumStili} border-radius: 10px; padding: 10px; text-align: center; display: flex; flex-direction: column; gap: 5px;">
-        <span style="font-family: 'Bebas Neue'; font-size: 18px;">${gunNo}. GÜN</span>
-        <span style="font-size: 20px;">${ikon}</span>
-        <span style="font-family: 'Rajdhani'; font-size: 13px; font-weight: 700;">${odul.altin}🟡 ${odul.elmas > 0 ? '+'+odul.elmas+'💎' : ''}</span>
+      <div style="${boxBg} border-radius: 12px; padding: 12px 5px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; transition: all 0.3s;">
+        <span style="color: ${baslikRenk}; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px;">${gunNo}. GÜN</span>
+        ${ikon}
+        <div style="line-height: 1.2;">${odulMetni}</div>
       </div>
     `;
   }
 
-  // Buton durumunu ayarla
+  // 7. GÜN STİLİNİ DİNAMİK GÜNCELLE
+  const day7Card = document.getElementById('streak-day-7');
+  if (day7Card) {
+    if (oyuncuSeriGunu === 6 && !bugunSeriAlindiMi) {
+      day7Card.style.boxShadow = "0 0 35px rgba(255,215,0,0.6)";
+      day7Card.style.transform = "scale(1.03)";
+      day7Card.style.borderColor = "#fff";
+    } else if (oyuncuSeriGunu > 6) {
+       day7Card.style.opacity = "0.5";
+       day7Card.style.filter = "grayscale(100%)";
+    } else {
+       day7Card.style.boxShadow = "0 5px 25px rgba(255,215,0,0.2)";
+       day7Card.style.transform = "scale(1)";
+       day7Card.style.borderColor = "#ffd700";
+       day7Card.style.opacity = "1";
+       day7Card.style.filter = "none";
+    }
+  }
+
   const btnClaim = document.getElementById('btn-claim-streak');
   if (bugunSeriAlindiMi) {
     btnClaim.textContent = "BUGÜNÜN ÖDÜLÜ ALINDI ✓";
-    btnClaim.style.background = "#333";
+    btnClaim.style.background = "#222";
     btnClaim.style.color = "#777";
     btnClaim.style.boxShadow = "none";
     btnClaim.style.pointerEvents = "none";
@@ -5993,6 +6270,7 @@ function seriEkraniniCiz() {
     btnClaim.textContent = "BUGÜNÜN ÖDÜLÜNÜ AL";
     btnClaim.style.background = "linear-gradient(135deg, #00ff87, #00b35e)";
     btnClaim.style.color = "#000";
+    btnClaim.style.boxShadow = "0 4px 20px rgba(0,255,135,0.4)";
     btnClaim.style.pointerEvents = "auto";
   }
 }
@@ -7888,20 +8166,54 @@ window.golKralligiGoster = function() {
 
     document.getElementById('top-scorer-overlay').style.display = 'flex';
 };
-// 1. KUPA VE BAŞARI SİSTEMİ
+// ==========================================
+// 🏆 KUPA, İSTATİSTİK VE BAŞARIM MOTORU
+// ==========================================
+
 let kazanilanKupalar = JSON.parse(localStorage.getItem('futbolTayfaKupalar')) || [];
+let oyuncuIstatistikleri = JSON.parse(localStorage.getItem('futbolTayfaIstatistik')) || {
+    oynananMac: 0, kazanilanMac: 0, atilanGol: 0, alinanBasarimlar: []
+};
+
+// İstediğin kadar başarım ekleyebileceğin Ana Liste
+const BASARIM_LISTESI = [
+    { id: "mac_10", baslik: "Isınma Turları", aciklama: "Kariyerinde 10 maça çık.", tur: "oynananMac", hedef: 10, odulAltin: 200, odulElmas: 0 },
+    { id: "mac_50", baslik: "Deneyimli Hoca", aciklama: "Kariyerinde 50 maça çık.", tur: "oynananMac", hedef: 50, odulAltin: 1000, odulElmas: 10 },
+    { id: "mac_100", baslik: "Asırlık Çınar", aciklama: "Kariyerinde 100 maça çık.", tur: "oynananMac", hedef: 100, odulAltin: 3000, odulElmas: 50 },
+    { id: "gol_50", baslik: "Ağları Delen", aciklama: "Toplamda 50 gol at.", tur: "atilanGol", hedef: 50, odulAltin: 500, odulElmas: 0 },
+    { id: "gol_150", baslik: "Gol Makinesi", aciklama: "Toplamda 150 gol at.", tur: "atilanGol", hedef: 150, odulAltin: 1500, odulElmas: 25 },
+    { id: "galibiyet_20", baslik: "Zafer Yolu", aciklama: "20 galibiyet al.", tur: "kazanilanMac", hedef: 20, odulAltin: 800, odulElmas: 5 },
+    { id: "galibiyet_100", baslik: "Yenilmez Armada", aciklama: "100 galibiyet al.", tur: "kazanilanMac", hedef: 100, odulAltin: 5000, odulElmas: 100 }
+];
+
+window.vitrinSekmeDegistir = function(sekme) {
+    let btnKupa = document.getElementById('btn-vitrin-kupa');
+    let btnBasarim = document.getElementById('btn-vitrin-basarim');
+    let divKupa = document.getElementById('trophy-list');
+    let divBasarim = document.getElementById('achievement-list');
+
+    if (sekme === 'kupa') {
+        btnKupa.style.background = 'linear-gradient(135deg, #ffd700, #ffaa00)'; btnKupa.style.color = '#000';
+        btnBasarim.style.background = 'transparent'; btnBasarim.style.color = '#aaa';
+        divKupa.style.display = 'grid'; divBasarim.style.display = 'none';
+    } else {
+        btnBasarim.style.background = 'linear-gradient(135deg, #00d4ff, #0088cc)'; btnBasarim.style.color = '#000';
+        btnKupa.style.background = 'transparent'; btnKupa.style.color = '#aaa';
+        divKupa.style.display = 'none'; divBasarim.style.display = 'flex';
+    }
+};
 
 window.basariOdasiniAc = function() {
+    // 1. Kupa Çizimi
     const listDiv = document.getElementById('trophy-list');
     listDiv.innerHTML = '';
-    
     if (kazanilanKupalar.length === 0) {
         listDiv.innerHTML = `<div style="grid-column: span 2; text-align: center; color: #666; font-family: 'Rajdhani'; font-size: 14px; margin-top: 20px;">Henüz kazanılmış bir kupa yok. Şampiyon ol ve vitrini doldur!</div>`;
     } else {
         kazanilanKupalar.forEach(kupa => {
             let renk = kupa.tur === 'ucl' ? '#00d4ff' : (kupa.tur === 'uel' ? '#ff6b00' : '#ffd700');
             listDiv.innerHTML += `
-              <div class="modern-card" style="padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-color: ${renk}40; background: linear-gradient(145deg, ${renk}10, rgba(0,0,0,0.9)); text-align: center;">
+              <div class="modern-card" style="padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-color: ${renk}40; background: linear-gradient(145deg, ${renk}10, rgba(0,0,0,0.9)); text-align: center; margin-bottom: 0;">
                  <div style="font-size: 40px; filter: drop-shadow(0 0 10px ${renk}80);">🏆</div>
                  <span style="color: ${renk}; font-family: 'Bebas Neue'; font-size: 18px; line-height: 1;">${kupa.isim}</span>
                  <span style="color: #fff; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">${kupa.takim}</span>
@@ -7910,24 +8222,90 @@ window.basariOdasiniAc = function() {
             `;
         });
     }
-    document.getElementById('manager-profile-overlay').style.display = 'none';
+
+    // 2. Başarım Çizimi
+    const basarimDiv = document.getElementById('achievement-list');
+    basarimDiv.innerHTML = '';
+    
+    BASARIM_LISTESI.forEach(b => {
+        let mevcut = oyuncuIstatistikleri[b.tur] || 0;
+        if (mevcut > b.hedef) mevcut = b.hedef;
+        let yuzde = (mevcut / b.hedef) * 100;
+        let alindi = oyuncuIstatistikleri.alinanBasarimlar.includes(b.id);
+        
+        let btnHtml = "";
+        if (alindi) {
+            btnHtml = `<button style="background: rgba(255,255,255,0.05); color: #777; border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 12px; box-shadow: none;" disabled>ALINDI ✓</button>`;
+        } else if (mevcut >= b.hedef) {
+            btnHtml = `<button style="background: linear-gradient(135deg, #00d4ff, #0088cc); color: #000; border: none; padding: 6px 12px; border-radius: 8px; font-family: 'Rajdhani'; font-weight: 700; font-size: 12px; cursor: pointer; box-shadow: 0 0 10px rgba(0,212,255,0.4);" onclick="basarimOduluAl('${b.id}')">ÖDÜLÜ AL</button>`;
+        } else {
+            btnHtml = `<span style="color: #aaa; font-family: 'Rajdhani'; font-size: 14px; font-weight: 700;">${mevcut} / ${b.hedef}</span>`;
+        }
+
+        basarimDiv.innerHTML += `
+          <div class="modern-card" style="padding: 12px; margin-bottom: 0; background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(0,0,0,0.8)); border-color: rgba(0,212,255,0.2);">
+             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <div style="display: flex; flex-direction: column;">
+                   <span style="color: #00d4ff; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 1px;">${b.baslik}</span>
+                   <span style="color: #ccc; font-family: 'Rajdhani'; font-size: 11px; font-weight: 600;">${b.aciklama}</span>
+                </div>
+                <div style="text-align: right;">
+                   <span style="color: #ffd700; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">${b.odulAltin} 🟡</span>
+                   ${b.odulElmas > 0 ? `<br><span style="color: #00d4ff; font-family: 'Rajdhani'; font-size: 11px; font-weight: 700;">+ ${b.odulElmas} 💎</span>` : ''}
+                </div>
+             </div>
+             <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 4px; height: 6px; flex: 1; overflow: hidden;">
+                   <div style="background: ${alindi ? '#00ff87' : '#00d4ff'}; height: 100%; width: ${yuzde}%;"></div>
+                </div>
+                ${btnHtml}
+             </div>
+          </div>
+        `;
+    });
+
+vitrinSekmeDegistir('basarim'); // Ekran açıldığında varsayılan olarak başarımlar gelsin    document.getElementById('manager-profile-overlay').style.display = 'none';
     document.getElementById('trophy-room-overlay').style.display = 'flex';
 };
 
-// 2. YÖNETİM GÜVENİ VE KOVULMA SİSTEMİ
+window.basarimOduluAl = function(id) {
+    let b = BASARIM_LISTESI.find(x => x.id === id);
+    if (!b || oyuncuIstatistikleri.alinanBasarimlar.includes(id)) return;
+    
+    oyuncuIstatistikleri.alinanBasarimlar.push(id);
+    localStorage.setItem('futbolTayfaIstatistik', JSON.stringify(oyuncuIstatistikleri));
+    
+    if (b.odulAltin > 0) altinEkle(b.odulAltin);
+    if (b.odulElmas > 0) {
+        oyuncuElmas += b.odulElmas;
+        localStorage.setItem('futbolTayfaElmas', oyuncuElmas);
+        if(document.getElementById('player-diamond-global')) document.getElementById('player-diamond-global').textContent = oyuncuElmas;
+    }
+    
+    alert(`🎉 TEBRİKLER!\n"${b.baslik}" başarımını tamamladın.\nÖdül: ${b.odulAltin} 🟡 ${b.odulElmas > 0 ? '+ ' + b.odulElmas + ' 💎' : ''}`);
+    basariOdasiniAc(); 
+    vitrinSekmeDegistir('basarim'); // Ekranı yenileyip başarım sekmesinde tutar
+};
+
+// YÖNETİM GÜVENİ VE İSTATİSTİK TETİKLEME MOTORU
 let yonetimGuveni = parseInt(localStorage.getItem('futbolTayfaYonetim')) || 100;
 
 window.yonetimGuveniGuncelle = function(skorEv, skorDep, isEv) {
     let benimGol = isEv ? skorEv : skorDep;
     let rakipGol = isEv ? skorDep : skorEv;
     
+    // 1. İstatistikleri ve Başarımları Arka Planda Say
+    oyuncuIstatistikleri.oynananMac += 1;
+    oyuncuIstatistikleri.atilanGol += benimGol;
+    if (benimGol > rakipGol) oyuncuIstatistikleri.kazanilanMac += 1;
+    localStorage.setItem('futbolTayfaIstatistik', JSON.stringify(oyuncuIstatistikleri));
+
+    // 2. Yönetim Güvenini Hesapla
     if (benimGol > rakipGol) yonetimGuveni = Math.min(100, yonetimGuveni + 5);
     else if (benimGol < rakipGol) yonetimGuveni -= 12;
     else yonetimGuveni -= 2;
-
     localStorage.setItem('futbolTayfaYonetim', yonetimGuveni);
 
-    // Ana sayfadaki Fan Ölçer widget'ını Yönetim Güveni ile birleştirip güncelleyelim
     const fanScoreEl = document.getElementById('widget-fan-score-home');
     if (fanScoreEl) {
         fanScoreEl.textContent = "%" + yonetimGuveni;
@@ -7945,12 +8323,103 @@ window.yonetimGuveniGuncelle = function(skorEv, skorDep, isEv) {
 window.yeniKariyerAra = function() {
     yonetimGuveni = 100;
     localStorage.setItem('futbolTayfaYonetim', 100);
+    localStorage.removeItem('futbolTayfaBenimTakimim');
+    simData = { aktif: false, hafta: 1, takimlar: {}, fikstur: [] };
+    localStorage.removeItem('futbolTayfaKariyer');
+    
+    document.getElementById('sacked-overlay').style.display = 'none';
+    showLeagueSelect(); 
+};
+
+window.yeniKariyerAra = function() {
+    yonetimGuveni = 100;
+    localStorage.setItem('futbolTayfaYonetim', 100);
     localStorage.removeItem('futbolTayfaBenimTakimim'); // Mevcut takımı sil
     simData = { aktif: false, hafta: 1, takimlar: {}, fikstur: [] };
     localStorage.removeItem('futbolTayfaKariyer');
     
     document.getElementById('sacked-overlay').style.display = 'none';
     showLeagueSelect(); // TFF 1. Lig'den yeni takım seçmeye zorla
+};
+// ==========================================
+// 🎵 ARKA PLAN MÜZİĞİ MOTORU
+// ==========================================
+document.addEventListener('click', function ilkMuzikTetikleyici() {
+    ayarlariYukle(); // Kayıtlı ses seviyesini çeker
+    let bgm = document.getElementById('bg-music');
+    if (bgm && OYUN_AYARLARI.muzikSesi > 0 && !gameRunning) {
+        bgm.volume = OYUN_AYARLARI.muzikSesi;
+        bgm.play().catch(()=>{});
+    }
+    document.removeEventListener('click', ilkMuzikTetikleyici);
+}, { once: true });
+
+window.menuyuMuzigeAc = function() {
+    let bgm = document.getElementById('bg-music');
+    if (bgm && OYUN_AYARLARI.ses) bgm.play().catch(()=>{});
+};
+
+window.menuyuMuzigeKapat = function() {
+    let bgm = document.getElementById('bg-music');
+    if (bgm) bgm.pause();
+};
+window.gorevSekmeDegistir = function(sekme) {
+    let btnGunluk = document.getElementById('btn-gorev-gunluk');
+    let btnHaftalik = document.getElementById('btn-gorev-haftalik');
+    let divGunluk = document.getElementById('list-gunluk-gorevler');
+    let divHaftalik = document.getElementById('list-haftalik-gorevler');
+
+    if (sekme === 'gunluk') {
+        btnGunluk.style.background = 'linear-gradient(135deg, #00ff87, #00b35e)'; btnGunluk.style.color = '#000';
+        btnHaftalik.style.background = 'transparent'; btnHaftalik.style.color = '#aaa';
+        divGunluk.style.display = 'flex'; divHaftalik.style.display = 'none';
+    } else {
+        btnHaftalik.style.background = 'linear-gradient(135deg, #00d4ff, #0088cc)'; btnHaftalik.style.color = '#000';
+        btnGunluk.style.background = 'transparent'; btnGunluk.style.color = '#aaa';
+        divGunluk.style.display = 'none'; divHaftalik.style.display = 'flex';
+    }
+};
+
+window.gorevMerkeziniAc = function() {
+    gorevleriYukle(); 
+    gorevSekmeDegistir('gunluk'); // Menü açılırken ilk olarak Günlük sekmesi gelir
+    document.getElementById('gorevler-overlay').style.display = 'flex';
+    document.getElementById('global-top-bar').style.display = 'none';
+};
+// ==========================================
+// ℹ️ OYUN BİLGİ VE REHBER MOTORU
+// ==========================================
+window.oyunBilgisiGoster = function(tur) {
+    let baslik = "BİLGİ";
+    let metin = "Bu bölüm hakkında detaylı bilgi bulunmuyor."; 
+    
+    if (tur === 'anasayfa') {
+        baslik = "ANA SAYFA REHBERİ"; metin = "Ana sayfa takımının genel durumunu özetler.<br><br>• <b>Widgetlar:</b> Tıklayarak detaylı raporlara erişebilirsin.<br>• <b>Maça Çık:</b> Sıradaki maçını buradan hızlıca başlatırsın.";
+    } else if (tur === 'fikstur') {
+        baslik = "FİKSTÜR REHBERİ"; metin = "Bu ekranda ligdeki maç takvimini ve güncel puan durumunu görebilirsin.<br>Avrupa kupalarına katılmak için ligi üst sıralarda bitirmelisin!";
+    } else if (tur === 'gelisim') {
+        baslik = "GELİŞİM REHBERİ"; metin = "Kazandığın altınlarla takımının fiziksel özelliklerini geliştirebilirsin.<br>Daha hızlı top ve daha güçlü kalkan sana maçlarda büyük avantaj sağlar.";
+    } else if (tur === 'magaza') {
+        baslik = "MAĞAZA REHBERİ"; metin = "Buradan takımın için görsel efektler satın alabilirsin. Bu eşyalar sadece kozmetiktir, oyundaki gücünü etkilemez.";
+    } else if (tur === 'ayarlar') {
+        baslik = "AYARLAR"; metin = "Oyun seslerini, titreşimi ve güç tasarrufu modunu buradan değiştirebilirsin. Ayrıca kariyerini sıfırlama seçeneği de buradadır.";
+    } else if (tur === 'revir') {
+        baslik = "REVİR RAPORU"; metin = "Sakatlanan veya kadro dışı kalan oyuncularının durumunu gösterir.<br>Rotasyon yapmak, sakatlık riskini azaltabilir.";
+    } else if (tur === 'moral') {
+        baslik = "FORM VE MORAL"; metin = "Takımının son maçlardaki form grafiğini gösterir.<br>Galibiyet serileri oyuncuların moralini yükseltir ve sahada daha dirençli olmalarını sağlar.";
+    } else if (tur === 'fan') {
+        baslik = "FAN ÖLÇER"; metin = "Taraftarın ve yönetimin sana olan güvenini gösterir.<br>Üst üste alınan mağlubiyetler sebebiyle bu oran <b>%20 ve altına düşerse</b> sözleşmen tek taraflı feshedilir ve <b>görevden alınırsın.</b>";
+    } else if (tur === 'sosyal') {
+        baslik = "SOSYAL AĞ"; metin = "Taraftarların ve medyanın takım hakkındaki son paylaşımlarını buradan takip edebilirsin.";
+    } else if (tur === 'firsat') {
+        baslik = "DİNAMİK FIRSAT"; metin = "Sınırlı süreliğine sunulan indirimli mağaza teklifleridir. Süre dolduğunda yeni bir fırsat gelir.";
+    } else if (tur === 'gorevler') {
+        baslik = "GÖREV MERKEZİ"; metin = "Günlük ve haftalık hedefleri tamamlayarak altın ve elmas kazanabilirsin. Günlük giriş serisini bozmamaya dikkat et!";
+    }
+
+    document.getElementById('info-title').textContent = baslik;
+    document.getElementById('info-desc').innerHTML = metin;
+    document.getElementById('info-overlay').style.display = 'flex';
 };
 
 // Oyunu Başlatan Ana Fonksiyonlar
